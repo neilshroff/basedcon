@@ -24,7 +24,7 @@ main {
 h1 {
     font-size: 48px;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -73,7 +73,7 @@ ul {
 }
 
 li {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 /* Horizontal rule */
