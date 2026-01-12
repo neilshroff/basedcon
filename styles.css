@@ -30,8 +30,8 @@ h1 {
 
 h2 {
     font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-weight: 400;
+    margin-bottom: 30px;
     text-align: center;
 }
 
@@ -43,8 +43,12 @@ h3 {
 }
 
 p {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+p em {
     text-align: center;
+    display: block;
 }
 
 /* Links */
@@ -88,6 +92,10 @@ footer {
 footer p {
     font-size: 16px;
     margin-bottom: 0;
+}
+
+footer nav {
+    font-size: 16px;
 }
 
 /* Responsive design */
