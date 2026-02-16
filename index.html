@@ -58,16 +58,77 @@
         </ul>
 
         <div class="photo-grid">
-            <img src="gallery/1.png" alt="Basedcon event photo">
-            <img src="gallery/2.jpeg" alt="Basedcon event photo">
-            <img src="gallery/3.jpeg" alt="Basedcon event photo">
-            <img src="gallery/4.jpeg" alt="Basedcon event photo">
-            <img src="gallery/5.png" alt="Basedcon event photo">
-            <img src="gallery/6.png" alt="Basedcon event photo">
             <img src="gallery/7.png" alt="Basedcon event photo">
+            <img src="gallery/3.jpeg" alt="Basedcon event photo">
             <img src="gallery/8.png" alt="Basedcon event photo">
+            <img src="gallery/1.png" alt="Basedcon event photo">
+            <img src="gallery/5.png" alt="Basedcon event photo">
             <img src="gallery/9.png" alt="Basedcon event photo">
+            <img src="gallery/4.jpeg" alt="Basedcon event photo">
+            <img src="gallery/2.jpeg" alt="Basedcon event photo">
+            <img src="gallery/6.png" alt="Basedcon event photo">
         </div>
+
+        <!-- Lightbox modal -->
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <button class="lightbox-arrow lightbox-prev" id="lightbox-prev">&#8249;</button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="Basedcon event photo">
+            <button class="lightbox-arrow lightbox-next" id="lightbox-next">&#8250;</button>
+        </div>
+
+        <script>
+            (function() {
+                const imgs = Array.from(document.querySelectorAll('.photo-grid img'));
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                const prevBtn = document.getElementById('lightbox-prev');
+                const nextBtn = document.getElementById('lightbox-next');
+                const closeBtn = document.getElementById('lightbox-close');
+                let currentIndex = 0;
+
+                function open(index) {
+                    currentIndex = index;
+                    lightboxImg.src = imgs[currentIndex].src;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function close() {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+
+                function next() {
+                    currentIndex = (currentIndex + 1) % imgs.length;
+                    lightboxImg.src = imgs[currentIndex].src;
+                }
+
+                function prev() {
+                    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+                    lightboxImg.src = imgs[currentIndex].src;
+                }
+
+                imgs.forEach(function(img, i) {
+                    img.style.cursor = 'pointer';
+                    img.addEventListener('click', function() { open(i); });
+                });
+
+                closeBtn.addEventListener('click', close);
+                prevBtn.addEventListener('click', function(e) { e.stopPropagation(); prev(); });
+                nextBtn.addEventListener('click', function(e) { e.stopPropagation(); next(); });
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) close();
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (!lightbox.classList.contains('active')) return;
+                    if (e.key === 'Escape') close();
+                    if (e.key === 'ArrowRight') next();
+                    if (e.key === 'ArrowLeft') prev();
+                });
+            })();
+        </script>
 
         <hr>
 
