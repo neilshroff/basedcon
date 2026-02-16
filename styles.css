@@ -98,6 +98,21 @@ footer nav {
     font-size: 16px;
 }
 
+/* Photo grid */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.photo-grid img {
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    display: block;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     body {
@@ -115,5 +130,9 @@ footer nav {
 
     h3 {
         font-size: 17px;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
