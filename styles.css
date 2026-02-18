@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 19px;
     line-height: 1.55;
     color: #000;
@@ -183,62 +183,48 @@ footer nav {
     right: 10px;
 }
 
-/* Mode switcher (sun/moon) */
-.mode-switcher {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+/* Mode pill switcher */
+.mode-pill {
     display: flex;
-    align-items: center;
-    gap: 4px;
-    z-index: 100;
+    margin: 0 auto 20px;
+    width: fit-content;
+    border: 1px solid #000;
+    border-radius: 999px;
+    overflow: hidden;
 }
 
-.mode-icon {
-    font-size: 22px;
+.mode-option {
+    padding: 6px 20px;
+    background: none;
+    border: none;
     cursor: pointer;
-    opacity: 0.2;
-    transition: opacity 0.3s;
-    line-height: 1;
-    user-select: none;
+    font-family: inherit;
+    font-size: 15px;
+    color: inherit;
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap;
 }
 
-.mode-icon.active {
-    opacity: 1;
+.mode-option.active {
+    background: #000;
+    color: #fff;
 }
 
-.mode-icon:hover {
-    opacity: 0.6;
-}
-
-.mode-icon.active:hover {
-    opacity: 1;
-}
-
-/* Content area - grid overlay keeps both sections in same space */
-.content-area {
-    display: grid;
-}
-
-.content-area > div {
-    grid-row: 1;
-    grid-column: 1;
+.mode-option:hover:not(.active) {
+    background: rgba(0, 0, 0, 0.08);
 }
 
 /* Mode-specific content */
 .bangerlore-content {
-    visibility: hidden;
-    pointer-events: none;
+    display: none;
 }
 
 body.dark .basedcon-content {
-    visibility: hidden;
-    pointer-events: none;
+    display: none;
 }
 
 body.dark .bangerlore-content {
-    visibility: visible;
-    pointer-events: auto;
+    display: block;
 }
 
 /* Dark mode */
@@ -253,6 +239,19 @@ body.dark a {
 
 body.dark a:visited {
     color: #b08adb;
+}
+
+body.dark .mode-pill {
+    border-color: #555;
+}
+
+body.dark .mode-option.active {
+    background: #e0e0e0;
+    color: #111;
+}
+
+body.dark .mode-option:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 body.dark hr {
@@ -282,7 +281,22 @@ body.dark .lightbox {
         font-size: 17px;
     }
 
+    .mode-option {
+        padding: 5px 14px;
+        font-size: 14px;
+    }
+
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lightbox-arrow {
+        font-size: 40px;
+        padding: 0 10px;
+    }
+
+    .lightbox-img {
+        max-width: 95%;
+        max-height: 80vh;
     }
 }
