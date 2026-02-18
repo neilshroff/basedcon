@@ -27,9 +27,12 @@
 </head>
 <body>
     <main>
-        <button class="theme-toggle" id="theme-toggle" title="Switch to Bangerlore">☽</button>
-
         <h1 id="site-title">Basedcon 🇮🇳</h1>
+
+        <div class="mode-pill">
+            <button class="mode-option active" id="basedcon-mode">☕ basedcon</button>
+            <button class="mode-option" id="bangerlore-mode">🍺 bangerlore</button>
+        </div>
 
         <div class="basedcon-content">
             <h2>event series for your biggest ideas</h2>
@@ -138,7 +141,8 @@
     </main>
     <script>
         (function() {
-            var toggle = document.getElementById('theme-toggle');
+            var basedconBtn = document.getElementById('basedcon-mode');
+            var bangerloreBtn = document.getElementById('bangerlore-mode');
             var title = document.getElementById('site-title');
             var bangerLink = document.getElementById('bangerlore-link');
             var isDark = false;
@@ -147,15 +151,15 @@
                 isDark = dark;
                 if (dark) {
                     document.body.classList.add('dark');
-                    toggle.textContent = '☀';
-                    toggle.title = 'Switch to Basedcon';
+                    basedconBtn.classList.remove('active');
+                    bangerloreBtn.classList.add('active');
                     title.textContent = 'Bangerlore 🇮🇳';
-                    document.title = 'Bangerlore - event series for your biggest ideas';
+                    document.title = 'Bangerlore - the only party in town';
                     if (bangerLink) bangerLink.textContent = 'basedcon';
                 } else {
                     document.body.classList.remove('dark');
-                    toggle.textContent = '☽';
-                    toggle.title = 'Switch to Bangerlore';
+                    basedconBtn.classList.add('active');
+                    bangerloreBtn.classList.remove('active');
                     title.textContent = 'Basedcon 🇮🇳';
                     document.title = 'Basedcon - event series for your biggest ideas';
                     if (bangerLink) bangerLink.textContent = 'bangerlore';
@@ -176,8 +180,12 @@
             var hasBangerParam = new URLSearchParams(window.location.search).has('bangerlore');
             setMode(isBangerDomain || hasBangerParam, false);
 
-            toggle.addEventListener('click', function() {
-                setMode(!isDark, true);
+            basedconBtn.addEventListener('click', function() {
+                setMode(false, true);
+            });
+
+            bangerloreBtn.addEventListener('click', function() {
+                setMode(true, true);
             });
 
             if (bangerLink) {
