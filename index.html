@@ -27,7 +27,9 @@
 </head>
 <body>
     <main>
-        <h1>Basedcon 🇮🇳</h1>
+        <button class="theme-toggle" id="theme-toggle" title="Switch to Bangerlore">☽</button>
+
+        <h1 id="site-title">Basedcon 🇮🇳</h1>
 
         <h2>event series for your biggest ideas</h2>
 
@@ -122,9 +124,61 @@
 
         <footer>
             <nav>
-                <a href="conspirators.html">conspirators</a> • <a href="mailto:neil.shroff@gmail.com">contact us</a> • <a href="https://x.com/neilshroff">twitter</a> • <a href="#">fund</a>
+                <a href="conspirators.html">conspirators</a> • <a href="mailto:neil.shroff@gmail.com">contact us</a> • <a href="https://x.com/neilshroff">twitter</a> • <a href="#" id="bangerlore-link">bangerlore</a> • <a href="#">fund</a>
             </nav>
         </footer>
     </main>
+    <script>
+        (function() {
+            var toggle = document.getElementById('theme-toggle');
+            var title = document.getElementById('site-title');
+            var bangerLink = document.getElementById('bangerlore-link');
+            var isDark = false;
+
+            function setMode(dark, updateUrl) {
+                isDark = dark;
+                if (dark) {
+                    document.body.classList.add('dark');
+                    toggle.textContent = '☀';
+                    toggle.title = 'Switch to Basedcon';
+                    title.textContent = 'Bangerlore 🇮🇳';
+                    document.title = 'Bangerlore - event series for your biggest ideas';
+                    if (bangerLink) bangerLink.textContent = 'basedcon';
+                } else {
+                    document.body.classList.remove('dark');
+                    toggle.textContent = '☽';
+                    toggle.title = 'Switch to Bangerlore';
+                    title.textContent = 'Basedcon 🇮🇳';
+                    document.title = 'Basedcon - event series for your biggest ideas';
+                    if (bangerLink) bangerLink.textContent = 'bangerlore';
+                }
+                if (updateUrl) {
+                    var url = new URL(window.location);
+                    if (dark) {
+                        url.searchParams.set('bangerlore', '');
+                    } else {
+                        url.searchParams.delete('bangerlore');
+                    }
+                    history.replaceState(null, '', url);
+                }
+            }
+
+            // Detect initial mode from hostname or URL param
+            var isBangerDomain = window.location.hostname.indexOf('bangerlore') !== -1;
+            var hasBangerParam = new URLSearchParams(window.location.search).has('bangerlore');
+            setMode(isBangerDomain || hasBangerParam, false);
+
+            toggle.addEventListener('click', function() {
+                setMode(!isDark, true);
+            });
+
+            if (bangerLink) {
+                bangerLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setMode(!isDark, true);
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
