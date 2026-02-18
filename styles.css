@@ -208,6 +208,19 @@ footer nav {
     opacity: 0.7;
 }
 
+/* Mode-specific content */
+.bangerlore-content {
+    display: none;
+}
+
+body.dark .basedcon-content {
+    display: none;
+}
+
+body.dark .bangerlore-content {
+    display: block;
+}
+
 /* Dark mode */
 body.dark {
     background-color: #111;
