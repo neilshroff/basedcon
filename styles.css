@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: "Times New Roman", Times, serif;
+    font-family: Arial, sans-serif;
     font-size: 19px;
     line-height: 1.55;
     color: #000;
@@ -183,42 +183,62 @@ footer nav {
     right: 10px;
 }
 
-/* Theme toggle */
-.theme-toggle {
+/* Mode switcher (sun/moon) */
+.mode-switcher {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: none;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    cursor: pointer;
-    color: inherit;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 4px;
     z-index: 100;
-    font-family: inherit;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.theme-toggle:hover {
-    opacity: 0.7;
+.mode-icon {
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.2;
+    transition: opacity 0.3s;
+    line-height: 1;
+    user-select: none;
+}
+
+.mode-icon.active {
+    opacity: 1;
+}
+
+.mode-icon:hover {
+    opacity: 0.6;
+}
+
+.mode-icon.active:hover {
+    opacity: 1;
+}
+
+/* Content area - grid overlay keeps both sections in same space */
+.content-area {
+    display: grid;
+}
+
+.content-area > div {
+    grid-row: 1;
+    grid-column: 1;
 }
 
 /* Mode-specific content */
 .bangerlore-content {
-    display: none;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 body.dark .basedcon-content {
-    display: none;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 body.dark .bangerlore-content {
-    display: block;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 /* Dark mode */
