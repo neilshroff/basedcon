@@ -185,24 +185,28 @@ footer nav {
 
 /* Mode pill switcher */
 .mode-pill {
+    position: fixed;
+    top: 20px;
+    right: 20px;
     display: flex;
-    margin: 0 auto 20px;
-    width: fit-content;
     border: 1px solid #000;
     border-radius: 999px;
     overflow: hidden;
+    z-index: 100;
 }
 
 .mode-option {
-    padding: 6px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 32px;
+    padding: 0;
     background: none;
     border: none;
     cursor: pointer;
-    font-family: inherit;
-    font-size: 15px;
     color: inherit;
     transition: background-color 0.3s, color 0.3s;
-    white-space: nowrap;
 }
 
 .mode-option.active {
@@ -279,11 +283,6 @@ body.dark .lightbox {
 
     h3 {
         font-size: 17px;
-    }
-
-    .mode-option {
-        padding: 5px 14px;
-        font-size: 14px;
     }
 
     .photo-grid {
