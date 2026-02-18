@@ -205,7 +205,8 @@ footer nav {
     background: none;
     border: none;
     cursor: pointer;
-    color: inherit;
+    font-size: 16px;
+    line-height: 1;
     transition: background-color 0.3s, color 0.3s;
 }
 

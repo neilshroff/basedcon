@@ -28,12 +28,8 @@
 <body>
     <main>
         <div class="mode-pill">
-            <button class="mode-option active" id="basedcon-mode" title="Basedcon">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5h9v7a3 3 0 01-3 3H5a3 3 0 01-3-3V5z"/><path d="M11 6.5h1.5a2 2 0 010 4H11"/><path d="M4.5 1.5v2M6.5 1.5v2M8.5 1.5v2"/></svg>
-            </button>
-            <button class="mode-option" id="bangerlore-mode" title="Bangerlore">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="9" height="11" rx="1"/><path d="M11 6h1.5a2 2 0 010 4H11"/><path d="M2 4c0-2 2-3 4.5-3S11 2 11 4"/></svg>
-            </button>
+            <button class="mode-option active" id="basedcon-mode" title="Basedcon">&#9749;</button>
+            <button class="mode-option" id="bangerlore-mode" title="Bangerlore">&#127866;</button>
         </div>
 
         <h1 id="site-title">Basedcon 🇮🇳</h1>
@@ -169,13 +165,11 @@
                     if (bangerLink) bangerLink.textContent = 'bangerlore';
                 }
                 if (updateUrl) {
-                    var url = new URL(window.location);
                     if (dark) {
-                        url.searchParams.set('bangerlore', '');
+                        history.replaceState(null, '', window.location.pathname + '?bangerlore=');
                     } else {
-                        url.searchParams.delete('bangerlore');
+                        history.replaceState(null, '', window.location.pathname);
                     }
-                    history.replaceState(null, '', url);
                 }
             }
 
