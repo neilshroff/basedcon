@@ -27,8 +27,6 @@
 </head>
 <body>
     <main>
-        <button class="theme-toggle" id="theme-toggle" title="Switch to Bangerlore">☽</button>
-
         <h1>Conspirators</h1>
 
         <p>These are the people who come together to organise Basedcon. A scattered crew across cities and time zones who somehow make it all happen every few months.</p>
@@ -44,49 +42,7 @@
 
         <hr>
 
-        <p><a href="index.html" id="back-link">&larr; Back to home</a></p>
+        <p><a href="index.html">&larr; Back to home</a></p>
     </main>
-
-    <script>
-        (function() {
-            var toggle = document.getElementById('theme-toggle');
-            var backLink = document.getElementById('back-link');
-            var isDark = false;
-
-            function setMode(dark, updateUrl) {
-                isDark = dark;
-                if (dark) {
-                    document.body.classList.add('dark');
-                    toggle.textContent = '☀';
-                    toggle.title = 'Switch to Basedcon';
-                    document.title = 'Conspirators - Bangerlore';
-                    if (backLink) backLink.href = 'index.html?bangerlore';
-                } else {
-                    document.body.classList.remove('dark');
-                    toggle.textContent = '☽';
-                    toggle.title = 'Switch to Bangerlore';
-                    document.title = 'Conspirators - Basedcon';
-                    if (backLink) backLink.href = 'index.html';
-                }
-                if (updateUrl) {
-                    var url = new URL(window.location);
-                    if (dark) {
-                        url.searchParams.set('bangerlore', '');
-                    } else {
-                        url.searchParams.delete('bangerlore');
-                    }
-                    history.replaceState(null, '', url);
-                }
-            }
-
-            var isBangerDomain = window.location.hostname.indexOf('bangerlore') !== -1;
-            var hasBangerParam = new URLSearchParams(window.location.search).has('bangerlore');
-            setMode(isBangerDomain || hasBangerParam, false);
-
-            toggle.addEventListener('click', function() {
-                setMode(!isDark, true);
-            });
-        })();
-    </script>
 </body>
 </html>
