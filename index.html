@@ -176,7 +176,7 @@
             // Detect initial mode from hostname or URL param
             var isBangerDomain = window.location.hostname.indexOf('bangerlore') !== -1;
             var hasBangerParam = new URLSearchParams(window.location.search).has('bangerlore');
-            setMode(isBangerDomain || hasBangerParam, false);
+            setMode(isBangerDomain || hasBangerParam, true);
 
             basedconBtn.addEventListener('click', function() {
                 setMode(false, true);

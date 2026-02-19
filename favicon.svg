@@ -1,4 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#fff"/>
-  <text x="50" y="70" font-family="Times New Roman, serif" font-size="70" font-weight="400" text-anchor="middle" fill="#000">B</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Teeth -->
+  <rect x="19" y="50" width="7" height="10" rx="3.5" fill="#C4CDD5"/>
+  <rect x="28.5" y="50" width="7" height="10" rx="3.5" fill="#C4CDD5"/>
+  <rect x="38" y="50" width="7" height="10" rx="3.5" fill="#C4CDD5"/>
+  <!-- Head -->
+  <circle cx="32" cy="30" r="26" fill="#C4CDD5"/>
+  <!-- Sunglasses lenses -->
+  <rect x="8" y="22" width="21" height="14" rx="3" fill="#3D4D5C"/>
+  <rect x="35" y="22" width="21" height="14" rx="3" fill="#3D4D5C"/>
+  <!-- Sunglasses bridge -->
+  <rect x="28" y="26" width="8" height="4" rx="2" fill="#3D4D5C"/>
+  <!-- Nose -->
+  <circle cx="30" cy="43" r="2.5" fill="#3D4D5C"/>
+  <circle cx="34" cy="43" r="2.5" fill="#3D4D5C"/>
 </svg>
