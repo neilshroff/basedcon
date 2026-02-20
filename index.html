@@ -69,7 +69,7 @@
             <p>Around 250 people attend each time and the party goes on for ~12 hours from 4PM to 4AM. Proof of previous parties: <a href="https://partiful.com/e/CrOv3DkZSWGkoF0SsFIB">v1</a>, <a href="https://partiful.com/e/Ep5WovOmFAZRHhMbusFj">v2</a>, <a href="https://partiful.com/e/CjK5wpCKdVs8rdeeVdya">v3</a>, <a href="https://partiful.com/e/U964NJ2siC9E6IhzmVkj">v4</a>. To browse some of the lore that followed Bangerlore, see <a href="https://x.com/search?q=bangerlore%20min_faves%3A15%20until%3A2026-01-01%20since%3A2024-05-01&amp;src=typed_query&amp;f=live">here</a>.</p>
         </div>
 
-        <div class="photo-grid">
+        <div class="photo-grid basedcon-content">
             <img src="gallery/7.png" alt="Basedcon event photo">
             <img src="gallery/3.jpeg" alt="Basedcon event photo">
             <img src="gallery/8.png" alt="Basedcon event photo">
@@ -79,6 +79,18 @@
             <img src="gallery/4.jpeg" alt="Basedcon event photo">
             <img src="gallery/2.jpeg" alt="Basedcon event photo">
             <img src="gallery/6.png" alt="Basedcon event photo">
+        </div>
+
+        <div class="photo-grid bangerlore-content">
+            <img src="gallery/banger1.jpeg" alt="Bangerlore party photo">
+            <img src="gallery/banger2.jpeg" alt="Bangerlore party photo">
+            <img src="gallery/banger3.jpeg" alt="Bangerlore party photo">
+            <img src="gallery/banger4.jpeg" alt="Bangerlore party photo">
+            <img src="gallery/banger5.png" alt="Bangerlore party photo">
+            <img src="gallery/banger6.jpeg" alt="Bangerlore party photo">
+            <img src="gallery/banger7.jpeg" alt="Bangerlore party photo">
+            <img src="gallery/banger8.jpeg" alt="Bangerlore party photo">
+            <img src="gallery/banger9.jpeg" alt="Bangerlore party photo">
         </div>
 
         <!-- Lightbox modal -->
@@ -91,17 +103,28 @@
 
         <script>
             (function() {
-                const imgs = Array.from(document.querySelectorAll('.photo-grid img'));
-                const lightbox = document.getElementById('lightbox');
-                const lightboxImg = document.getElementById('lightbox-img');
-                const prevBtn = document.getElementById('lightbox-prev');
-                const nextBtn = document.getElementById('lightbox-next');
-                const closeBtn = document.getElementById('lightbox-close');
-                let currentIndex = 0;
+                var allGrids = document.querySelectorAll('.photo-grid');
+                var lightbox = document.getElementById('lightbox');
+                var lightboxImg = document.getElementById('lightbox-img');
+                var prevBtn = document.getElementById('lightbox-prev');
+                var nextBtn = document.getElementById('lightbox-next');
+                var closeBtn = document.getElementById('lightbox-close');
+                var currentIndex = 0;
+                var activeImgs = [];
 
-                function open(index) {
-                    currentIndex = index;
-                    lightboxImg.src = imgs[currentIndex].src;
+                function getVisibleImgs() {
+                    for (var i = 0; i < allGrids.length; i++) {
+                        if (allGrids[i].offsetParent !== null) {
+                            return Array.from(allGrids[i].querySelectorAll('img'));
+                        }
+                    }
+                    return [];
+                }
+
+                function open(img) {
+                    activeImgs = getVisibleImgs();
+                    currentIndex = activeImgs.indexOf(img);
+                    lightboxImg.src = activeImgs[currentIndex].src;
                     lightbox.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 }
@@ -112,18 +135,20 @@
                 }
 
                 function next() {
-                    currentIndex = (currentIndex + 1) % imgs.length;
-                    lightboxImg.src = imgs[currentIndex].src;
+                    currentIndex = (currentIndex + 1) % activeImgs.length;
+                    lightboxImg.src = activeImgs[currentIndex].src;
                 }
 
                 function prev() {
-                    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
-                    lightboxImg.src = imgs[currentIndex].src;
+                    currentIndex = (currentIndex - 1 + activeImgs.length) % activeImgs.length;
+                    lightboxImg.src = activeImgs[currentIndex].src;
                 }
 
-                imgs.forEach(function(img, i) {
-                    img.style.cursor = 'pointer';
-                    img.addEventListener('click', function() { open(i); });
+                allGrids.forEach(function(grid) {
+                    grid.querySelectorAll('img').forEach(function(img) {
+                        img.style.cursor = 'pointer';
+                        img.addEventListener('click', function() { open(img); });
+                    });
                 });
 
                 closeBtn.addEventListener('click', close);
