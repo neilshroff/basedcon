@@ -204,12 +204,14 @@
             var hasBangerParam = new URLSearchParams(window.location.search).has('bangerlore');
             setMode(hasBangerParam, false);
 
+            var mobileQuery = window.matchMedia('(max-width: 768px)');
+
             basedconBtn.addEventListener('click', function() {
-                setMode(false, true);
+                setMode(mobileQuery.matches ? !isDark : false, true);
             });
 
             bangerloreBtn.addEventListener('click', function() {
-                setMode(true, true);
+                setMode(mobileQuery.matches ? !isDark : true, true);
             });
 
             if (bangerLink) {

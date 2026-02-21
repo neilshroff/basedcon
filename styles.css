@@ -299,4 +299,18 @@ body.dark .lightbox {
         max-width: 95%;
         max-height: 80vh;
     }
+
+    /* Collapse pill to single circle toggle on mobile */
+    .mode-pill {
+        top: 14px;
+        right: 14px;
+    }
+
+    .mode-option:not(.active) {
+        display: none;
+    }
+
+    .mode-option.active {
+        border-radius: 999px;
+    }
 }
