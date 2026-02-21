@@ -232,10 +232,6 @@ body.dark .bangerlore-content {
     display: block;
 }
 
-body.dark .photo-grid.bangerlore-content {
-    display: grid;
-}
-
 /* Dark mode */
 body.dark {
     background-color: #111;
