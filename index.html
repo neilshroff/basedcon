@@ -147,7 +147,7 @@
 
         <footer>
             <nav>
-                <a href="conspirators.html">conspirators</a> • <a href="mailto:neil.shroff@gmail.com">contact us</a> • <a href="https://x.com/neilshroff">twitter</a> • <a href="#" id="bangerlore-link">bangerlore</a> • <a href="#">fund</a>
+                <a href="conspirators.html" id="conspirators-link">conspirators</a> • <a href="mailto:neil.shroff@gmail.com">contact us</a> • <a href="https://x.com/neilshroff">twitter</a> • <a href="#" id="bangerlore-link">bangerlore</a> • <a href="#">fund</a>
             </nav>
         </footer>
     </main>
@@ -157,6 +157,7 @@
             var bangerloreBtn = document.getElementById('bangerlore-mode');
             var title = document.getElementById('site-title');
             var bangerLink = document.getElementById('bangerlore-link');
+            var conspiratorsLink = document.getElementById('conspirators-link');
             var gridImgs = document.querySelectorAll('#photo-grid img');
             var isDark = false;
 
@@ -187,6 +188,7 @@
                     title.textContent = 'Bangerlore 🍻';
                     document.title = 'Bangerlore';
                     if (bangerLink) bangerLink.textContent = 'basedcon';
+                    if (conspiratorsLink) conspiratorsLink.href = 'bangerlore-conspirators.html';
                 } else {
                     document.body.classList.remove('dark');
                     basedconBtn.classList.add('active');
@@ -194,6 +196,7 @@
                     title.textContent = 'Basedcon 🇮🇳';
                     document.title = 'Basedcon';
                     if (bangerLink) bangerLink.textContent = 'bangerlore';
+                    if (conspiratorsLink) conspiratorsLink.href = 'conspirators.html';
                 }
                 // Only rewrite URL on localhost / non-production domains
                 if (updateUrl && !isBangerloreDomain && !isBasedconDomain) {
