@@ -28,8 +28,9 @@
 <body>
     <main>
         <div class="mode-pill">
-            <button class="mode-option active" id="basedcon-mode" title="Basedcon">&#9749;</button>
-            <button class="mode-option" id="bangerlore-mode" title="Bangerlore">&#127866;</button>
+            <button class="mode-option active" id="basedcon-mode" title="Basedcon">🧐</button>
+            <button class="mode-option" id="bangerlore-mode" title="Bangerlore">😎</button>
+            <button class="mode-option mobile-toggle" id="mobile-toggle" title="Toggle mode">☯️</button>
         </div>
 
         <h1 id="site-title">Basedcon 🇮🇳</h1>
@@ -204,14 +205,18 @@
             var hasBangerParam = new URLSearchParams(window.location.search).has('bangerlore');
             setMode(hasBangerParam, false);
 
-            var mobileQuery = window.matchMedia('(max-width: 768px)');
+            var mobileToggle = document.getElementById('mobile-toggle');
 
             basedconBtn.addEventListener('click', function() {
-                setMode(mobileQuery.matches ? !isDark : false, true);
+                setMode(false, true);
             });
 
             bangerloreBtn.addEventListener('click', function() {
-                setMode(mobileQuery.matches ? !isDark : true, true);
+                setMode(true, true);
+            });
+
+            mobileToggle.addEventListener('click', function() {
+                setMode(!isDark, true);
             });
 
             if (bangerLink) {

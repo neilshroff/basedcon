@@ -210,6 +210,10 @@ footer nav {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.mode-option.mobile-toggle {
+    display: none;
+}
+
 .mode-option.active {
     background: #000;
     color: #fff;
@@ -300,17 +304,19 @@ body.dark .lightbox {
         max-height: 80vh;
     }
 
-    /* Collapse pill to single circle toggle on mobile */
+    /* Collapse pill to single yin-yang circle on mobile */
     .mode-pill {
         top: 14px;
         right: 14px;
     }
 
-    .mode-option:not(.active) {
+    .mode-option#basedcon-mode,
+    .mode-option#bangerlore-mode {
         display: none;
     }
 
-    .mode-option.active {
+    .mode-option.mobile-toggle {
+        display: flex;
         border-radius: 999px;
     }
 }
