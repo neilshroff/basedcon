@@ -160,6 +160,9 @@
             var gridImgs = document.querySelectorAll('#photo-grid img');
             var isDark = false;
 
+            var isBangerloreDomain = window.location.hostname.indexOf('bangerlore') !== -1;
+            var isBasedconDomain = window.location.hostname.indexOf('basedcon') !== -1;
+
             var basedconSrcs = [
                 'gallery/7.png', 'gallery/3.jpeg', 'gallery/8.png',
                 'gallery/1.png', 'gallery/5.png', 'gallery/9.png',
@@ -192,7 +195,8 @@
                     document.title = 'Basedcon - event series for your biggest ideas';
                     if (bangerLink) bangerLink.textContent = 'bangerlore';
                 }
-                if (updateUrl) {
+                // Only rewrite URL on localhost / non-production domains
+                if (updateUrl && !isBangerloreDomain && !isBasedconDomain) {
                     if (dark) {
                         history.replaceState(null, '', window.location.pathname + '?bangerlore=');
                     } else {
@@ -201,28 +205,47 @@
                 }
             }
 
-            // Only use URL param as source of truth
+            // Determine initial mode: bangerlore domain OR ?bangerlore= param
             var hasBangerParam = new URLSearchParams(window.location.search).has('bangerlore');
-            setMode(hasBangerParam, false);
+            setMode(isBangerloreDomain || hasBangerParam, false);
+
+            function goToOtherSite() {
+                if (isBasedconDomain) {
+                    window.location.href = 'https://bangerlore.com';
+                } else if (isBangerloreDomain) {
+                    window.location.href = 'https://basedcon.xyz';
+                } else {
+                    // Local dev / other: toggle locally
+                    setMode(!isDark, true);
+                }
+            }
 
             var mobileToggle = document.getElementById('mobile-toggle');
 
             basedconBtn.addEventListener('click', function() {
-                setMode(false, true);
+                if (isBangerloreDomain) {
+                    window.location.href = 'https://basedcon.xyz';
+                } else {
+                    setMode(false, true);
+                }
             });
 
             bangerloreBtn.addEventListener('click', function() {
-                setMode(true, true);
+                if (isBasedconDomain) {
+                    window.location.href = 'https://bangerlore.com';
+                } else {
+                    setMode(true, true);
+                }
             });
 
             mobileToggle.addEventListener('click', function() {
-                setMode(!isDark, true);
+                goToOtherSite();
             });
 
             if (bangerLink) {
                 bangerLink.addEventListener('click', function(e) {
                     e.preventDefault();
-                    setMode(!isDark, true);
+                    goToOtherSite();
                 });
             }
         })();
