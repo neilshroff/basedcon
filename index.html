@@ -69,28 +69,16 @@
             <p>Around 250 people attend each time and the party goes on for ~12 hours from 4PM to 4AM. Proof of previous parties: <a href="https://partiful.com/e/CrOv3DkZSWGkoF0SsFIB">v1</a>, <a href="https://partiful.com/e/Ep5WovOmFAZRHhMbusFj">v2</a>, <a href="https://partiful.com/e/CjK5wpCKdVs8rdeeVdya">v3</a>, <a href="https://partiful.com/e/U964NJ2siC9E6IhzmVkj">v4</a>. To browse some of the lore that followed Bangerlore, see <a href="https://x.com/search?q=bangerlore%20min_faves%3A15%20until%3A2026-01-01%20since%3A2024-05-01&amp;src=typed_query&amp;f=live">here</a>.</p>
         </div>
 
-        <div class="photo-grid basedcon-content">
-            <img src="gallery/7.png" alt="Basedcon event photo">
-            <img src="gallery/3.jpeg" alt="Basedcon event photo">
-            <img src="gallery/8.png" alt="Basedcon event photo">
-            <img src="gallery/1.png" alt="Basedcon event photo">
-            <img src="gallery/5.png" alt="Basedcon event photo">
-            <img src="gallery/9.png" alt="Basedcon event photo">
-            <img src="gallery/4.jpeg" alt="Basedcon event photo">
-            <img src="gallery/2.jpeg" alt="Basedcon event photo">
-            <img src="gallery/6.png" alt="Basedcon event photo">
-        </div>
-
-        <div class="photo-grid bangerlore-content">
-            <img src="gallery/banger1.jpeg" alt="Bangerlore party photo">
-            <img src="gallery/banger2.jpeg" alt="Bangerlore party photo">
-            <img src="gallery/banger3.jpeg" alt="Bangerlore party photo">
-            <img src="gallery/banger4.jpeg" alt="Bangerlore party photo">
-            <img src="gallery/banger5.png" alt="Bangerlore party photo">
-            <img src="gallery/banger6.jpeg" alt="Bangerlore party photo">
-            <img src="gallery/banger7.jpeg" alt="Bangerlore party photo">
-            <img src="gallery/banger8.jpeg" alt="Bangerlore party photo">
-            <img src="gallery/banger9.jpeg" alt="Bangerlore party photo">
+        <div class="photo-grid" id="photo-grid">
+            <img src="gallery/7.png" alt="Event photo">
+            <img src="gallery/3.jpeg" alt="Event photo">
+            <img src="gallery/8.png" alt="Event photo">
+            <img src="gallery/1.png" alt="Event photo">
+            <img src="gallery/5.png" alt="Event photo">
+            <img src="gallery/9.png" alt="Event photo">
+            <img src="gallery/4.jpeg" alt="Event photo">
+            <img src="gallery/2.jpeg" alt="Event photo">
+            <img src="gallery/6.png" alt="Event photo">
         </div>
 
         <!-- Lightbox modal -->
@@ -103,28 +91,17 @@
 
         <script>
             (function() {
-                var allGrids = document.querySelectorAll('.photo-grid');
+                var imgs = Array.from(document.querySelectorAll('.photo-grid img'));
                 var lightbox = document.getElementById('lightbox');
                 var lightboxImg = document.getElementById('lightbox-img');
                 var prevBtn = document.getElementById('lightbox-prev');
                 var nextBtn = document.getElementById('lightbox-next');
                 var closeBtn = document.getElementById('lightbox-close');
                 var currentIndex = 0;
-                var activeImgs = [];
 
-                function getVisibleImgs() {
-                    for (var i = 0; i < allGrids.length; i++) {
-                        if (allGrids[i].offsetParent !== null) {
-                            return Array.from(allGrids[i].querySelectorAll('img'));
-                        }
-                    }
-                    return [];
-                }
-
-                function open(img) {
-                    activeImgs = getVisibleImgs();
-                    currentIndex = activeImgs.indexOf(img);
-                    lightboxImg.src = activeImgs[currentIndex].src;
+                function open(index) {
+                    currentIndex = index;
+                    lightboxImg.src = imgs[currentIndex].src;
                     lightbox.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 }
@@ -135,20 +112,18 @@
                 }
 
                 function next() {
-                    currentIndex = (currentIndex + 1) % activeImgs.length;
-                    lightboxImg.src = activeImgs[currentIndex].src;
+                    currentIndex = (currentIndex + 1) % imgs.length;
+                    lightboxImg.src = imgs[currentIndex].src;
                 }
 
                 function prev() {
-                    currentIndex = (currentIndex - 1 + activeImgs.length) % activeImgs.length;
-                    lightboxImg.src = activeImgs[currentIndex].src;
+                    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+                    lightboxImg.src = imgs[currentIndex].src;
                 }
 
-                allGrids.forEach(function(grid) {
-                    grid.querySelectorAll('img').forEach(function(img) {
-                        img.style.cursor = 'pointer';
-                        img.addEventListener('click', function() { open(img); });
-                    });
+                imgs.forEach(function(img, i) {
+                    img.style.cursor = 'pointer';
+                    img.addEventListener('click', function() { open(i); });
                 });
 
                 closeBtn.addEventListener('click', close);
@@ -181,10 +156,26 @@
             var bangerloreBtn = document.getElementById('bangerlore-mode');
             var title = document.getElementById('site-title');
             var bangerLink = document.getElementById('bangerlore-link');
+            var gridImgs = document.querySelectorAll('#photo-grid img');
             var isDark = false;
+
+            var basedconSrcs = [
+                'gallery/7.png', 'gallery/3.jpeg', 'gallery/8.png',
+                'gallery/1.png', 'gallery/5.png', 'gallery/9.png',
+                'gallery/4.jpeg', 'gallery/2.jpeg', 'gallery/6.png'
+            ];
+            var bangerloreSrcs = [
+                'gallery/banger1.jpeg', 'gallery/banger2.jpeg', 'gallery/banger3.jpeg',
+                'gallery/banger4.jpeg', 'gallery/banger5.png', 'gallery/banger6.jpeg',
+                'gallery/banger7.jpeg', 'gallery/banger8.jpeg', 'gallery/banger9.jpeg'
+            ];
 
             function setMode(dark, updateUrl) {
                 isDark = dark;
+                var srcs = dark ? bangerloreSrcs : basedconSrcs;
+                for (var i = 0; i < gridImgs.length; i++) {
+                    gridImgs[i].src = srcs[i];
+                }
                 if (dark) {
                     document.body.classList.add('dark');
                     basedconBtn.classList.remove('active');
