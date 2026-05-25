@@ -261,12 +261,18 @@ footer nav {
     flex-shrink: 0;
 }
 
-.announcement-link:visited {
+.announcement-link:visited,
+.announcement-link:active {
     color: #1a0a0c;
 }
 
 .announcement-link:hover {
     opacity: 0.75;
+}
+
+body.dark .announcement-link,
+body.dark .announcement-link:visited {
+    color: #1a0a0c;
 }
 
 /* Mode-specific content */
