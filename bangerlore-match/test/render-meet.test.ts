@@ -122,6 +122,12 @@ describe("renderMeetHtml — structure", () => {
     expect(html).not.toContain(`placeholder="Search 3 attendees`);
     expect(html).toContain(`var shuffleSeed = (Date.now() % 100000) + 1;`);
   });
+  test("uses the Bangerlore favicon and welcoming tagline", () => {
+    const html = renderMeetHtml(blurbs, matches);
+    expect(html).toContain(`<link rel="icon" type="image/svg+xml" href="/favicon.svg">`);
+    expect(html).toContain(`the room is full of people who would love to meet you`);
+    expect(html).not.toContain(`the room is full of people you don't know yet`);
+  });
   test("party photos render collage tiles; none → no collage", () => {
     const withPhotos = renderMeetHtml(blurbs, matches, { partyPhotos: ["party/x.jpg"] });
     expect(withPhotos).toContain(`class="hero-bg hero-collage"`);

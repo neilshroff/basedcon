@@ -139,6 +139,7 @@ export function renderMeetHtml(
 <base href="/v5/match/">
 <meta name="robots" content="noindex, nofollow">
 <title>Bangerlore — Who to Meet</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -524,7 +525,7 @@ export function renderMeetHtml(
   ${collageMarkup(options.partyPhotos ?? [])}
   <header class="masthead">
     <h1 class="logo"><a class="logo-link" href="https://bangerlore.com/">Bangerlore <span class="clink">🍻</span></a></h1>
-    <p class="tagline">the room is full of people you don't know yet</p>
+    <p class="tagline">the room is full of people who would love to meet you</p>
   </header>
   <div class="wrap firstview-body">
     <div class="identify">
