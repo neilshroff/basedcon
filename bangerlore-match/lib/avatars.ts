@@ -6,7 +6,7 @@
 
 const MAGIC = [
   Buffer.from([0xff, 0xd8, 0xff]), // jpeg
-  Buffer.from("\x89PNG"), // png
+  Buffer.from([0x89, 0x50, 0x4e, 0x47]), // png
   Buffer.from("GIF8"), // gif
   Buffer.from("RIFF"), // webp
 ];

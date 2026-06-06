@@ -2,6 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { z } from "zod";
 import { profileFor, stableId } from "./lib/identity";
+import { preferredProfilePic } from "./lib/profile-pics";
 import { runPool, writeJsonAtomic } from "./lib/pool";
 
 type Guest = { Name: string } & Record<string, string>;
@@ -141,8 +142,7 @@ await runPool({
       blurb: result.blurb,
       tags: result.tags,
       lookingFor: result.looking_for,
-      profilePicUrl: profile?.twitterProfile?.profilePicUrl ??
-        profile?.linkedinProfile?.profilePicUrl ?? null,
+      profilePicUrl: preferredProfilePic(profile),
     };
   },
   checkpoint: () => writeJsonAtomic(blurbsPath, blurbs.filter(Boolean)),

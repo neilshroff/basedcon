@@ -230,7 +230,7 @@ export function renderMeetHtml(
   .hero-collage .hero-grid {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
     display: grid; grid-template-columns: repeat(7, 1fr);
-    grid-auto-rows: auto; gap: 0; align-content: start;
+    grid-auto-rows: minmax(0, 1fr); gap: 0; align-content: stretch;
     filter: grayscale(1) brightness(0.6) contrast(1.18);
     opacity: 0.64; overflow: hidden;
     -webkit-mask-image: linear-gradient(180deg, transparent 0px, transparent 90px, #000 360px, #000 calc(100% - 170px), transparent 100%);
@@ -252,7 +252,20 @@ export function renderMeetHtml(
             mask-image: linear-gradient(180deg, transparent 0px, transparent 90px, #000 360px, #000 calc(100% - 170px), transparent 100%);
   }
   @media (max-width: 760px) {
-    .hero-collage .hero-grid { grid-template-columns: repeat(4, 1fr); }
+    .hero-collage .hero-grid {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 86px;
+      align-content: start;
+      opacity: 0.48;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0px, transparent 74px, #000 220px, #000 calc(100% - 120px), transparent 100%);
+              mask-image: linear-gradient(180deg, transparent 0px, transparent 74px, #000 220px, #000 calc(100% - 120px), transparent 100%);
+    }
+    .hero-collage .hero-grid img { aspect-ratio: auto; }
+    .hero-collage .hero-grain {
+      opacity: 0.58;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0px, transparent 74px, #000 220px, #000 calc(100% - 120px), transparent 100%);
+              mask-image: linear-gradient(180deg, transparent 0px, transparent 74px, #000 220px, #000 calc(100% - 120px), transparent 100%);
+    }
   }
 
   /* ---------- identify ---------- */
@@ -442,8 +455,15 @@ export function renderMeetHtml(
   .x-close.abs { position: absolute; top: 16px; right: 16px; }
 
   /* ---------- footer ---------- */
-  .foot { text-align: center; padding: 40px 20px 60px; border-top: 1px solid var(--line); }
-  .foot p { font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: 0.08em; margin: 0; }
+  .foot {
+    text-align: center; padding: 28px 20px 60px; border-top: 1px solid var(--line);
+    font-family: "Times New Roman", Times, serif; font-size: 16px; color: var(--muted);
+  }
+  .foot p { margin: 0 0 8px; }
+  .foot nav { font-size: 16px; }
+  .foot a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
+  .foot a:visited { color: var(--text); }
+  .foot a:hover { color: var(--accent); }
 
   /* ---------- responsive ---------- */
   @media (max-width: 760px) {
@@ -524,7 +544,17 @@ export function renderMeetHtml(
 </main>
 
 <footer class="foot">
-  <p>Bangerlore v5 · made for finding your people · ${people.length} attendees</p>
+  <p class="foot-hosts">
+    <a href="https://x.com/5hroff">Kunal Shroff</a> ·
+    <a href="https://namanmaheshwari.com">Naman Maheshwari</a>
+  </p>
+  <nav>
+    <a href="https://bangerlore.com/hosts.html">conspirators</a> ·
+    <a href="mailto:neil.shroff@gmail.com">contact us</a> ·
+    <a href="https://x.com/search?q=bangerlore%20min_faves%3A15%20until%3A2026-01-01%20since%3A2024-05-01&amp;src=typed_query&amp;f=live">twitter</a> ·
+    <a href="https://bangerlore.com/">bangerlore</a> ·
+    <a href="#">fund</a>
+  </nav>
 </footer>
 
 <div id="modal-root"></div>

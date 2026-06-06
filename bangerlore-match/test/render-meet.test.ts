@@ -134,4 +134,12 @@ describe("renderMeetHtml — structure", () => {
     expect(html).toContain(`span.style.borderRadius = "50%"`);
     expect(html).not.toContain(`size > 90 ? "16px"`);
   });
+  test("renders the Bangerlore footer with linked hosts", () => {
+    const html = renderMeetHtml(blurbs, matches);
+    expect(html).not.toContain(`hosts:`);
+    expect(html).toContain(`href="https://x.com/5hroff">Kunal Shroff</a>`);
+    expect(html).toContain(`href="https://namanmaheshwari.com">Naman Maheshwari</a>`);
+    expect(html).not.toContain(`href="https://x.com/neilshroff">Neil Shroff</a>`);
+    expect(html).toContain(`href="https://bangerlore.com/hosts.html">conspirators</a>`);
+  });
 });
