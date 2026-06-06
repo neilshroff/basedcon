@@ -12,7 +12,7 @@
 
 import type { Blurb } from "../blurbs";
 import type { GuestMatches } from "../match";
-import { esc, gateMarkup, gateTokenFor, mutualPairs } from "./render";
+import { esc, mutualPairs } from "./render";
 
 export type MeetMatch = {
   id: string;
@@ -111,13 +111,11 @@ export function renderMeetHtml(
   blurbs: Blurb[],
   matches: GuestMatches[],
   options: {
-    passphrase?: string;
     twitterByName?: Map<string, string>;
     partyPhotos?: string[];
   } = {},
 ) {
   const people = toPeople(blurbs, matches, options.twitterByName);
-  const gateToken = gateTokenFor(options.passphrase);
   const data = { people, matchWord: matchCountWord(matches) };
 
   return `<!DOCTYPE html>
@@ -173,14 +171,6 @@ export function renderMeetHtml(
   }
   .tb-text { color: #1a0608; white-space: nowrap; }
   .tb-text b { font-weight: 600; }
-  .tb-graph {
-    background: #1a0608; color: #fff; text-decoration: none;
-    padding: 4px 11px; border-radius: 5px;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
-    white-space: nowrap; transition: opacity .15s;
-  }
-  .tb-graph:hover { opacity: 0.8; }
-
   /* masthead */
   .masthead { text-align: center; padding: 56px 20px 30px; }
   .logo {
@@ -452,15 +442,6 @@ export function renderMeetHtml(
   .foot { text-align: center; padding: 40px 20px 60px; border-top: 1px solid var(--line); }
   .foot p { font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: 0.08em; margin: 0; }
 
-  /* ---------- gate ---------- */
-  #gate { position: fixed; inset: 0; background: var(--bg); z-index: 100; display: flex;
-    flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; }
-  #gate h1 { font-family: var(--serif); font-weight: 500; font-size: 34px; margin: 0; }
-  #gate input { padding: 14px 18px; font-size: 19px; border-radius: 12px; border: 1px solid var(--line2);
-    background: var(--bg2); color: var(--text); outline: none; text-align: center; font-family: var(--serif); }
-  #gate input:focus { border-color: var(--accent); }
-  #gate .hint { color: var(--muted); font-size: 14px; text-align: center; font-family: var(--mono); }
-
   /* ---------- responsive ---------- */
   @media (max-width: 760px) {
     .wrap { padding: 0 16px 32px; }
@@ -493,11 +474,9 @@ export function renderMeetHtml(
 </style>
 </head>
 <body>
-${gateMarkup(gateToken)}
 <div class="topbar">
   <span class="tb-tag">ANNOUNCEMENT</span>
   <span class="tb-text">Welcome to <b>Bangerlore v5</b></span>
-  <a class="tb-graph" href="graph.html">✦ graph view</a>
 </div>
 
 <section class="firstview" id="firstview">

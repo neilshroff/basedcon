@@ -123,8 +123,9 @@ describe("renderMeetHtml — structure", () => {
     const without = renderMeetHtml(blurbs, matches);
     expect(without).not.toContain(`class="hero-bg hero-collage"`);
   });
-  test("passphrase adds the gate, absence omits it", () => {
-    expect(renderMeetHtml(blurbs, matches, { passphrase: "pw" })).toContain(`id="gate"`);
+  test("does not render a passphrase gate or graph link", () => {
     expect(renderMeetHtml(blurbs, matches)).not.toContain(`id="gate"`);
+    expect(renderMeetHtml(blurbs, matches)).not.toContain(`graph view`);
+    expect(renderMeetHtml(blurbs, matches)).not.toContain(`href="graph.html"`);
   });
 });

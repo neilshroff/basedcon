@@ -51,14 +51,6 @@
   }
   .tb-text { color: #1a0608; white-space: nowrap; }
   .tb-text b { font-weight: 600; }
-  .tb-graph {
-    background: #1a0608; color: #fff; text-decoration: none;
-    padding: 4px 11px; border-radius: 5px;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
-    white-space: nowrap; transition: opacity .15s;
-  }
-  .tb-graph:hover { opacity: 0.8; }
-
   /* masthead */
   .masthead { text-align: center; padding: 56px 20px 30px; }
   .logo {
@@ -330,15 +322,6 @@
   .foot { text-align: center; padding: 40px 20px 60px; border-top: 1px solid var(--line); }
   .foot p { font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: 0.08em; margin: 0; }
 
-  /* ---------- gate ---------- */
-  #gate { position: fixed; inset: 0; background: var(--bg); z-index: 100; display: flex;
-    flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; }
-  #gate h1 { font-family: var(--serif); font-weight: 500; font-size: 34px; margin: 0; }
-  #gate input { padding: 14px 18px; font-size: 19px; border-radius: 12px; border: 1px solid var(--line2);
-    background: var(--bg2); color: var(--text); outline: none; text-align: center; font-family: var(--serif); }
-  #gate input:focus { border-color: var(--accent); }
-  #gate .hint { color: var(--muted); font-size: 14px; text-align: center; font-family: var(--mono); }
-
   /* ---------- responsive ---------- */
   @media (max-width: 760px) {
     .wrap { padding: 0 16px 32px; }
@@ -371,30 +354,9 @@
 </style>
 </head>
 <body>
-<div id="gate">
-  <h1>Bangerlore Match</h1>
-  <div class="hint">Enter the party passphrase (it&rsquo;s on the QR poster)</div>
-  <input id="gate-input" type="text" autocomplete="off" autocapitalize="none" placeholder="passphrase">
-</div>
-<script>
-  (function () {
-    var TOKEN = "YmFuZ2VybG9yZQ==";
-    var gate = document.getElementById("gate");
-    var input = document.getElementById("gate-input");
-    function ok(value) { return btoa(value.trim().toLowerCase()) === TOKEN; }
-    if (localStorage.getItem("bm-gate") === TOKEN) { gate.remove(); return; }
-    input.addEventListener("input", function () {
-      if (ok(input.value)) {
-        localStorage.setItem("bm-gate", TOKEN);
-        gate.remove();
-      }
-    });
-  })();
-</script>
 <div class="topbar">
   <span class="tb-tag">ANNOUNCEMENT</span>
   <span class="tb-text">Welcome to <b>Bangerlore v5</b></span>
-  <a class="tb-graph" href="graph.html">✦ graph view</a>
 </div>
 
 <section class="firstview" id="firstview">

@@ -41,19 +41,12 @@ if (await previous.exists()) {
   await Bun.write(`releases/matches-${Date.now()}.html`, await previous.arrayBuffer());
 }
 
-// PASS=<phrase> adds a client-side passphrase gate (deterrent, not security —
-// see lib/render.ts). Build without PASS for a local-only preview.
-const passphrase = Bun.env.PASS?.trim() || undefined;
-if (!passphrase) {
-  console.warn("PASS not set — building WITHOUT the passphrase gate. Fine locally; set PASS=... for the deployed build.");
-}
-
 await Bun.write(
   "matches.html",
-  renderMeetHtml(blurbs, matches, { passphrase, twitterByName, partyPhotos }),
+  renderMeetHtml(blurbs, matches, { twitterByName, partyPhotos }),
 );
 console.log(
   `Wrote matches.html (${blurbs.length} guests, ${matches.length} match sets, ` +
     `${localAvatars} local avatars, ${twitterByName.size} twitter links, ` +
-    `${partyPhotos.length} party photos${passphrase ? ", gated" : ", UNGATED"}).`,
+    `${partyPhotos.length} party photos, open).`,
 );
