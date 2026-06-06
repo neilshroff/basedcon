@@ -178,6 +178,8 @@ export function renderMeetHtml(
     font-family: var(--serif); font-weight: 500;
     font-size: clamp(44px, 6.5vw, 72px); margin: 0; letter-spacing: -0.01em;
   }
+  .logo-link { color: inherit; text-decoration: none; }
+  .logo-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 6px; }
   .clink { font-family: var(--sans); font-size: 0.78em; }
   .tagline {
     font-family: var(--serif); color: var(--text);
@@ -483,7 +485,7 @@ export function renderMeetHtml(
 <section class="firstview" id="firstview">
   ${collageMarkup(options.partyPhotos ?? [])}
   <header class="masthead">
-    <h1 class="logo">Bangerlore <span class="clink">🍻</span></h1>
+    <h1 class="logo"><a class="logo-link" href="https://bangerlore.com/">Bangerlore <span class="clink">🍻</span></a></h1>
     <p class="tagline">the room is full of people you don't know yet</p>
   </header>
   <div class="wrap firstview-body">
@@ -587,7 +589,7 @@ export function renderMeetHtml(
     var span = el("span", "avatar");
     span.style.width = size + "px";
     span.style.height = size + "px";
-    span.style.borderRadius = size > 90 ? "16px" : "50%";
+    span.style.borderRadius = "50%";
     span.style.fontSize = Math.round(size * 0.34) + "px";
     if (ring) span.style.boxShadow = "0 0 0 2px var(--accent), 0 0 0 4px var(--bg)";
     function showInitials() {

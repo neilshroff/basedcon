@@ -128,4 +128,10 @@ describe("renderMeetHtml — structure", () => {
     expect(renderMeetHtml(blurbs, matches)).not.toContain(`graph view`);
     expect(renderMeetHtml(blurbs, matches)).not.toContain(`href="graph.html"`);
   });
+  test("links the first-view logo to the main site and renders circular avatars", () => {
+    const html = renderMeetHtml(blurbs, matches);
+    expect(html).toContain(`href="https://bangerlore.com/"`);
+    expect(html).toContain(`span.style.borderRadius = "50%"`);
+    expect(html).not.toContain(`size > 90 ? "16px"`);
+  });
 });
