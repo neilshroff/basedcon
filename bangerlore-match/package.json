@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "start": "bun index.ts",
+    "profiles": "bun profiles.ts",
+    "blurbs": "bun blurbs.ts",
+    "match": "bun match.ts",
+    "html": "bun build-html.ts",
+    "graph": "bun scripts/build-graph.ts",
+    "build": "bun build-html.ts && bun scripts/build-graph.ts && rm -rf public && mkdir -p public && cp matches.html public/index.html && cp matches.html graph.html public/ && cp -R avatars public/avatars && cp -R party public/party",
+    "pipeline": "bun blurbs.ts && bun match.ts && bun run build"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.100.1",
+    "zenrows": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}

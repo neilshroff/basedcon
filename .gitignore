@@ -1,0 +1,14 @@
+.DS_Store
+node_modules/
+.vercel/
+.env
+
+# Local agent/tool state
+.claude/
+.gstack/
+
+# Private pipeline inputs/checkpoints. The deployable output is v5/match/.
+bangerlore-match/data/
+
+# The match app publishes its generated output to v5/match for this repo.
+bangerlore-match/public/

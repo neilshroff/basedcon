@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/v5/match",
+      "destination": "/v5/match/index.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/v5",
