@@ -253,18 +253,23 @@ export function renderMeetHtml(
   }
   @media (max-width: 760px) {
     .hero-collage .hero-grid {
+      top: 132px;
+      bottom: auto;
+      height: calc(100svh - 132px);
       grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 86px;
-      align-content: start;
-      opacity: 0.48;
-      -webkit-mask-image: linear-gradient(180deg, transparent 0px, transparent 74px, #000 220px, #000 calc(100% - 120px), transparent 100%);
-              mask-image: linear-gradient(180deg, transparent 0px, transparent 74px, #000 220px, #000 calc(100% - 120px), transparent 100%);
+      grid-template-rows: repeat(6, minmax(0, 1fr));
+      grid-auto-rows: 0;
+      align-content: stretch;
+      opacity: 0.42;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0px, #000 84px, #000 calc(100% - 110px), transparent 100%);
+              mask-image: linear-gradient(180deg, transparent 0px, #000 84px, #000 calc(100% - 110px), transparent 100%);
     }
+    .hero-collage .hero-grid img:nth-child(n + 19) { display: none; }
     .hero-collage .hero-grid img { aspect-ratio: auto; }
     .hero-collage .hero-grain {
       opacity: 0.58;
-      -webkit-mask-image: linear-gradient(180deg, transparent 0px, transparent 74px, #000 220px, #000 calc(100% - 120px), transparent 100%);
-              mask-image: linear-gradient(180deg, transparent 0px, transparent 74px, #000 220px, #000 calc(100% - 120px), transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, transparent 0px, transparent 120px, #000 240px, #000 calc(100% - 120px), transparent 100%);
+              mask-image: linear-gradient(180deg, transparent 0px, transparent 120px, #000 240px, #000 calc(100% - 120px), transparent 100%);
     }
   }
 
