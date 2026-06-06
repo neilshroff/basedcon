@@ -111,10 +111,14 @@ describe("renderMeetHtml — structure", () => {
     expect(data.people).toHaveLength(3);
     expect(data.matchWord).toBe("one");
   });
-  test("guest count appears in identify + footer copy", () => {
+  test("guest count appears in identify copy", () => {
     const html = renderMeetHtml(blurbs, matches);
     expect(html).toContain("3 people in the house");
-    expect(html).toContain("3 attendees");
+  });
+  test("browse search invites keyword search", () => {
+    const html = renderMeetHtml(blurbs, matches);
+    expect(html).toContain(`placeholder="search all attendees, random keywords ok too"`);
+    expect(html).not.toContain(`placeholder="Search 3 attendees`);
   });
   test("party photos render collage tiles; none → no collage", () => {
     const withPhotos = renderMeetHtml(blurbs, matches, { partyPhotos: ["party/x.jpg"] });

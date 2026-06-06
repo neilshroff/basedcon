@@ -540,7 +540,7 @@ export function renderMeetHtml(
       <h2 class="sec-h">Browse the whole room</h2>
     </div>
     <div class="browse-controls">
-      <input class="browse-search" id="browse-search" placeholder="Search ${people.length} attendees…">
+      <input class="browse-search" id="browse-search" placeholder="search all attendees, random keywords ok too">
       <button class="shuffle" id="shuffle-btn">⤬ Shuffle</button>
     </div>
     <div class="browse-grid" id="browse-grid"></div>
