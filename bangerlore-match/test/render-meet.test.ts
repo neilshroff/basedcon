@@ -51,6 +51,7 @@ describe("toPeople", () => {
       lookingFor: "people",
       twitter: "https://x.com/namea",
       photo: null,
+      search: "name a ai robotics blurb for a people https://x.com/namea namea",
       matches: [{ id: "b", reason: "reason a->b", icebreaker: "icebreaker a->b", mutual: false }],
     });
     expect(people[1].twitter).toBeNull();
@@ -119,6 +120,7 @@ describe("renderMeetHtml — structure", () => {
     const html = renderMeetHtml(blurbs, matches);
     expect(html).toContain(`placeholder="search all attendees, random keywords ok too"`);
     expect(html).not.toContain(`placeholder="Search 3 attendees`);
+    expect(html).toContain(`var shuffleSeed = (Date.now() % 100000) + 1;`);
   });
   test("party photos render collage tiles; none → no collage", () => {
     const withPhotos = renderMeetHtml(blurbs, matches, { partyPhotos: ["party/x.jpg"] });

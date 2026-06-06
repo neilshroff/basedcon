@@ -29,6 +29,7 @@ export type MeetPerson = {
   lookingFor: string;
   twitter: string | null; // full URL
   photo: string | null; // localized avatar path or null → initials
+  search: string; // invisible keyword index for browse search
   matches: MeetMatch[];
 };
 
@@ -40,23 +41,35 @@ export function toPeople(
 ): MeetPerson[] {
   const matchesById = new Map(matches.map((m) => [m.id, m]));
   const mutual = mutualPairs(matches);
-  return blurbs.map((b) => ({
-    id: b.id,
-    name: b.name,
-    role: b.tags.join(" · "),
-    bio: b.blurb,
-    lookingFor: b.lookingFor,
-    twitter: twitterByName.get(b.name) ?? null,
-    photo: b.profilePicUrl,
-    matches: (matchesById.get(b.id)?.matches ?? [])
+  return blurbs.map((b) => {
+    const twitter = twitterByName.get(b.name) ?? null;
+    const personMatches = (matchesById.get(b.id)?.matches ?? [])
       .filter((m) => blurbs.some((x) => x.id === m.id))
       .map((m) => ({
         id: m.id,
         reason: m.reason,
         icebreaker: m.icebreaker,
         mutual: mutual.has(`${b.id}→${m.id}`),
-      })),
-  }));
+      }));
+    return {
+      id: b.id,
+      name: b.name,
+      role: b.tags.join(" · "),
+      bio: b.blurb,
+      lookingFor: b.lookingFor,
+      twitter,
+      photo: b.profilePicUrl,
+      search: [
+        b.name,
+        b.tags.join(" "),
+        b.blurb,
+        b.lookingFor,
+        twitter,
+        twitter?.split("/").pop(),
+      ].filter(Boolean).join(" ").toLowerCase(),
+      matches: personMatches,
+    };
+  });
 }
 
 // JSON safe for embedding in a <script> block: `<` can't terminate the block,
@@ -606,12 +619,14 @@ export function renderMeetHtml(
     return list
       .map(function (p) {
         var n = p.name.toLowerCase();
+        var haystack = p.search || [p.name, p.role, p.bio, p.lookingFor, p.twitter].join(" ").toLowerCase();
         var score = -1;
         if (n === q) score = 100;
         else if (n.indexOf(q) === 0) score = 80;
         else if (n.indexOf(q) !== -1) score = 50;
         else if ((p.role || "").toLowerCase().indexOf(q) !== -1) score = 20;
         else if ((p.bio || "").toLowerCase().indexOf(q) !== -1) score = 10;
+        else if (haystack.indexOf(q) !== -1) score = 8;
         return { p: p, score: score };
       })
       .filter(function (x) { return x.score >= 0; })
@@ -827,7 +842,7 @@ export function renderMeetHtml(
   var browseInput = document.getElementById("browse-search");
   var browseGrid = document.getElementById("browse-grid");
   var browseEmpty = document.getElementById("browse-empty");
-  var shuffleSeed = 0;
+  var shuffleSeed = (Date.now() % 100000) + 1;
 
   function browseList() {
     var l = PEOPLE.filter(function (p) { return !me || p.id !== me.id; });
