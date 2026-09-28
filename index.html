@@ -30,9 +30,8 @@
 </head>
 <body>
     <div class="announcement-banner bangerlore-content">
-        <span class="announcement-pill">Announcement</span>
-        <span class="announcement-text">Bangerlore v5 is happening June 6th!</span>
-        <a href="https://bangerlore.com/v5" class="announcement-link">Sign-ups are live &rarr;</a>
+        <span class="announcement-text">Thank you for coming to Bangerlore v5!</span>
+        <a href="https://partiful.com/e/qQ5j2mNkpfIittsNo34X?c=pi741r-6" class="announcement-link">Pictures here &rarr;</a>
     </div>
     <main>
         <div class="mode-pill">
@@ -197,7 +196,7 @@
                     title.textContent = 'Bangerlore 🍻';
                     document.title = 'Bangerlore';
                     if (bangerLink) bangerLink.textContent = 'basedcon';
-
+                    if (hostsWrapper) hostsWrapper.style.display = '';
                     if (twitterLink) twitterLink.href = 'https://x.com/search?q=bangerlore%20min_faves%3A15%20until%3A2026-01-01%20since%3A2024-05-01&src=typed_query&f=live';
                 } else {
                     document.body.classList.remove('dark');
@@ -206,7 +205,7 @@
                     title.textContent = 'Basedcon 🇮🇳';
                     document.title = 'Basedcon';
                     if (bangerLink) bangerLink.textContent = 'bangerlore';
-
+                    if (hostsWrapper) hostsWrapper.style.display = 'none';
                     if (twitterLink) twitterLink.href = 'https://x.com/neilshroff';
                 }
                 // Only rewrite URL on localhost / non-production domains
