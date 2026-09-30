@@ -1,16 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Teeth -->
-  <rect x="19" y="50" width="7" height="10" rx="3.5" fill="#C4CDD5"/>
-  <rect x="28.5" y="50" width="7" height="10" rx="3.5" fill="#C4CDD5"/>
-  <rect x="38" y="50" width="7" height="10" rx="3.5" fill="#C4CDD5"/>
-  <!-- Head -->
-  <circle cx="32" cy="30" r="26" fill="#C4CDD5"/>
-  <!-- Sunglasses lenses -->
-  <rect x="8" y="22" width="21" height="14" rx="3" fill="#3D4D5C"/>
-  <rect x="35" y="22" width="21" height="14" rx="3" fill="#3D4D5C"/>
-  <!-- Sunglasses bridge -->
-  <rect x="28" y="26" width="8" height="4" rx="2" fill="#3D4D5C"/>
-  <!-- Nose -->
-  <circle cx="30" cy="43" r="2.5" fill="#3D4D5C"/>
-  <circle cx="34" cy="43" r="2.5" fill="#3D4D5C"/>
+  <circle cx="32" cy="32" r="31" fill="#fff" stroke="#d9d9d9" stroke-width="1"/>
+  <clipPath id="flag">
+    <rect x="11" y="18" width="42" height="28" rx="4"/>
+  </clipPath>
+  <g clip-path="url(#flag)">
+    <rect x="11" y="18" width="42" height="9.34" fill="#FF9933"/>
+    <rect x="11" y="27.34" width="42" height="9.32" fill="#FFFFFF"/>
+    <rect x="11" y="36.66" width="42" height="9.34" fill="#138808"/>
+  </g>
+  <rect x="11" y="18" width="42" height="28" rx="4" fill="none" stroke="#bbb" stroke-width="0.6"/>
+  <circle cx="32" cy="32" r="3.6" fill="none" stroke="#000080" stroke-width="0.9"/>
+  <circle cx="32" cy="32" r="0.7" fill="#000080"/>
+  <g stroke="#000080" stroke-width="0.35">
+    <line x1="32" y1="28.4" x2="32" y2="35.6"/>
+    <line x1="28.4" y1="32" x2="35.6" y2="32"/>
+    <line x1="29.45" y1="29.45" x2="34.55" y2="34.55"/>
+    <line x1="34.55" y1="29.45" x2="29.45" y2="34.55"/>
+    <line x1="30.6" y1="28.7" x2="33.4" y2="35.3"/>
+    <line x1="33.4" y1="28.7" x2="30.6" y2="35.3"/>
+    <line x1="28.7" y1="30.6" x2="35.3" y2="33.4"/>
+    <line x1="35.3" y1="30.6" x2="28.7" y2="33.4"/>
+  </g>
 </svg>
