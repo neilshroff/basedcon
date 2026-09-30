@@ -1,10 +1,6 @@
 {
+  "cleanUrls": true,
   "redirects": [
-    {
-      "source": "/v5/match",
-      "destination": "/v5/match/",
-      "permanent": false
-    },
     {
       "source": "/v5",
       "destination": "https://partiful.com/e/qQ5j2mNkpfIittsNo34X?c=pi741r-6",

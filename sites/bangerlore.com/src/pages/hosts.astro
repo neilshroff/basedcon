@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+
+const hosts = [
+    { name: 'Akash Kumar', x: 'https://x.com/aye_kaash', linkedin: 'https://www.linkedin.com/in/kumarakash7/' },
+    { name: 'Arnav Bansal', x: 'https://x.com/itsarnavb', web: 'https://lagrangepoint.org' },
+    { name: 'Kunal Shroff', x: 'https://x.com/5hroff', linkedin: 'https://www.linkedin.com/in/kunalshroff19/' },
+    { name: 'Naman Maheshwari', x: 'https://x.com/namanski_', linkedin: 'https://www.linkedin.com/in/namanm17/', web: 'https://namanmaheshwari.com' },
+    { name: 'Neil Shroff', x: 'https://x.com/neilshroff', linkedin: 'https://www.linkedin.com/in/shroffneil/', web: 'https://neilshroff.xyz' },
+    { name: 'Sarthak Agrawal', x: 'https://x.com/sva_haa', linkedin: 'https://www.linkedin.com/in/sarthakvagrawal/' },
+    { name: 'Shruthi Badri', x: 'https://x.com/shruthibadri', linkedin: 'https://www.linkedin.com/in/shruthi-badri/' },
+    { name: 'Srijan Shetty', x: 'https://x.com/srijanshetty', linkedin: 'https://www.linkedin.com/in/srijanshetty/' },
+];
+---
+
+<Base title="Hosts - Bangerlore" description="The people behind Bangerlore.">
+    <h1>Hosts</h1>
+
+    <ul>
+        {hosts.map((h) => (
+            <li>
+                {h.name}
+                <span class="host-links">
+                    <a href={h.x}>x</a>
+                    {h.linkedin && <a href={h.linkedin}>linkedin</a>}
+                    {h.web && <a href={h.web}>web</a>}
+                </span>
+            </li>
+        ))}
+    </ul>
+
+    <p>Built by <a href="https://x.com/usefaff">Faff</a> (<a href="https://www.faffit.com">faffit.com</a>)</p>
+
+    <hr />
+
+    <p><a href="/">&larr; Back to home</a></p>
+</Base>
+
+<style>
+    .host-links {
+        font-size: 15px;
+        margin-left: 4px;
+    }
+
+    .host-links a {
+        margin-right: 8px;
+    }
+</style>
