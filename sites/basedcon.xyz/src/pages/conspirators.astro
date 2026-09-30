@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+
+const conspirators = [
+    'Akash Kumar',
+    'Arnav Bansal',
+    'Neil Shroff',
+    'Shruthi Badri',
+    'Spencer Schneier',
+    'Srijan Shetty',
+];
+---
+
+<Base
+    title="Conspirators - Basedcon"
+    description="The squad behind Basedcon - the people who come together to make it all happen."
+>
+    <h1>Conspirators</h1>
+
+    <p>These are the people who come together to organise Basedcon. A scattered crew across cities and time zones who somehow make it all happen every few months.</p>
+
+    <ul>
+        {conspirators.map((name) => <li>{name}</li>)}
+    </ul>
+
+    <hr />
+
+    <p><a href="/">&larr; Back to home</a></p>
+</Base>

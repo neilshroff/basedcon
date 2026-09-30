@@ -1,0 +1,14 @@
+{
+  "name": "basedcon-monorepo",
+  "private": true,
+  "workspaces": [
+    "sites/*"
+  ],
+  "scripts": {
+    "dev:basedcon": "npm run dev -w sites/basedcon.xyz",
+    "dev:bangerlore": "npm run dev -w sites/bangerlore.com",
+    "build": "npm run build --workspaces",
+    "build:basedcon": "npm run build -w sites/basedcon.xyz",
+    "build:bangerlore": "npm run build -w sites/bangerlore.com"
+  }
+}
