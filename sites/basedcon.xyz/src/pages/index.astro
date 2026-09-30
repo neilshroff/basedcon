@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import PhotoGrid from '../../../../shared/components/PhotoGrid.astro';
+import Footer from '../../../../shared/components/Footer.astro';
+
+import p1 from '../assets/gallery/1.png';
+import p2 from '../assets/gallery/2.jpeg';
+import p3 from '../assets/gallery/3.jpeg';
+import p4 from '../assets/gallery/4.jpeg';
+import p5 from '../assets/gallery/5.png';
+import p6 from '../assets/gallery/6.png';
+import p7 from '../assets/gallery/7.png';
+import p8 from '../assets/gallery/8.png';
+import p9 from '../assets/gallery/9.png';
+
+const photos = [p7, p3, p8, p1, p5, p9, p4, p2, p6];
+
+const footerLinks = [
+    { label: 'conspirators', href: '/conspirators' },
+    { label: 'contact us', href: 'mailto:neil.shroff@gmail.com' },
+    { label: 'twitter', href: 'https://x.com/neilshroff' },
+    { label: 'bangerlore', href: 'https://bangerlore.com' },
+    { label: 'fund', href: '/fund' },
+];
+---
+
+<Base
+    title="Basedcon"
+    description="Invite-only closed-door events across India for ambitious Indians to talk about their biggest, boldest and baddest ideas."
+>
+    <h1>Basedcon 🇮🇳</h1>
+    <h2>event series for your biggest ideas</h2>
+
+    <p>Every few months we host invite-only closed-door events across the country, for ambitious Indians to talk about their biggest, boldest and baddest ideas. Only your theses that you can't talk about on Twitter are allowed. Only 5 speakers presenting each time, handpicked audience of up to 25 (we call them "interruptors") and chatam house rules.</p>
+
+    <p>We've hosted top founders, engineers, ecosystem builders, journalists, civic activists, political workers, and all kinds of people from across India in our previous events. Doesn't matter where you are and what you do, if you think you have something interesting to add, we will pay for your flights to come in. Check out highlights of our previous events below:</p>
+
+    <ul>
+        <li>April 2025, <a href="https://x.com/IndLibertarians/status/1921653860025901470">Hyderabad</a> [just a dinner]</li>
+        <li>March 2025, <a href="https://x.com/neilshroff/status/1900146778827264207">Bangalore</a> [theme: Institution building]</li>
+        <li>July 2024, <a href="https://x.com/itsarnavb/status/1805386324985495590">Chennai</a></li>
+        <li>April 2024, <a href="https://x.com/aye_kaash/status/1777284968621748292">Mumbai</a></li>
+        <li>February 2024, <a href="https://x.com/shruthibadri/status/1753318578580013482">Bangalore</a></li>
+        <li>September 2023, <a href="https://x.com/neilshroff/status/1702604177988522165">Bangalore</a></li>
+        <li>August 2023, <a href="https://x.com/neilshroff/status/1686000149800058880">Delhi</a></li>
+    </ul>
+
+    <PhotoGrid images={photos} alt="Basedcon event photo" />
+
+    <Footer links={footerLinks} />
+</Base>
