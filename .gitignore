@@ -1,6 +1,17 @@
+.DS_Store
 node_modules/
 dist/
 .astro/
 .vercel/
-.DS_Store
+.env
 npm-debug.log*
+
+# Local agent/tool state
+.claude/
+.gstack/
+
+# Private pipeline inputs/checkpoints. The deployable output is sites/bangerlore.com/public/v5/match/.
+bangerlore-match/data/
+
+# The match app publishes its generated output to sites/bangerlore.com/public/v5/match for this repo.
+bangerlore-match/public/

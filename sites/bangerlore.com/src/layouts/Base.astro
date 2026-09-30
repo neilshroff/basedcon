@@ -32,6 +32,7 @@ const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site)
     <slot name="head" />
 </head>
 <body>
+    <slot name="banner" />
     <main>
         <slot />
     </main>
