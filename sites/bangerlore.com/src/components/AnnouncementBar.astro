@@ -1,0 +1,19 @@
+---
+import site from '../data/site.json';
+const { announcement } = site;
+---
+
+<a href={announcement.href} class="announce">{announcement.text} &nbsp;{announcement.cta}</a>
+
+<style>
+    .announce {
+        display: block;
+        background: var(--red);
+        color: var(--bg);
+        padding: 14px 24px;
+        font-size: 14px;
+        text-align: center;
+        text-wrap: balance;
+    }
+    .announce:hover { background: var(--white); color: var(--bg); }
+</style>

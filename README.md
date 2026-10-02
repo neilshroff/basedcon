@@ -39,7 +39,21 @@ store under `invites/`. Required env vars on the `basedcon` Vercel project:
 Export all submissions: `https://basedcon.xyz/api/invites?key=<INVITES_ADMIN_KEY>`
 (add `&format=csv` for a spreadsheet-friendly download).
 
-Site copy, events and conspirators live in `sites/basedcon.xyz/src/data/site.json`.
+Site copy and events live in `sites/basedcon.xyz/src/data/site.json`.
+
+## Bangerlore attend requests
+
+Same pattern: "Want to attend?" POSTs to `/api/attend`, stored under `attend/` in the
+`bangerlore-com` project's Blob store. Env vars: `BLOB_READ_WRITE_TOKEN` (from the store) and
+`ATTEND_ADMIN_KEY`. Export: `https://bangerlore.com/api/attendees?key=<ATTEND_ADMIN_KEY>` (`&format=csv`).
+
+Site copy, editions, sponsors and tweets live in `sites/bangerlore.com/src/data/site.json`.
+
+## People (hosts / conspirators)
+
+One list for both sites: `shared/data/people.json`. Each person has `basedcon` and `bangerlore`
+flags; basedcon.xyz/conspirators and bangerlore.com/hosts are both rendered from it, so a bio or
+link edit there updates both sites on the next push.
 
 ## Matchmaking pages
 

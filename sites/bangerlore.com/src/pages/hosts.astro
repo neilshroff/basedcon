@@ -1,48 +1,148 @@
 ---
 import Base from '../layouts/Base.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Modals from '../components/Modals.astro';
+import site from '../data/site.json';
+import { peopleFor } from '@sites/shared/people';
 
-const hosts = [
-    { name: 'Akash Kumar', x: 'https://x.com/aye_kaash', linkedin: 'https://www.linkedin.com/in/kumarakash7/' },
-    { name: 'Arnav Bansal', x: 'https://x.com/itsarnavb', web: 'https://lagrangepoint.org' },
-    { name: 'Kunal Shroff', x: 'https://x.com/5hroff', linkedin: 'https://www.linkedin.com/in/kunalshroff19/' },
-    { name: 'Naman Maheshwari', x: 'https://x.com/namanski_', linkedin: 'https://www.linkedin.com/in/namanm17/', web: 'https://namanmaheshwari.com' },
-    { name: 'Neil Shroff', x: 'https://x.com/neilshroff', linkedin: 'https://www.linkedin.com/in/shroffneil/', web: 'https://neilshroff.xyz' },
-    { name: 'Sarthak Agrawal', x: 'https://x.com/sva_haa', linkedin: 'https://www.linkedin.com/in/sarthakvagrawal/' },
-    { name: 'Shruthi Badri', x: 'https://x.com/shruthibadri', linkedin: 'https://www.linkedin.com/in/shruthi-badri/' },
-    { name: 'Srijan Shetty', x: 'https://x.com/srijanshetty', linkedin: 'https://www.linkedin.com/in/srijanshetty/' },
-];
+const hosts = peopleFor('bangerlore');
+const { sponsors, links, nextEdition } = site;
 ---
 
-<Base title="Hosts - Bangerlore" description="The people behind Bangerlore.">
-    <h1>Hosts</h1>
+<Base title="Hosts — Bangerlore" description="Every guest is someone one of us vouches for. If you know one of us, that's how you get in.">
+    <AnnouncementBar />
 
-    <ul>
-        {hosts.map((h) => (
-            <li>
-                {h.name}
-                <span class="host-links">
-                    <a href={h.x}>x</a>
-                    {h.linkedin && <a href={h.linkedin}>linkedin</a>}
-                    {h.web && <a href={h.web}>web</a>}
-                </span>
-            </li>
-        ))}
-    </ul>
+    <div class="page">
+        <div class="col nav-wrap"><Nav page="hosts" /></div>
 
-    <p>Support and production by <a href="https://usefaff.com">Faff</a></p>
+        <header class="col head">
+            <h1>Hosts</h1>
+            <p class="tagline">Every guest is someone one of us vouches for. If you know one of us, that's how you get in.</p>
+        </header>
 
-    <hr />
+        <section class="col who label-grid">
+            <div class="label who-label">Who we are</div>
+            <div>
+                {hosts.map((h) => (
+                    <div class="host">
+                        <span class="name">{h.name}</span>
+                        <span class="bio">{h.bio}</span>
+                        <div class="host-links">
+                            {h.linkList.map((l) => <a href={l.href}>{l.label}</a>)}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
 
-    <p><a href="/">&larr; Back to home</a></p>
+        <section class="col supported label-grid">
+            <div class="label supported-label">Supported by</div>
+            <div>
+                <div class="tiles">
+                    {sponsors.map((s) => (
+                        <a href={s.url} class="tile" target="_blank" rel="noopener">
+                            <div class="tier">{s.tier}</div>
+                            <div class="sponsor">{s.name}</div>
+                        </a>
+                    ))}
+                </div>
+                <div class="support-row">
+                    <p class="support-text">Support and production by <a href={links.faff} class="faff">Faff</a>. Supporters don't get a guest list or a pitch slot. They get thanked here and at the door.</p>
+                    <button type="button" class="support-cta" data-open-contact data-topic="Sponsor the party">Support {nextEdition.label} →</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="spacer"></div>
+        <Footer page="hosts" />
+    </div>
+    <Modals />
 </Base>
 
 <style>
-    .host-links {
-        font-size: 15px;
-        margin-left: 4px;
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    .nav-wrap { padding-top: 24px; }
+    .head { padding-top: 96px; padding-bottom: 64px; }
+    h1 {
+        margin-bottom: 28px;
+        font-size: clamp(48px, 7vw, 88px);
+        font-weight: 800;
+        line-height: .95;
+        letter-spacing: -.04em;
+        color: var(--white);
     }
+    .tagline { font-size: 24px; line-height: 1.4; max-width: 44ch; text-wrap: pretty; color: var(--ink-2); }
 
-    .host-links a {
-        margin-right: 8px;
+    .who, .supported { padding-top: 48px; padding-bottom: 64px; border-top: 1px solid var(--line); }
+    .who-label { padding-top: 20px; }
+    .supported-label { padding-top: 8px; }
+
+    .host {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr) auto;
+        gap: 20px;
+        align-items: baseline;
+    }
+    .name { font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--white); white-space: nowrap; }
+    .bio { font-size: 14px; color: var(--ink-2); line-height: 1.4; text-wrap: pretty; min-width: 0; }
+    .host-links { display: flex; gap: 14px; font-size: 13px; white-space: nowrap; }
+    .host-links a { color: var(--ink-2); }
+    .host-links a:hover { color: var(--red); }
+
+    .tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1px;
+        padding: 1px;
+    }
+    .tile {
+        background: var(--bg);
+        box-shadow: 0 0 0 1px var(--line);
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 16px;
+        color: var(--white);
+    }
+    .tile:hover { background: var(--surface); color: var(--white); }
+    .tier { font-size: 12px; color: var(--ink-2); }
+    .sponsor { font-size: 20px; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+
+    .support-row {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+    .support-text { font-size: 14px; color: var(--ink-2); line-height: 1.5; max-width: 52ch; text-wrap: pretty; }
+    .faff { color: var(--ink); }
+    .faff:hover { color: var(--red); }
+    .support-cta {
+        border: 0;
+        background: none;
+        padding: 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--red);
+        white-space: nowrap;
+    }
+    .support-cta:hover { color: var(--white); }
+    .spacer { flex: 1; }
+
+    @media (max-width: 900px) {
+        .who-label, .supported-label { padding-top: 0; }
+        .host { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
+        .host-links { margin-top: 8px; }
+    }
+    @media (max-width: 640px) {
+        .head { padding-top: 64px; padding-bottom: 48px; }
+        .tagline { font-size: 20px; }
     }
 </style>

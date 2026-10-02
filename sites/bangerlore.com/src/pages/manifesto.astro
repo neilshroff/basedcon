@@ -1,0 +1,145 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Modals from '../components/Modals.astro';
+import site from '../data/site.json';
+
+import p3 from '../assets/gallery/3.jpeg';
+import p4 from '../assets/gallery/4.jpeg';
+import p7 from '../assets/gallery/7.jpeg';
+
+const proof = [p3, p4, p7];
+const { editions, links } = site;
+const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 230px' };
+const kpis = [
+    'no. of angel cheques raised at the party',
+    'no. of long-term collaborations or relationships forged at the party',
+    'no. of people fly into the city to attend',
+    '% of no-shows (they face a 1-year ban)',
+];
+---
+
+<Base title="Party manifesto — Bangerlore" description="Why we throw this, and how we keep score.">
+    <AnnouncementBar />
+
+    <div class="page">
+        <div class="col nav-wrap"><Nav page="manifesto" /></div>
+
+        <header class="col head">
+            <h1>Party manifesto</h1>
+            <p class="tagline">Why we throw this, and how we keep score.</p>
+        </header>
+
+        <section class="col chapter first label-grid">
+            <div class="chapter-head"><div class="num">01</div><div class="title">Why</div></div>
+            <div class="body">
+                <p>We realized networking events weren't the best way to meet people, and there weren't nearly enough good, big parties to go to. So since early 2024, we've been hosting an invite-only house party in Bangalore.</p>
+            </div>
+        </section>
+
+        <section class="col chapter label-grid">
+            <div class="chapter-head"><div class="num">02</div><div class="title">Who</div></div>
+            <div class="body">
+                <p>We vet every single attendee, including some of the best engineers, hackers, scientists, researchers, designers, lawyers and investors we've met over time (80%) + some friends &amp; family of ours from all phases of life (15%) + interesting people with no circle who have just moved to the city (5%).</p>
+                <div class="bar" aria-hidden="true">
+                    <div class="seg a">80% people we've met over time</div>
+                    <div class="seg b">15% friends &amp; family</div>
+                    <div class="seg c">5%</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="col chapter label-grid">
+            <div class="chapter-head"><div class="num">03</div><div class="title">KPIs</div></div>
+            <div class="body">
+                <p>It's a party, but we take organizing it seriously and as a matter of great responsibility. Our self-imposed KPIs are:</p>
+                <ol class="kpis">
+                    {kpis.map((k, i) => <li><span class="kpi-num">{String(i + 1).padStart(2, '0')}</span>{k}</li>)}
+                </ol>
+            </div>
+        </section>
+
+        <section class="col chapter last label-grid">
+            <div class="chapter-head"><div class="num">04</div><div class="title">Proof</div></div>
+            <div class="body">
+                <p class="proof-text">Around 250 people attend each time and the party goes on for ~12 hours from 4PM to 4AM. Proof of previous parties: {editions.map((e, i) => <><a href={e.href}>{e.label}</a>{i < editions.length - 1 ? ', ' : '. '}</>)}To browse some of the lore that followed Bangerlore, see <a href={links.lore}>here</a>.</p>
+                <div class="photo-grid">
+                    {proof.map((img) => <Image src={img} alt="Bangerlore party" {...imgProps} loading="lazy" />)}
+                </div>
+                <div class="ctas">
+                    <button type="button" class="btn" data-open-attend>Want to attend?</button>
+                    <a href="/hosts" class="btn btn-outline">Meet the hosts</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="spacer"></div>
+        <Footer page="manifesto" />
+    </div>
+    <Modals />
+</Base>
+
+<style>
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    .nav-wrap { padding-top: 24px; }
+    .head { padding-top: 96px; padding-bottom: 64px; }
+    h1 {
+        margin-bottom: 28px;
+        font-size: clamp(48px, 7vw, 88px);
+        font-weight: 800;
+        line-height: .95;
+        letter-spacing: -.04em;
+        color: var(--white);
+    }
+    .tagline { font-size: 24px; line-height: 1.4; max-width: 44ch; text-wrap: pretty; color: var(--ink-2); }
+
+    .chapter { padding-top: 48px; }
+    .chapter.first { border-top: 1px solid var(--line); }
+    .chapter.last { padding-bottom: 64px; }
+    .chapter-head { padding-top: 6px; }
+    .num { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--red); }
+    .title { font-size: 28px; font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--white); margin-top: 6px; }
+    .body { font-size: 20px; line-height: 1.6; max-width: 62ch; text-wrap: pretty; }
+    .body > p { margin-bottom: 22px; }
+    .body > .proof-text { margin-bottom: 28px; }
+
+    .bar {
+        display: grid;
+        grid-template-columns: 4fr 3fr 1fr;
+        gap: 3px;
+        margin-bottom: 22px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--bg);
+    }
+    .seg { padding: 12px; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .seg.a { background: var(--red); }
+    .seg.b { background: var(--ink); }
+    .seg.c { background: var(--ink-2); padding: 12px 8px; }
+
+    .kpis { list-style: none; padding: 0; margin-bottom: 22px; display: grid; }
+    .kpis li {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 12px;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+        font-size: 18px;
+        line-height: 1.4;
+    }
+    .kpis li:last-child { border-bottom: 1px solid var(--line); }
+    .kpi-num { color: var(--red); font-weight: 700; }
+
+    .ctas { margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .spacer { flex: 1; }
+
+    @media (max-width: 640px) {
+        .head { padding-top: 64px; padding-bottom: 48px; }
+        .tagline { font-size: 20px; }
+        .bar { font-size: 12px; }
+    }
+    @media (max-width: 900px) { .chapter-head { padding-top: 0; } }
+</style>

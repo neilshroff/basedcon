@@ -4,9 +4,9 @@ import AnnouncementBar from '../components/AnnouncementBar.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Modals from '../components/Modals.astro';
-import site from '../data/site.json';
+import { peopleFor } from '@sites/shared/people';
 
-const { conspirators } = site;
+const conspirators = peopleFor('basedcon');
 ---
 
 <Base title="Conspirators — Basedcon" description="In case you want to co-curate an event in your city with us, reach out to any of us.">
@@ -30,9 +30,9 @@ const { conspirators } = site;
                             <span class="name">{p.name}</span>
                             <span class="bio">{p.bio}</span>
                         </div>
-                        {p.links.length > 0 && (
+                        {p.linkList.length > 0 && (
                             <div class="person-links">
-                                {p.links.map((l) => <a href={l.href}>{l.label}</a>)}
+                                {p.linkList.map((l) => <a href={l.href}>{l.label}</a>)}
                             </div>
                         )}
                     </div>
