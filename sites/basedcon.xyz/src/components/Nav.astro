@@ -1,0 +1,36 @@
+---
+import site from '../data/site.json';
+
+interface Props {
+    wordmark?: boolean;
+    current?: 'conspirators';
+}
+
+const { wordmark = false, current } = Astro.props;
+---
+
+<nav class:list={['nav', { 'has-wordmark': wordmark }]}>
+    {wordmark && <a href="/" class="wordmark">Basedcon 🇮🇳</a>}
+    <div class="links">
+        <a href="/conspirators" class:list={{ current: current === 'conspirators' }}>conspirators</a>
+        <a href={site.links.twitter}>twitter</a>
+        <a href={site.links.bangerlore}>bangerlore</a>
+    </div>
+</nav>
+
+<style>
+    .nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 15px;
+    }
+    .nav.has-wordmark { justify-content: space-between; }
+    .wordmark { font-weight: 700; color: var(--ink); white-space: nowrap; }
+    .wordmark:hover { color: var(--red); }
+    .links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .links a.current { color: var(--ink); }
+    .links a.current:hover { color: var(--red); }
+</style>

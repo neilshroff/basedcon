@@ -1,13 +1,14 @@
 ---
-import '../../../../shared/styles/base.css';
+import site from '../data/site.json';
 
 interface Props {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
 }
 
-const { title, description } = Astro.props;
+const { title = site.title, description = site.description } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site);
+const ogImage = new URL('/og.jpg', Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -19,21 +20,146 @@ const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site)
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#f7f5f0" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-
-    <slot name="head" />
+    <meta name="twitter:image" content={ogImage} />
 </head>
 <body>
-    <main>
-        <slot />
-    </main>
+    <slot />
 </body>
 </html>
+
+<style is:global>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+        --bg: #f7f5f0;
+        --ink: #111;
+        --ink-2: #6b6b6b;
+        --ink-3: #9a958d;
+        --line: #e3dfd6;
+        --line-soft: #c9c5bc;
+        --ghost: #e6e2d9;
+        --red: #e63946;
+        --col: 960px;
+        --gutter: 24px;
+        color-scheme: light;
+    }
+
+    html { background: var(--bg); }
+
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body.modal-open { overflow: hidden; }
+
+    a { color: var(--red); text-decoration: none; }
+    a:hover { color: var(--ink); }
+
+    button { font: inherit; color: inherit; cursor: pointer; }
+
+    img { max-width: 100%; display: block; }
+
+    :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+    h1, h2, h3, p, ul { margin: 0; }
+
+    .col {
+        max-width: var(--col);
+        width: 100%;
+        margin: 0 auto;
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
+    }
+
+    .label-grid {
+        display: grid;
+        grid-template-columns: 200px minmax(0, 1fr);
+        gap: 40px;
+        align-items: start;
+    }
+
+    .label {
+        font-size: 14px;
+        color: var(--ink-2);
+        padding-top: 6px;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 0;
+        border-radius: 0;
+        background: var(--ink);
+        color: #fff;
+        padding: 13px 22px;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.2;
+        white-space: nowrap;
+        text-decoration: none;
+    }
+    .btn:hover { background: var(--red); color: #fff; }
+    .btn:disabled { opacity: .6; cursor: default; }
+    .btn:disabled:hover { background: var(--ink); }
+
+    .btn-outline {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--ink);
+        padding: 12px 22px;
+    }
+    .btn-outline:hover { background: transparent; border-color: var(--red); color: var(--red); }
+
+    .text-btn {
+        border: 0;
+        background: none;
+        padding: 0;
+        color: var(--red);
+        font-weight: 600;
+        font-size: 15px;
+    }
+    .text-btn:hover { color: var(--ink); }
+
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+    .photo-grid img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+        .label-grid { grid-template-columns: 1fr; gap: 12px; }
+        .label { padding-top: 0; }
+    }
+    @media (max-width: 760px) {
+        .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 480px) {
+        .photo-grid { grid-template-columns: 1fr; }
+    }
+</style>

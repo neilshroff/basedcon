@@ -27,6 +27,20 @@ npm run build:bangerlore
 
 Gallery images live in each site's `src/assets/gallery/` and are converted to responsive WebP at build time.
 
+## Basedcon invite requests
+
+"Request an invite" on basedcon.xyz POSTs to `/api/invite` (an Astro server route deployed
+as a Vercel Function). Each submission is stored as a JSON file in the project's Vercel Blob
+store under `invites/`. Required env vars on the `basedcon` Vercel project:
+
+- `BLOB_READ_WRITE_TOKEN` — set automatically when the Blob store is connected to the project
+- `INVITES_ADMIN_KEY` — any long random string; unlocks the export endpoint
+
+Export all submissions: `https://basedcon.xyz/api/invites?key=<INVITES_ADMIN_KEY>`
+(add `&format=csv` for a spreadsheet-friendly download).
+
+Site copy, events and conspirators live in `sites/basedcon.xyz/src/data/site.json`.
+
 ## Matchmaking pages
 
 The match app's generated pages are committed as static files in
