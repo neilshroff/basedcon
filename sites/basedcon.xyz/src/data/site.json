@@ -4,26 +4,48 @@
   "stats": "7 events · 5 cities · since 2023",
   "nextEvent": {
     "city": "Delhi",
-    "date": "31 October 2025",
+    "date": "31 October 2026",
     "shortDate": "31 October",
     "theme": "AI + x"
   },
   "previousEvents": [
-    { "city": "Hyderabad", "when": "April 2025", "note": "just a dinner", "url": "https://x.com/IndLibertarians/status/1921653860025901470" },
-    { "city": "Bangalore", "when": "March 2025", "note": "theme: Institution building", "url": "https://x.com/neilshroff/status/1900146778827264207" },
-    { "city": "Chennai", "when": "July 2024", "url": "https://x.com/itsarnavb/status/1805386324985495590" },
-    { "city": "Mumbai", "when": "April 2024", "url": "https://x.com/aye_kaash/status/1777284968621748292" },
-    { "city": "Bangalore", "when": "February 2024", "url": "https://x.com/shruthibadri/status/1753318578580013482" },
-    { "city": "Bangalore", "when": "September 2023", "url": "https://x.com/neilshroff/status/1702604177988522165" },
-    { "city": "Delhi", "when": "August 2023", "url": "https://x.com/neilshroff/status/1686000149800058880" }
-  ],
-  "conspirators": [
-    { "name": "Akash Kumar", "bio": "One-line bio to come", "links": [{ "label": "x", "href": "https://x.com/aye_kaash" }, { "label": "linkedin", "href": "https://www.linkedin.com/in/kumarakash7/" }] },
-    { "name": "Arnav Bansal", "bio": "One-line bio to come", "links": [{ "label": "x", "href": "https://x.com/itsarnavb" }, { "label": "web", "href": "https://lagrangepoint.org" }] },
-    { "name": "Neil Shroff", "bio": "One-line bio to come", "links": [{ "label": "x", "href": "https://x.com/neilshroff" }, { "label": "linkedin", "href": "https://www.linkedin.com/in/shroffneil/" }, { "label": "web", "href": "https://neilshroff.xyz" }] },
-    { "name": "Shruthi Badri", "bio": "One-line bio to come", "links": [{ "label": "x", "href": "https://x.com/shruthibadri" }, { "label": "linkedin", "href": "https://www.linkedin.com/in/shruthi-badri/" }] },
-    { "name": "Spencer Schneier", "bio": "One-line bio to come", "links": [] },
-    { "name": "Srijan Shetty", "bio": "One-line bio to come", "links": [{ "label": "x", "href": "https://x.com/srijanshetty" }, { "label": "linkedin", "href": "https://www.linkedin.com/in/srijanshetty/" }] }
+    {
+      "city": "Hyderabad",
+      "when": "April 2025",
+      "note": "just a dinner",
+      "url": "https://x.com/IndLibertarians/status/1921653860025901470"
+    },
+    {
+      "city": "Bangalore",
+      "when": "March 2025",
+      "note": "theme: Institution building",
+      "url": "https://x.com/neilshroff/status/1900146778827264207"
+    },
+    {
+      "city": "Chennai",
+      "when": "July 2024",
+      "url": "https://x.com/itsarnavb/status/1805386324985495590"
+    },
+    {
+      "city": "Mumbai",
+      "when": "April 2024",
+      "url": "https://x.com/aye_kaash/status/1777284968621748292"
+    },
+    {
+      "city": "Bangalore",
+      "when": "February 2024",
+      "url": "https://x.com/shruthibadri/status/1753318578580013482"
+    },
+    {
+      "city": "Bangalore",
+      "when": "September 2023",
+      "url": "https://x.com/neilshroff/status/1702604177988522165"
+    },
+    {
+      "city": "Delhi",
+      "when": "August 2023",
+      "url": "https://x.com/neilshroff/status/1686000149800058880"
+    }
   ],
   "links": {
     "twitter": "https://x.com/neilshroff",

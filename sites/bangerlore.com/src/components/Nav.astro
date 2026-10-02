@@ -1,0 +1,42 @@
+---
+import site from '../data/site.json';
+
+interface Props {
+    page: 'home' | 'manifesto' | 'hosts';
+}
+
+const { page } = Astro.props;
+const pages = [
+    { key: 'manifesto', label: 'manifesto', href: '/manifesto' },
+    { key: 'hosts', label: 'hosts', href: '/hosts' },
+];
+const others = pages.filter((p) => p.key !== page || page !== 'home');
+---
+
+<nav class:list={['nav', { 'has-wordmark': page !== 'home' }]}>
+    {page !== 'home' && <a href="/" class="wordmark">Banger<span class="wordmark-lore">lore</span></a>}
+    <div class="links">
+        {page === 'home'
+            ? <a href="/hosts">hosts</a>
+            : others.map((p) => <a href={p.href} class:list={{ current: p.key === page }}>{p.label}</a>)}
+        <a href={site.links.twitter}>twitter</a>
+        <a href={site.links.basedcon}>basedcon</a>
+    </div>
+</nav>
+
+<style>
+    .nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 15px;
+    }
+    .nav.has-wordmark { justify-content: space-between; }
+    .wordmark { font-weight: 700; color: var(--white); white-space: nowrap; }
+    .wordmark:hover { color: var(--red); }
+    .links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .links a.current { color: var(--ink); }
+    .links a.current:hover { color: var(--red); }
+</style>

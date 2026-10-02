@@ -1,0 +1,67 @@
+---
+import Icons from './Icons.astro';
+
+interface Tweet { name: string; handle: string; text: string; url: string; avatar?: string }
+interface Props { tweets: Tweet[] }
+
+const { tweets } = Astro.props;
+const initials = (name: string) => name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+---
+
+<div class="tweets">
+    {tweets.map((t) => {
+        const Tag = t.url ? 'a' : 'div';
+        return (
+            <Tag class="tweet" href={t.url || undefined} target={t.url ? '_blank' : undefined} rel={t.url ? 'noopener' : undefined}>
+                <div class="head">
+                    {t.avatar
+                        ? <img src={t.avatar} alt="" class="avatar" width="36" height="36" loading="lazy" />
+                        : <span class="avatar initials" aria-hidden="true">{initials(t.name)}</span>}
+                    <div class="who">
+                        <div class="name">{t.name}</div>
+                        <div class="handle">{t.handle}</div>
+                    </div>
+                    <span class="x"><Icons name="x" /></span>
+                </div>
+                <p class="text">{t.text}</p>
+            </Tag>
+        );
+    })}
+</div>
+
+<style>
+    .tweets { columns: 3 260px; column-gap: 12px; }
+    .tweet {
+        display: block;
+        break-inside: avoid;
+        margin-bottom: 12px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px 18px;
+        color: var(--ink);
+    }
+    a.tweet:hover { border-color: var(--red); color: var(--ink); }
+    .head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex: none;
+        background: #1a1a1a;
+    }
+    .initials {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--ink-2);
+        letter-spacing: .02em;
+    }
+    .who { min-width: 0; line-height: 1.25; }
+    .name { font-size: 15px; font-weight: 600; color: var(--white); }
+    .handle { font-size: 13px; color: var(--ink-2); }
+    .x { margin-left: auto; flex: none; color: var(--ink); display: inline-flex; }
+    .text { font-size: 15px; line-height: 1.45; white-space: pre-line; text-wrap: pretty; }
+</style>

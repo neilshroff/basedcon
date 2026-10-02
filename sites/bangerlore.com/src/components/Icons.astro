@@ -1,0 +1,18 @@
+---
+interface Props {
+    name: 'external' | 'link' | 'x';
+    size?: number;
+}
+const sizes = { external: 14, link: 16, x: 16 };
+const { name, size = sizes[name] } = Astro.props;
+---
+
+{name === 'external' && (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4l-9 9M19 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1h5"/></svg>
+)}
+{name === 'link' && (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10 14a4 4 0 005.66 0l3-3a4 4 0 00-5.66-5.66l-1.5 1.5M14 10a4 4 0 00-5.66 0l-3 3a4 4 0 005.66 5.66l1.5-1.5"/></svg>
+)}
+{name === 'x' && (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+)}

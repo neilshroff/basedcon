@@ -1,0 +1,60 @@
+---
+import site from '../data/site.json';
+
+interface Props {
+    page: 'home' | 'manifesto' | 'hosts';
+}
+
+const { page } = Astro.props;
+const all = [
+    { key: 'home', label: 'home', href: '/' },
+    { key: 'manifesto', label: 'manifesto', href: '/manifesto' },
+    { key: 'hosts', label: 'hosts', href: '/hosts' },
+];
+const links = all.filter((p) => p.key !== page);
+---
+
+<footer class="footer">
+    <div class="col row">
+        <div class="left">
+            <button type="button" class="text-btn" data-open-contact>Contact us →</button>
+            <span>Bangerlore by night, <a href={site.links.basedcon}>Basedcon</a> by day. Since 2024.</span>
+        </div>
+        <div class="links">
+            {links.map((p) => <a href={p.href}>{p.label}</a>)}
+            <a href={site.links.twitter}>twitter</a>
+            <a href={site.links.basedcon}>basedcon</a>
+        </div>
+    </div>
+    <div class="col ghost" aria-hidden="true">Bangerlore</div>
+</footer>
+
+<style>
+    .footer { border-top: 1px solid var(--line); overflow: hidden; }
+    .row {
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 15px;
+        color: var(--ink-2);
+    }
+    .left { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+    .links { display: flex; gap: 24px; flex-wrap: wrap; align-items: baseline; }
+    .links a { color: var(--ink); }
+    .links a:hover { color: var(--red); }
+    .ghost {
+        padding-top: 40px;
+        font-size: clamp(96px, 16vw, 200px);
+        font-weight: 800;
+        line-height: .72;
+        letter-spacing: -.05em;
+        color: var(--ghost);
+        white-space: nowrap;
+        margin-bottom: -.12em;
+        user-select: none;
+        text-align: center;
+    }
+</style>
