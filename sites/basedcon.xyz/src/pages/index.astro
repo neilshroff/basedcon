@@ -18,8 +18,8 @@ import p7 from '../assets/gallery/7.png';
 import p8 from '../assets/gallery/8.png';
 import p9 from '../assets/gallery/9.png';
 
-const hero = [p7, p9, p6];
-const grid = [p3, p8, p1, p5, p4, p2, p6, p7, p9];
+const hero = [p7, p9, p8];
+const grid = [p3, p6, p1, p5, p4, p2, p8, p7, p9];
 const { nextEvent, previousEvents, links, stats } = site;
 const [themeHead, themeTail] = nextEvent.theme.endsWith(' x') ? [nextEvent.theme.slice(0, -1), 'x'] : [nextEvent.theme, ''];
 const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
