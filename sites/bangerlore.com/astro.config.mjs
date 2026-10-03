@@ -9,4 +9,11 @@ export default defineConfig({
   build: {
     format: 'file',
   },
+  vite: {
+    server: {
+      fs: {
+        allow: ['../..'],
+      },
+    },
+  },
 });

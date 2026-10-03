@@ -7,13 +7,15 @@ import Footer from '../components/Footer.astro';
 import Modals from '../components/Modals.astro';
 import Tweets from '../components/Tweets.astro';
 import site from '../data/site.json';
+import { tweetsFor } from '@sites/shared/tweets';
 
 import p1 from '../assets/gallery/1.jpeg';
 import p6 from '../assets/gallery/6.jpeg';
 import p9 from '../assets/gallery/9.jpeg';
 
 const hero = [p1, p6, p9];
-const { nextEdition, editions, links, tweets } = site;
+const { nextEdition, editions, links } = site;
+const tweets = tweetsFor('bangerlore');
 const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
 ---
 
