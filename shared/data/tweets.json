@@ -6,7 +6,9 @@
     "name": "Adithya Venkatesan",
     "text": "15 years in startups, & last night’s Bangerlore event was the first where I barely knew two dozen people\n\nA clear changing of guard is underway. Younger founders building in AI & deep tech, taking strange, bold, new bets\n\nNavigating people in this new order will determine success",
     "site": "bangerlore",
-    "avatar": "avatars/adadithya.jpg"
+    "avatar": "avatars/adadithya.jpg",
+    "featured": true,
+    "quote": "15 years in startups, and last night's Bangerlore event was the first where I barely knew two dozen people. A clear changing of guard is underway."
   },
   {
     "id": "2064043204497076253",
@@ -24,7 +26,8 @@
     "name": "Sparsh Agarwal",
     "text": "annual pilgrimage bangerlore",
     "site": "bangerlore",
-    "avatar": "avatars/sparshselim.jpg"
+    "avatar": "avatars/sparshselim.jpg",
+    "featured": true
   },
   {
     "id": "2063832360689471953",
@@ -33,7 +36,8 @@
     "name": "shraddha",
     "text": "50th bangerlore shall happen on the moon due to capacity constraints in indiranagar",
     "site": "bangerlore",
-    "avatar": "avatars/shraddhaha.jpg"
+    "avatar": "avatars/shraddhaha.jpg",
+    "featured": true
   },
   {
     "id": "2064564576726007869",
@@ -51,7 +55,8 @@
     "name": "cyrilbhau",
     "text": "bangerlore is 2 hours of saying hi to twitter oomfs",
     "site": "bangerlore",
-    "avatar": "avatars/cyrilbhau.jpg"
+    "avatar": "avatars/cyrilbhau.jpg",
+    "featured": true
   },
   {
     "id": "2064677920887697879",
@@ -69,7 +74,9 @@
     "name": "amv",
     "text": "the energy at the bangerlore party was insane. felt good to meet so many folks building in deep tech from India.  got some good connects, helpful conversations, and we just go onwards and upwards from here",
     "site": "bangerlore",
-    "avatar": "avatars/aryanmadhaverma.jpg"
+    "avatar": "avatars/aryanmadhaverma.jpg",
+    "featured": true,
+    "quote": "The energy at the bangerlore party was insane. Felt good to meet so many folks building in deep tech from India."
   },
   {
     "id": "2064614406450041163",
@@ -105,7 +112,8 @@
     "name": "vidhi",
     "text": "loremaxxing at bangerlore",
     "site": "bangerlore",
-    "avatar": "avatars/v1dcam.jpg"
+    "avatar": "avatars/v1dcam.jpg",
+    "featured": true
   },
   {
     "id": "2002338032113103047",
@@ -114,7 +122,9 @@
     "name": "Yash Bhardwaj",
     "text": "I couldn’t explain to my bombay friends that im flying to blr for a single day to attend this party called bangerlore 😭\n\nsee you there? or lmk if you’re not on the list I have @neilshroff’s partiful password.",
     "site": "bangerlore",
-    "avatar": "avatars/ybhrdwj.jpg"
+    "avatar": "avatars/ybhrdwj.jpg",
+    "featured": true,
+    "quote": "I couldn’t explain to my bombay friends that I’m flying to blr for a single day to attend this party called bangerlore."
   },
   {
     "id": "2063398103085207923",
@@ -132,7 +142,9 @@
     "name": "Tarini Sai Padmanabhuni",
     "text": "Bangerlore was genuinely more high signal than any SF party/networking event I've been to.\n\n @neilshroff @itsarnavb and all the other folks, thanks hosting!",
     "site": "bangerlore",
-    "avatar": "avatars/tarini_axory.jpg"
+    "avatar": "avatars/tarini_axory.jpg",
+    "featured": true,
+    "quote": "Bangerlore was genuinely more high signal than any SF party/networking event I've been to."
   },
   {
     "id": "2064006791734931958",
@@ -159,7 +171,8 @@
     "name": "khushi",
     "text": "full house at bangerlore last night!\n\nturned my room into a shoe box. totally worth it",
     "site": "bangerlore",
-    "avatar": "avatars/khushhhi_.jpg"
+    "avatar": "avatars/khushhhi_.jpg",
+    "featured": true
   },
   {
     "id": "2063389036375650734",
@@ -168,7 +181,8 @@
     "name": "aashna",
     "text": "bangerlore was the longest most of the people there have spent away from their computers. mixed results.",
     "site": "bangerlore",
-    "avatar": "avatars/aashnainindia.jpg"
+    "avatar": "avatars/aashnainindia.jpg",
+    "featured": true
   },
   {
     "id": "2063551244749144271",
@@ -195,7 +209,9 @@
     "name": "dhanush baktha",
     "text": "also the first angel check for my company came from bangerlore :)\n\nin a way - bangerlore gave birth to my company",
     "site": "bangerlore",
-    "avatar": "avatars/dhanuzch.jpg"
+    "avatar": "avatars/dhanuzch.jpg",
+    "featured": true,
+    "quote": "The first angel check for my company came from bangerlore. In a way, bangerlore gave birth to my company."
   },
   {
     "id": "2064014484189184502",
@@ -231,7 +247,8 @@
     "name": "Ishan",
     "text": "Bangerlore v4: You just had to be there 🪩💫",
     "site": "bangerlore",
-    "avatar": "avatars/ishanspatil.jpg"
+    "avatar": "avatars/ishanspatil.jpg",
+    "featured": true
   },
   {
     "id": "2063921661234290883",
