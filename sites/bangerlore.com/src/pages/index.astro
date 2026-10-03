@@ -5,9 +5,9 @@ import AnnouncementBar from '../components/AnnouncementBar.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Modals from '../components/Modals.astro';
-import Tweets from '../components/Tweets.astro';
+import Quotes from '../components/Quotes.astro';
 import site from '../data/site.json';
-import { tweetsFor } from '@sites/shared/tweets';
+import { featuredFor } from '@sites/shared/tweets';
 
 import p1 from '../assets/gallery/1.jpeg';
 import p6 from '../assets/gallery/6.jpeg';
@@ -15,7 +15,7 @@ import p9 from '../assets/gallery/9.jpeg';
 
 const hero = [p1, p6, p9];
 const { nextEdition, editions, links } = site;
-const tweets = tweetsFor('bangerlore');
+const tweets = featuredFor('bangerlore');
 const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
 ---
 
@@ -61,7 +61,7 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
             <div class="label said-label">What people said</div>
             <a href={links.twitter} class="more">more on twitter →</a>
         </div>
-        <Tweets tweets={tweets} />
+        <Quotes tweets={tweets} />
     </section>
 
     <Footer page="home" />
