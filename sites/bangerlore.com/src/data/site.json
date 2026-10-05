@@ -1,0 +1,58 @@
+{
+  "title": "Bangerlore — hosting tech parties we'd want to be attendees at",
+  "description": "Invite-only house party, Bangalore, since early 2024. ~250 people, every one vetted. 4PM to 4AM.",
+  "announcement": {
+    "text": "Thank you for coming to Bangerlore v5!",
+    "cta": "Pictures here →",
+    "href": "https://partiful.com/e/qQ5j2mNkpfIittsNo34X?c=pi741r-6"
+  },
+  "nextEdition": {
+    "label": "v6",
+    "city": "Bangalore",
+    "date": "date TBA"
+  },
+  "editions": [
+    {
+      "label": "v1",
+      "href": "https://partiful.com/e/CrOv3DkZSWGkoF0SsFIB"
+    },
+    {
+      "label": "v2",
+      "href": "https://partiful.com/e/Ep5WovOmFAZRHhMbusFj"
+    },
+    {
+      "label": "v3",
+      "href": "https://partiful.com/e/CjK5wpCKdVs8rdeeVdya"
+    },
+    {
+      "label": "v4",
+      "href": "https://partiful.com/e/U964NJ2siC9E6IhzmVkj"
+    },
+    {
+      "label": "v5",
+      "href": "https://partiful.com/e/qQ5j2mNkpfIittsNo34X?c=pi741r-6",
+      "latest": true
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "Faff",
+      "tier": "Support & production",
+      "url": "https://usefaff.com"
+    }
+  ],
+  "links": {
+    "twitter": "https://x.com/search?q=bangerlore%20min_faves%3A15%20until%3A2026-01-01%20since%3A2024-05-01&src=typed_query&f=live",
+    "lore": "https://x.com/search?q=bangerlore%20min_faves%3A15%20until%3A2026-01-01%20since%3A2024-05-01&src=typed_query&f=live",
+    "basedcon": "https://basedcon.xyz",
+    "faff": "https://usefaff.com",
+    "contactEmail": "neil.shroff@gmail.com"
+  },
+  "contactTopics": [
+    "Request an invite",
+    "Know more",
+    "Sponsor the party",
+    "Interested in co-hosting",
+    "Partner with me"
+  ]
+}

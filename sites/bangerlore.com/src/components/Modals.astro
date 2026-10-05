@@ -1,0 +1,332 @@
+---
+import site from '../data/site.json';
+import Icons from './Icons.astro';
+const { nextEdition, links, contactTopics } = site;
+---
+
+<div class="modal-scrim" id="attend" data-modal="attend" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="attend-title">
+        <button type="button" class="modal-close" aria-label="Close" data-close>×</button>
+
+        <div data-attend-form>
+            <h2 class="modal-title" id="attend-title">Want to attend?</h2>
+            <p class="modal-body">Tell us a little about yourself. Every attendee is vetted, so this helps.</p>
+            <form class="form" id="attend-form" novalidate>
+                <input type="hidden" name="edition" value={nextEdition.label} />
+                <div class="hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label></div>
+                <div class="row-2">
+                    <label class="field">Name<input type="text" name="name" required autocomplete="name" /></label>
+                    <label class="field">Email<input type="email" name="email" required autocomplete="email" /></label>
+                </div>
+                <label class="field">What do you do? One line.<textarea name="bio" rows="2" required></textarea></label>
+                <label class="field"><span>Twitter, LinkedIn or website <span class="opt">(optional)</span></span>
+                    <span class="with-icon"><Icons name="link" /><input type="url" name="url" placeholder="https://" autocomplete="url" /></span>
+                </label>
+                <p class="form-error" data-error hidden></p>
+                <div class="form-foot">
+                    <span class="note">We'll only email you about Bangerlore.</span>
+                    <button type="submit" class="btn" data-submit>Keep me posted</button>
+                </div>
+            </form>
+        </div>
+
+        <div data-attend-sent hidden>
+            <h2 class="modal-title">You're on the list</h2>
+            <p class="modal-body">Thanks. We'll write to you when {nextEdition.label} opens up.</p>
+            <button type="button" class="btn" data-close>Done</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-scrim" id="contact" data-modal="contact" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+        <button type="button" class="modal-close" aria-label="Close" data-close>×</button>
+        <h2 class="modal-title" id="contact-title">Contact us</h2>
+        <p class="modal-body">Write to us from your own inbox. Fill this in and we'll open a draft in Gmail with everything in place.</p>
+        <form class="form" id="contact-form" data-to={links.contactEmail}>
+            <label class="field">What's this about?
+                <select name="topic">
+                    {contactTopics.map((t) => <option value={t}>{t}</option>)}
+                </select>
+            </label>
+            <div class="row-2">
+                <label class="field">Name<input type="text" name="name" autocomplete="name" /></label>
+                <label class="field">Email<input type="email" name="email" autocomplete="email" /></label>
+            </div>
+            <label class="field">Tell us more<textarea name="msg" rows="4"></textarea></label>
+            <div class="form-foot">
+                <button type="button" class="copy" data-copy>Copy email body</button>
+                <a href="#" class="btn" target="_blank" rel="noopener" data-gmail>Open in Gmail <Icons name="external" /></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .modal-scrim {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(0, 0, 0, .7);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 200px 24px 24px;
+        overflow-y: auto;
+        animation: fade 150ms ease-out;
+    }
+    .modal-scrim[hidden] { display: none; }
+    @keyframes fade { from { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .modal-scrim { animation: none; } }
+
+    .modal {
+        position: relative;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        width: 520px;
+        max-width: 100%;
+        padding: 36px 40px 32px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .modal > div { display: flex; flex-direction: column; gap: 16px; }
+    .modal > div[hidden] { display: none; }
+
+    .modal-close {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        border: 0;
+        background: none;
+        font-size: 22px;
+        line-height: 1;
+        color: var(--ink-2);
+        padding: 4px;
+    }
+    .modal-close:hover { color: var(--white); }
+
+    .modal-title { font-size: 24px; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; color: var(--white); }
+    .modal-body { font-size: 15px; line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
+
+    .form { display: flex; flex-direction: column; gap: 22px; margin-top: 8px; }
+    .row-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 20px; }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 12px;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+    }
+    .opt { text-transform: none; letter-spacing: 0; color: var(--ink-3); }
+    .field input, .field textarea, .field select {
+        font: inherit;
+        font-size: 16px;
+        letter-spacing: 0;
+        text-transform: none;
+        line-height: 1.4;
+        color: var(--white);
+        padding: 6px 0;
+        border: 0;
+        border-bottom: 1px solid var(--ink);
+        border-radius: 0;
+        outline: none;
+        background: transparent;
+        min-width: 0;
+        width: 100%;
+        resize: none;
+    }
+    .field select {
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        padding-right: 24px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23e8e4dc' stroke-width='1.6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 4px center;
+    }
+    .field option { background: var(--surface); color: var(--white); }
+    .field input:focus, .field textarea:focus, .field select:focus { border-bottom-color: var(--red); }
+    .field input:focus-visible, .field textarea:focus-visible, .field select:focus-visible { outline: none; }
+    .with-icon { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line-soft); color: var(--ink-2); }
+    .with-icon:focus-within { border-bottom-color: var(--red); }
+    .with-icon input { border-bottom: 0; flex: 1; }
+
+    .form-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-top: 4px;
+        flex-wrap: wrap;
+    }
+    .note { font-size: 13px; color: var(--ink-2); }
+    .form-error { font-size: 13px; color: var(--red); margin-top: -10px; }
+    .form-error[hidden] { display: none; }
+    .copy {
+        border: 0;
+        background: none;
+        padding: 0;
+        font-size: 13px;
+        color: var(--ink-2);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+    .copy:hover { color: var(--white); }
+    .modal .btn { padding: 12px 20px; }
+
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    @media (max-height: 760px) { .modal-scrim { padding-top: 48px; } }
+    @media (max-width: 480px) {
+        .modal-scrim { padding: 48px 24px 24px; }
+        .modal { padding: 32px 24px 28px; }
+        .row-2 { grid-template-columns: 1fr; }
+    }
+</style>
+
+<script>
+    const FOCUSABLE = 'a[href], button:not([disabled]), input:not([type=hidden]), textarea, select, [tabindex]:not([tabindex="-1"])';
+    let openScrim: HTMLElement | null = null;
+    let trigger: HTMLElement | null = null;
+
+    function focusables(el: HTMLElement) {
+        return Array.from(el.querySelectorAll<HTMLElement>(FOCUSABLE)).filter((n) => n.offsetParent !== null && !n.closest('.hp'));
+    }
+
+    function openModal(name: string, from?: HTMLElement) {
+        const scrim = document.querySelector<HTMLElement>(`[data-modal="${name}"]`);
+        if (!scrim) return;
+        if (name === 'attend') resetAttend(scrim);
+        if (name === 'contact' && from?.dataset.topic) {
+            const sel = scrim.querySelector<HTMLSelectElement>('select[name=topic]');
+            if (sel) { sel.value = from.dataset.topic; syncGmail(); }
+        }
+        trigger = from ?? (document.activeElement as HTMLElement);
+        openScrim = scrim;
+        scrim.hidden = false;
+        document.body.classList.add('modal-open');
+        const first = focusables(scrim.querySelector('.modal')!).find((n) => !n.classList.contains('modal-close'));
+        (first ?? scrim.querySelector<HTMLElement>('.modal-close'))?.focus();
+    }
+
+    function closeModal() {
+        if (!openScrim) return;
+        openScrim.hidden = true;
+        openScrim = null;
+        document.body.classList.remove('modal-open');
+        if (location.hash === '#attend' || location.hash === '#contact') history.replaceState(null, '', location.pathname);
+        trigger?.focus();
+        trigger = null;
+    }
+
+    function resetAttend(scrim: HTMLElement) {
+        scrim.querySelector<HTMLElement>('[data-attend-form]')!.hidden = false;
+        scrim.querySelector<HTMLElement>('[data-attend-sent]')!.hidden = true;
+        const err = scrim.querySelector<HTMLElement>('[data-error]')!;
+        err.hidden = true;
+        err.textContent = '';
+    }
+
+    document.addEventListener('click', (e) => {
+        const t = e.target as HTMLElement;
+        const openAttend = t.closest<HTMLElement>('[data-open-attend]');
+        if (openAttend) { e.preventDefault(); openModal('attend', openAttend); return; }
+        const openContact = t.closest<HTMLElement>('[data-open-contact]');
+        if (openContact) { e.preventDefault(); openModal('contact', openContact); return; }
+        if (t.closest('[data-close]')) { closeModal(); return; }
+        if (openScrim && t === openScrim) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!openScrim) return;
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key !== 'Tab') return;
+        const items = focusables(openScrim.querySelector('.modal')!);
+        if (!items.length) return;
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    if (location.hash === '#attend') openModal('attend');
+
+    // Want to attend?
+    const attendForm = document.getElementById('attend-form') as HTMLFormElement;
+    attendForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const err = attendForm.querySelector<HTMLElement>('[data-error]')!;
+        err.hidden = true;
+        if (!attendForm.reportValidity()) return;
+        const btn = attendForm.querySelector<HTMLButtonElement>('[data-submit]')!;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        try {
+            const body = Object.fromEntries(new FormData(attendForm).entries());
+            const res = await fetch('/api/attend', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+            });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+            attendForm.reset();
+            const scrim = attendForm.closest<HTMLElement>('[data-modal]')!;
+            scrim.querySelector<HTMLElement>('[data-attend-form]')!.hidden = true;
+            const sent = scrim.querySelector<HTMLElement>('[data-attend-sent]')!;
+            sent.hidden = false;
+            sent.querySelector<HTMLElement>('button')?.focus();
+        } catch (ex) {
+            err.textContent = (ex as Error).message;
+            err.hidden = false;
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Keep me posted';
+        }
+    });
+
+    // Contact us
+    const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+    const to = contactForm.dataset.to!;
+    const gmail = contactForm.querySelector<HTMLAnchorElement>('[data-gmail]')!;
+    const copyBtn = contactForm.querySelector<HTMLButtonElement>('[data-copy]')!;
+    const q = encodeURIComponent;
+
+    function contactParts() {
+        const f = new FormData(contactForm);
+        const topic = String(f.get('topic') || '').trim();
+        const name = String(f.get('name') || '').trim();
+        const email = String(f.get('email') || '').trim();
+        const msg = String(f.get('msg') || '').trim();
+        const subject = `Bangerlore: ${topic}${name ? ` — ${name}` : ''}`;
+        const body = `${msg}\n\n—\n${name}\n${email}`;
+        return { subject, body };
+    }
+
+    function syncGmail() {
+        const { subject, body } = contactParts();
+        gmail.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${q(to)}&su=${q(subject)}&body=${q(body)}`;
+    }
+    contactForm.addEventListener('input', syncGmail);
+    contactForm.addEventListener('change', syncGmail);
+    syncGmail();
+
+    let copyTimer: number | undefined;
+    copyBtn.addEventListener('click', async () => {
+        const { subject, body } = contactParts();
+        const text = `To: ${to}\nSubject: ${subject}\n\n${body}`;
+        try {
+            await navigator.clipboard.writeText(text);
+            copyBtn.textContent = 'Copied';
+        } catch {
+            copyBtn.textContent = 'Copy failed';
+        }
+        clearTimeout(copyTimer);
+        copyTimer = window.setTimeout(() => { copyBtn.textContent = 'Copy email body'; }, 1800);
+    });
+</script>

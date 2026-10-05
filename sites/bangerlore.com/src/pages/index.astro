@@ -1,101 +1,130 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import PhotoGrid from '../../../../shared/components/PhotoGrid.astro';
-import Footer from '../../../../shared/components/Footer.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Modals from '../components/Modals.astro';
+import Quotes from '../components/Quotes.astro';
+import site from '../data/site.json';
+import { featuredFor } from '@sites/shared/tweets';
 
 import p1 from '../assets/gallery/1.jpeg';
-import p2 from '../assets/gallery/2.jpeg';
-import p3 from '../assets/gallery/3.jpeg';
-import p4 from '../assets/gallery/4.jpeg';
-import p5 from '../assets/gallery/5.png';
 import p6 from '../assets/gallery/6.jpeg';
-import p7 from '../assets/gallery/7.jpeg';
-import p8 from '../assets/gallery/8.jpeg';
 import p9 from '../assets/gallery/9.jpeg';
 
-const photos = [p1, p2, p3, p4, p5, p6, p7, p8, p9];
-
-const footerLinks = [
-    { label: 'hosts', href: '/hosts' },
-    { label: 'contact us', href: 'mailto:neil.shroff@gmail.com' },
-    { label: 'twitter', href: 'https://x.com/search?q=bangerlore%20min_faves%3A15%20until%3A2026-01-01%20since%3A2024-05-01&src=typed_query&f=live' },
-    { label: 'basedcon', href: 'https://basedcon.xyz' },
-];
+const hero = [p1, p6, p9];
+const { nextEdition, editions, links } = site;
+const tweets = featuredFor('bangerlore');
+const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
 ---
 
-<Base
-    title="Bangerlore"
-    description="Invite-only house parties in Bangalore for engineers, hackers, scientists, designers, and investors."
->
-    <Fragment slot="head">
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet" />
-    </Fragment>
+<Base>
+    <AnnouncementBar />
 
-    <div class="announcement-banner" slot="banner">
-        <span class="announcement-text">Thank you for coming to Bangerlore v5!</span>
-        <a href="https://partiful.com/e/qQ5j2mNkpfIittsNo34X?c=pi741r-6" class="announcement-link">Pictures here &nearr;</a>
+    <div class="col hero-wrap">
+        <Nav page="home" />
+
+        <div class="hero">
+            <h1>Banger<span class="wordmark-lore">lore</span></h1>
+            <p class="tagline">hosting tech parties we'd want to be attendees at</p>
+            <p class="summary">Invite-only house party, Bangalore, since early 2024.<br />~250 people, every one vetted. 4PM to 4AM.</p>
+            <div class="ctas">
+                <a href="/manifesto" class="btn">Party manifesto</a>
+                <button type="button" class="btn btn-outline" data-open-attend>Want to attend?</button>
+            </div>
+        </div>
+
+        <div>
+            <div class="photo-grid">
+                {hero.map((img, i) => <Image src={img} alt="Bangerlore party" {...imgProps} loading={i === 0 ? 'eager' : 'lazy'} />)}
+            </div>
+            <div class="under-gallery">
+                <span>previous editions</span>
+                {editions.map((e) => (
+                    <a href={e.href} class:list={{ latest: e.latest }}>{e.label}{e.latest && ' · pictures'}</a>
+                ))}
+            </div>
+        </div>
     </div>
 
-    <h1>Bangerlore 🍻</h1>
-    <h2>hosting tech parties we'd want to be attendees at</h2>
+    <section class="col section label-grid">
+        <div class="label">Next edition</div>
+        <div class="next-body">
+            <div><span class="edition">{nextEdition.label}</span> <span class="meta">· {nextEdition.city} · {nextEdition.date}</span></div>
+            <div class="next-cta"><button type="button" class="text-btn" data-open-attend>Keep me posted →</button></div>
+        </div>
+    </section>
 
-    <p>We realized networking events weren't the best way to meet people, and there weren't nearly enough good, big parties to go to. So since early 2024, we've been hosting an invite-only house party in Bangalore. We vet every single attendee, including some of the best engineers, hackers, scientists, researchers, designers, lawyers and investors we've met over time (80%) + some friends &amp; family of ours from all phases of life (15%) + interesting people with no circle who have just moved to the city (5%).</p>
+    <section class="col section">
+        <div class="said-head">
+            <div class="label said-label">What people said</div>
+            <a href={links.twitter} class="more">more on twitter →</a>
+        </div>
+        <Quotes tweets={tweets} />
+    </section>
 
-    <p>It's a party, but we take organizing it seriously and as a matter of great responsibility. Our self-imposed KPIs are:</p>
-
-    <ul>
-        <li>no. of angel cheques raised at the party</li>
-        <li>no. of long-term collaborations or relationships forged at the party</li>
-        <li>no. of people fly into the city to attend</li>
-        <li>% of no-shows (they face a 1-year ban)</li>
-    </ul>
-
-    <p>Around 250 people attend each time and the party goes on for ~12 hours from 4PM to 4AM. Proof of previous parties: <a href="https://partiful.com/e/CrOv3DkZSWGkoF0SsFIB">v1</a>, <a href="https://partiful.com/e/Ep5WovOmFAZRHhMbusFj">v2</a>, <a href="https://partiful.com/e/CjK5wpCKdVs8rdeeVdya">v3</a>, <a href="https://partiful.com/e/U964NJ2siC9E6IhzmVkj">v4</a>. To browse some of the lore that followed Bangerlore, see <a href="https://x.com/search?q=bangerlore%20min_faves%3A15%20until%3A2026-01-01%20since%3A2024-05-01&src=typed_query&f=live">here</a>.</p>
-
-    <PhotoGrid images={photos} alt="Bangerlore party photo" />
-
-    <Footer links={footerLinks} />
+    <Footer page="home" />
+    <Modals />
 </Base>
 
 <style>
-    .announcement-banner {
+    .hero-wrap {
+        min-height: 780px;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        padding-top: 24px;
+        padding-bottom: 40px;
+    }
+    .hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
+        padding: 64px 0 48px;
+    }
+    h1 {
+        margin-bottom: 20px;
+        font-size: clamp(48px, 7vw, 88px);
+        font-weight: 800;
+        line-height: .95;
+        letter-spacing: -.04em;
+        color: var(--white);
+        white-space: nowrap;
+    }
+    .tagline { margin-bottom: 12px; font-size: 26px; line-height: 1.3; max-width: 28ch; text-wrap: pretty; color: var(--white); }
+    .summary { margin-bottom: 36px; font-size: 16px; color: var(--ink-2); line-height: 1.5; max-width: 60ch; text-wrap: pretty; }
+    .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+    .under-gallery {
+        display: flex;
+        gap: 6px 16px;
         flex-wrap: wrap;
-        gap: 18px;
-        margin: -30px -20px 20px;
-        padding: 12px 32px;
-        background: #d23847;
-        color: #1a0a0c;
-        font-family: 'EB Garamond', Georgia, serif;
-        font-size: 18px;
-        font-weight: 500;
-        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+        margin-top: 14px;
+        font-size: 14px;
+        color: var(--ink-2);
     }
+    .under-gallery a.latest { color: var(--white); font-weight: 600; }
+    .under-gallery a.latest:hover { color: var(--red); }
 
-    .announcement-link,
-    .announcement-link:visited {
-        color: #1a0a0c;
-        font-weight: 600;
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 3px;
-        flex-shrink: 0;
+    .section { padding-top: 64px; padding-bottom: 64px; border-top: 1px solid var(--line); }
+    .next-body { font-size: 17px; line-height: 1.5; }
+    .edition { font-weight: 600; color: var(--white); }
+    .meta { color: var(--ink-2); }
+    .next-cta { margin-top: 12px; font-size: 15px; }
+
+    .said-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 20px;
     }
+    .said-label { padding-top: 0; }
+    .more { font-size: 14px; }
 
-    .announcement-link:hover {
-        opacity: 0.75;
-    }
-
-    @media (max-width: 768px) {
-        .announcement-banner {
-            margin: -25px -20px 16px;
-            padding: 10px 20px;
-            font-size: 15px;
-            gap: 8px;
-        }
+    @media (max-width: 640px) {
+        .tagline { font-size: 22px; }
+        .hero-wrap .photo-grid { grid-template-columns: 1fr; }
     }
 </style>

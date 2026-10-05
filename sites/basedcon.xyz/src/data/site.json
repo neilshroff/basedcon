@@ -1,0 +1,55 @@
+{
+  "title": "Basedcon — event series for your biggest ideas",
+  "description": "Invite-only, closed-door, since 2023. 5 speakers, up to 25 interruptors, Chatham house rules.",
+  "stats": "7 events · 5 cities · since 2023",
+  "nextEvent": {
+    "city": "Delhi",
+    "date": "31 October 2026",
+    "shortDate": "31 October",
+    "theme": "AI + x"
+  },
+  "previousEvents": [
+    {
+      "city": "Hyderabad",
+      "when": "April 2025",
+      "note": "just a dinner",
+      "url": "https://x.com/IndLibertarians/status/1921653860025901470"
+    },
+    {
+      "city": "Bangalore",
+      "when": "March 2025",
+      "note": "theme: Institution building",
+      "url": "https://x.com/neilshroff/status/1900146778827264207"
+    },
+    {
+      "city": "Chennai",
+      "when": "July 2024",
+      "url": "https://x.com/itsarnavb/status/1805386324985495590"
+    },
+    {
+      "city": "Mumbai",
+      "when": "April 2024",
+      "url": "https://x.com/aye_kaash/status/1777284968621748292"
+    },
+    {
+      "city": "Bangalore",
+      "when": "February 2024",
+      "url": "https://x.com/shruthibadri/status/1753318578580013482"
+    },
+    {
+      "city": "Bangalore",
+      "when": "September 2023",
+      "url": "https://x.com/neilshroff/status/1702604177988522165"
+    },
+    {
+      "city": "Delhi",
+      "when": "August 2023",
+      "url": "https://x.com/neilshroff/status/1686000149800058880"
+    }
+  ],
+  "links": {
+    "bangerlore": "https://bangerlore.com",
+    "pastGuestsDoc": "https://docs.google.com/document/d/1Ooueq66tSvK_ygN7N59WNcu8M5DrvA__6tE1KkzgH1Y/edit?usp=sharing",
+    "contactEmail": "neil.shroff@gmail.com"
+  }
+}

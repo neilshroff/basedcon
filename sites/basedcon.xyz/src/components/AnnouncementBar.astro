@@ -1,0 +1,21 @@
+---
+import site from '../data/site.json';
+const { nextEvent } = site;
+---
+
+<a href="#invite" class="announce" data-open-invite>
+    Next Basedcon: {nextEvent.city}, {nextEvent.shortDate}. &nbsp;Request an invite →
+</a>
+
+<style>
+    .announce {
+        display: block;
+        background: var(--ink);
+        color: #fff;
+        padding: 14px 24px;
+        font-size: 14px;
+        text-align: center;
+        text-wrap: balance;
+    }
+    .announce:hover { background: var(--red); color: #fff; }
+</style>

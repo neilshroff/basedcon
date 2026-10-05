@@ -1,0 +1,75 @@
+---
+import { quoteOf, type Tweet } from '@sites/shared/tweets';
+
+interface Props { tweets: Tweet[] }
+
+const { tweets } = Astro.props;
+const size = (q: string) => (q.length <= 60 ? 'xl' : q.length <= 140 ? 'lg' : 'md');
+---
+
+<div class="wall">
+    {tweets.map((t) => {
+        const q = quoteOf(t);
+        return (
+            <a class="quote" href={t.url} target="_blank" rel="noopener">
+                <span class="rule" aria-hidden="true"></span>
+                <blockquote class={size(q)}>{q}</blockquote>
+                <cite><span class="name">{t.name}</span> <span class="handle">{t.handle}</span></cite>
+            </a>
+        );
+    })}
+</div>
+
+<style>
+    .wall {
+        columns: 2 320px;
+        column-gap: 48px;
+    }
+    .quote {
+        display: block;
+        break-inside: avoid;
+        padding: 0 0 40px;
+        color: var(--white);
+    }
+    .quote:hover { color: var(--white); }
+    .rule {
+        display: block;
+        width: 32px;
+        height: 2px;
+        background: var(--red);
+        margin-bottom: 18px;
+        transition: width .2s ease;
+    }
+    .quote:hover .rule { width: 64px; }
+    @media (prefers-reduced-motion: reduce) { .rule { transition: none; } }
+
+    blockquote {
+        margin: 0 0 14px;
+        font-weight: 600;
+        letter-spacing: -.02em;
+        line-height: 1.2;
+        text-wrap: pretty;
+        white-space: pre-line;
+        overflow-wrap: anywhere;
+    }
+    blockquote.xl { font-size: 30px; letter-spacing: -.03em; line-height: 1.1; }
+    blockquote.lg { font-size: 24px; }
+    blockquote.md { font-size: 19px; font-weight: 500; line-height: 1.35; letter-spacing: -.01em; }
+
+    cite {
+        display: block;
+        font-style: normal;
+        font-size: 13px;
+        color: var(--ink-2);
+    }
+    .name { color: var(--ink); }
+    .quote:hover .name { color: var(--red); }
+
+    @media (max-width: 640px) {
+        .wall { column-gap: 32px; }
+        blockquote.xl { font-size: 26px; }
+        blockquote.lg { font-size: 21px; }
+        blockquote.md { font-size: 17px; }
+        .quote { padding-bottom: 32px; }
+    }
+</style>

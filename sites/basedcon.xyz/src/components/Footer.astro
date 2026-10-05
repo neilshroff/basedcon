@@ -1,0 +1,52 @@
+---
+import site from '../data/site.json';
+
+interface Props {
+    page: 'home' | 'conspirators';
+}
+
+const { page } = Astro.props;
+---
+
+<footer class="footer">
+    <div class="col row">
+        <span>Basedcon by day, <a href={site.links.bangerlore}>Bangerlore</a> by night. Since 2023.</span>
+        <div class="links">
+            {page === 'home'
+                ? <a href="/conspirators">conspirators</a>
+                : <a href="/">home</a>}
+            <a href={site.links.bangerlore}>bangerlore</a>
+            <button type="button" class="text-btn" data-open-contact>Contact us →</button>
+        </div>
+    </div>
+    <div class="col ghost" aria-hidden="true">Basedcon</div>
+</footer>
+
+<style>
+    .footer { border-top: 1px solid var(--line); overflow: hidden; }
+    .row {
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 15px;
+        color: var(--ink-2);
+    }
+    .links { display: flex; gap: 24px; flex-wrap: wrap; align-items: baseline; }
+    .links a { color: var(--ink); }
+    .links a:hover { color: var(--red); }
+    .ghost {
+        padding-top: 40px;
+        font-size: clamp(96px, 16vw, 200px);
+        font-weight: 800;
+        line-height: .72;
+        letter-spacing: -.05em;
+        color: var(--ghost);
+        white-space: nowrap;
+        margin-bottom: -.12em;
+        user-select: none;
+        text-align: center;
+    }
+</style>

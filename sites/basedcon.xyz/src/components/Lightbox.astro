@@ -1,0 +1,178 @@
+---
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props { photos: { src: ImageMetadata; alt: string }[] }
+
+const { photos } = Astro.props;
+const full = await Promise.all(photos.map((p) => getImage({ src: p.src, width: 1800, format: 'webp', quality: 82 })));
+const thumbs = await Promise.all(photos.map((p) => getImage({ src: p.src, width: 160, height: 120, fit: 'cover', format: 'webp' })));
+const data = photos.map((p, i) => ({ src: full[i].src, alt: p.alt }));
+---
+
+<div class="lb" id="lightbox" tabindex="-1" role="dialog" aria-modal="true" aria-label="Photos" data-photos={JSON.stringify(data)} hidden>
+    <button type="button" class="lb-close" data-lb-close aria-label="Close">×</button>
+    <button type="button" class="lb-arrow lb-prev" data-lb-prev aria-label="Previous photo">‹</button>
+    <div class="lb-stage" data-lb-stage><img class="lb-img" alt="" decoding="async" /></div>
+    <button type="button" class="lb-arrow lb-next" data-lb-next aria-label="Next photo">›</button>
+    <div class="lb-foot">
+        <div class="lb-count" aria-live="polite"></div>
+        <div class="lb-thumbs" data-lb-thumbs>
+            {thumbs.map((t, i) => (
+                <button type="button" class="lb-thumb" data-lb-go={i} aria-label={`Photo ${i + 1} of ${thumbs.length}`}>
+                    <img src={t.src} alt="" width="80" height="60" loading="lazy" decoding="async" />
+                </button>
+            ))}
+        </div>
+    </div>
+</div>
+
+<style>
+    .lb {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(17, 17, 17, .96);
+        display: grid;
+        grid-template-rows: 1fr auto;
+        animation: fade 150ms ease-out;
+    }
+    .lb[hidden] { display: none; }
+    .lb:focus { outline: none; }
+    @keyframes fade { from { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .lb { animation: none; } }
+
+    .lb-stage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 56px 72px 16px;
+        min-height: 0;
+    }
+    .lb-img {
+        max-width: 100%;
+        max-height: calc(100vh - 56px - 16px - 112px);
+        object-fit: contain;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+    }
+
+    .lb-close, .lb-arrow {
+        position: absolute;
+        border: 0;
+        background: none;
+        color: #fff;
+        line-height: 1;
+        padding: 8px;
+        opacity: .8;
+    }
+    .lb-close:hover, .lb-arrow:hover { opacity: 1; }
+    .lb-close { top: 12px; right: 16px; font-size: 36px; }
+    .lb-arrow { top: 50%; transform: translateY(-50%); font-size: 56px; padding: 16px; user-select: none; }
+    .lb-prev { left: 8px; }
+    .lb-next { right: 8px; }
+
+    .lb-foot { padding: 0 16px 16px; }
+    .lb-count { text-align: center; font-size: 13px; color: #9a958d; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+    .lb-thumbs {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        justify-content: safe center;
+        scrollbar-width: none;
+        padding: 2px;
+    }
+    .lb-thumbs::-webkit-scrollbar { display: none; }
+    .lb-thumb {
+        flex: none;
+        border: 0;
+        padding: 0;
+        background: none;
+        opacity: .45;
+        outline-offset: 2px;
+    }
+    .lb-thumb img { display: block; width: 80px; height: 60px; object-fit: cover; }
+    .lb-thumb:hover { opacity: .8; }
+    .lb-thumb.active { opacity: 1; box-shadow: 0 0 0 2px var(--red); }
+
+    @media (max-width: 760px) {
+        .lb-stage { padding: 48px 8px 12px; }
+        .lb-img { max-height: calc(100vh - 48px - 12px - 92px); }
+        .lb-arrow { font-size: 40px; padding: 10px; opacity: .6; }
+        .lb-thumb img { width: 64px; height: 48px; }
+        .lb-close { font-size: 32px; }
+    }
+</style>
+
+<script>
+    const lb = document.getElementById('lightbox')!;
+    const photos: { src: string; alt: string }[] = JSON.parse(lb.dataset.photos!);
+    const img = lb.querySelector<HTMLImageElement>('.lb-img')!;
+    const count = lb.querySelector<HTMLElement>('.lb-count')!;
+    const thumbs = Array.from(lb.querySelectorAll<HTMLButtonElement>('[data-lb-go]'));
+    let current = 0;
+    let trigger: HTMLElement | null = null;
+
+    function preload(i: number) {
+        const n = new Image();
+        n.src = photos[(i + photos.length) % photos.length].src;
+    }
+
+    function show(i: number) {
+        current = (i + photos.length) % photos.length;
+        img.src = photos[current].src;
+        img.alt = photos[current].alt;
+        count.textContent = `${current + 1} / ${photos.length}`;
+        thumbs.forEach((t, k) => t.classList.toggle('active', k === current));
+        thumbs[current].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+        preload(current + 1);
+        preload(current - 1);
+    }
+
+    function open(i: number, from?: HTMLElement) {
+        trigger = from ?? null;
+        lb.hidden = false;
+        document.body.classList.add('modal-open');
+        show(i);
+        lb.focus({ preventScroll: true });
+    }
+
+    function close() {
+        lb.hidden = true;
+        document.body.classList.remove('modal-open');
+        trigger?.focus();
+        trigger = null;
+    }
+
+    document.addEventListener('click', (e) => {
+        const t = e.target as HTMLElement;
+        const opener = t.closest<HTMLElement>('[data-lb]');
+        if (opener) { open(Number(opener.dataset.lb), opener); return; }
+        if (lb.hidden) return;
+        if (t.closest('[data-lb-close]')) { close(); return; }
+        if (t.closest('[data-lb-prev]')) { show(current - 1); return; }
+        if (t.closest('[data-lb-next]')) { show(current + 1); return; }
+        const go = t.closest<HTMLElement>('[data-lb-go]');
+        if (go) { show(Number(go.dataset.lbGo)); return; }
+        if (t.closest('[data-lb-stage]') && t === lb.querySelector('[data-lb-stage]')) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (lb.hidden) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowRight') show(current + 1);
+        else if (e.key === 'ArrowLeft') show(current - 1);
+        else if (e.key === 'Tab') {
+            const items = Array.from(lb.querySelectorAll<HTMLElement>('button')).filter((b) => b.offsetParent !== null);
+            const first = items[0], last = items[items.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+    });
+
+    let touchX = 0;
+    lb.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 40) show(dx < 0 ? current + 1 : current - 1);
+    }, { passive: true });
+</script>
