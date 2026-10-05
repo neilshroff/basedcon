@@ -7,7 +7,7 @@ import Footer from '../components/Footer.astro';
 import Modals from '../components/Modals.astro';
 import Lightbox from '../components/Lightbox.astro';
 import site from '../data/site.json';
-import { photos, lbIndex } from '../data/photos';
+import { photos, grid, lbIndex } from '../data/photos';
 
 const { editions, links } = site;
 const imgProps = { widths: [400, 800], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
@@ -68,7 +68,7 @@ const kpis = [
 
         <div class="col gallery">
             <div class="photo-grid">
-                {photos.map((p) => <Image src={p.src} alt={p.alt} {...imgProps} loading="lazy" data-lb={lbIndex(p)} class="clickable" />)}
+                {grid.map((p) => <Image src={p.src} alt={p.alt} {...imgProps} loading="lazy" data-lb={lbIndex(p)} class="clickable" />)}
             </div>
             <div class="ctas">
                 <button type="button" class="btn" data-open-attend>Want to attend?</button>
