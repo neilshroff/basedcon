@@ -21,12 +21,11 @@ export const photos = [
     { src: g('v4-3453.jpg'), alt: 'Photobomb' },
     { src: g('3.jpeg'), alt: 'Bangerlore party' },
     { src: g('v4-3498.jpg'), alt: 'Thumbs up under the flag' },
-    { src: g('5.png'), alt: 'Bangerlore house party' },
+    { src: g('v4-3451.jpg'), alt: 'The terrace at night' },
     { src: g('v4-3444.jpg'), alt: 'Acai theory' },
     { src: g('2.jpeg'), alt: 'Bangerlore party' },
     { src: g('v4-3509.jpg'), alt: 'Two friends' },
 
-    { src: g('v4-3451.jpg'), alt: 'The terrace at night' },
     { src: g('4.jpeg'), alt: 'Bangerlore party' },
     { src: g('v4-3497.jpg'), alt: 'Faff hoodie' },
     { src: g('7.jpeg'), alt: 'Bangerlore party' },
