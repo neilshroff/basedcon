@@ -85,7 +85,9 @@
     "name": "Priyanshu Ratnakar",
     "text": "one of the coolest thing i found at bangerlore v5 was.@usefaff running an IRL concierge.\n\nget charger, power bank, lighter, book my cab lmao",
     "site": "bangerlore",
-    "avatar": "avatars/0xratnakar.jpg"
+    "avatar": "avatars/0xratnakar.jpg",
+    "featured": true,
+    "quote": "One of the coolest things at bangerlore v5 was @usefaff running an IRL concierge. Get charger, power bank, anything, in minutes."
   },
   {
     "id": "2003514063243084095",
@@ -103,7 +105,8 @@
     "name": "Nikhil",
     "text": "The social network hacking scene but make it Bangerlore",
     "site": "bangerlore",
-    "avatar": "avatars/curlsondaboard.jpg"
+    "avatar": "avatars/curlsondaboard.jpg",
+    "featured": true
   },
   {
     "id": "2063999413534806126",
@@ -133,7 +136,9 @@
     "name": "Aryan Pahwani",
     "text": "Bangerlore v5 was wild - crazy fun! Met some amazing people doing quite cool stuff.\n\nTons of hardware folks btw! Observation: VJTI Robotics talent seems to be hella insane lmaoo\n\nThanks y'all, was hella fun :))",
     "site": "bangerlore",
-    "avatar": "avatars/aryanpahwani.jpg"
+    "avatar": "avatars/aryanpahwani.jpg",
+    "featured": true,
+    "quote": "Bangerlore v5 was wild. Met some amazing people doing quite cool stuff. Tons of hardware folks this time."
   },
   {
     "id": "2063358834752856409",

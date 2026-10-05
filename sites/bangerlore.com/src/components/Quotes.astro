@@ -1,20 +1,38 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icons from './Icons.astro';
 import { quoteOf, type Tweet } from '@sites/shared/tweets';
 
 interface Props { tweets: Tweet[] }
 
 const { tweets } = Astro.props;
-const size = (q: string) => (q.length <= 60 ? 'xl' : q.length <= 140 ? 'lg' : 'md');
+const avatarFiles = import.meta.glob<{ default: ImageMetadata }>('../../../../shared/data/avatars/*.{jpg,png}', { eager: true });
+const avatars = Object.fromEntries(Object.entries(avatarFiles).map(([p, m]) => [p.split('/').pop()!, m.default]));
+const avatarFor = (t: Tweet) => (t.avatar ? avatars[t.avatar.split('/').pop()!] : undefined);
+const initials = (name: string) => name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+const size = (q: string) => (q.length <= 44 ? 'xl' : q.length <= 120 ? 'lg' : 'md');
+const tilts = [-2.4, 1.6, -1.2, 2.2, -1.8, 1.1, 2.6, -1.5, 1.9, -2.1, 1.4, -1];
 ---
 
 <div class="wall">
-    {tweets.map((t) => {
+    {tweets.map((t, i) => {
         const q = quoteOf(t);
+        const avatar = avatarFor(t);
         return (
-            <a class="quote" href={t.url} target="_blank" rel="noopener">
-                <span class="rule" aria-hidden="true"></span>
-                <blockquote class={size(q)}>{q}</blockquote>
-                <cite><span class="name">{t.name}</span> <span class="handle">{t.handle}</span></cite>
+            <a class:list={['card', size(q), { taped: i % 3 === 1 }]} href={t.url} target="_blank" rel="noopener" style={`--tilt:${tilts[i % tilts.length]}deg`}>
+                <span class="tape" aria-hidden="true"></span>
+                <div class="head">
+                    {avatar
+                        ? <Image src={avatar} alt="" class="avatar" width={80} height={80} loading="lazy" />
+                        : <span class="avatar initials" aria-hidden="true">{initials(t.name)}</span>}
+                    <div class="who">
+                        <div class="name">{t.name}</div>
+                        <div class="handle">{t.handle}</div>
+                    </div>
+                    <span class="x"><Icons name="x" /></span>
+                </div>
+                <p class="text">{q}</p>
             </a>
         );
     })}
@@ -22,54 +40,86 @@ const size = (q: string) => (q.length <= 60 ? 'xl' : q.length <= 140 ? 'lg' : 'm
 
 <style>
     .wall {
-        columns: 2 320px;
-        column-gap: 48px;
+        columns: 3 250px;
+        column-gap: 20px;
+        padding: 8px 4px;
     }
-    .quote {
+    .card {
+        position: relative;
         display: block;
         break-inside: avoid;
-        padding: 0 0 40px;
-        color: var(--white);
+        margin-bottom: 20px;
+        padding: 18px 20px 20px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        color: var(--ink);
+        transform: rotate(var(--tilt));
+        transition: transform .22s cubic-bezier(.2,.8,.2,1), box-shadow .22s, border-color .22s;
+        box-shadow: 0 2px 0 rgba(0, 0, 0, .4);
     }
-    .quote:hover { color: var(--white); }
-    .rule {
-        display: block;
-        width: 32px;
-        height: 2px;
+    .card:hover {
+        transform: rotate(0deg) translateY(-3px) scale(1.02);
+        border-color: var(--red);
+        color: var(--ink);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, .55);
+        z-index: 1;
+    }
+    .tape {
+        display: none;
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        width: 72px;
+        height: 16px;
+        margin-left: -36px;
         background: var(--red);
-        margin-bottom: 18px;
-        transition: width .2s ease;
+        opacity: .85;
+        transform: rotate(-5deg);
     }
-    .quote:hover .rule { width: 64px; }
-    @media (prefers-reduced-motion: reduce) { .rule { transition: none; } }
+    .taped .tape { display: block; }
 
-    blockquote {
-        margin: 0 0 14px;
-        font-weight: 600;
-        letter-spacing: -.02em;
-        line-height: 1.2;
-        text-wrap: pretty;
-        white-space: pre-line;
-        overflow-wrap: anywhere;
+    .head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex: none;
+        background: #1a1a1a;
+        border: 2px solid var(--line);
     }
-    blockquote.xl { font-size: 30px; letter-spacing: -.03em; line-height: 1.1; }
-    blockquote.lg { font-size: 24px; }
-    blockquote.md { font-size: 19px; font-weight: 500; line-height: 1.35; letter-spacing: -.01em; }
-
-    cite {
-        display: block;
-        font-style: normal;
-        font-size: 13px;
+    .initials {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
         color: var(--ink-2);
     }
-    .name { color: var(--ink); }
-    .quote:hover .name { color: var(--red); }
+    .who { min-width: 0; line-height: 1.2; }
+    .name { font-size: 14px; font-weight: 700; color: var(--white); overflow-wrap: anywhere; }
+    .handle { font-size: 12px; color: var(--ink-2); }
+    .x { margin-left: auto; flex: none; color: var(--ink-3); display: inline-flex; }
+
+    .text {
+        white-space: pre-line;
+        text-wrap: pretty;
+        overflow-wrap: anywhere;
+        letter-spacing: -.01em;
+    }
+    .xl .text { font-size: 26px; font-weight: 800; line-height: 1.1; letter-spacing: -.03em; color: var(--white); }
+    .lg .text { font-size: 18px; font-weight: 600; line-height: 1.3; color: var(--white); }
+    .md .text { font-size: 15px; line-height: 1.45; }
 
     @media (max-width: 640px) {
-        .wall { column-gap: 32px; }
-        blockquote.xl { font-size: 26px; }
-        blockquote.lg { font-size: 21px; }
-        blockquote.md { font-size: 17px; }
-        .quote { padding-bottom: 32px; }
+        .wall { column-gap: 14px; padding: 6px 2px; }
+        .card { margin-bottom: 14px; padding: 16px 16px 18px; transform: rotate(calc(var(--tilt) * .5)); }
+        .xl .text { font-size: 22px; }
+        .lg .text { font-size: 17px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .card { transition: none; }
+        .card:hover { transform: rotate(var(--tilt)); }
     }
 </style>
