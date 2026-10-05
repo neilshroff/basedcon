@@ -8,18 +8,46 @@ import Modals from '../components/Modals.astro';
 import Icons from '../components/Icons.astro';
 import site from '../data/site.json';
 
-import p1 from '../assets/gallery/1.png';
-import p2 from '../assets/gallery/2.jpeg';
-import p3 from '../assets/gallery/3.jpeg';
-import p4 from '../assets/gallery/4.jpeg';
-import p5 from '../assets/gallery/5.png';
-import p6 from '../assets/gallery/6.png';
-import p7 from '../assets/gallery/7.png';
-import p8 from '../assets/gallery/8.png';
-import p9 from '../assets/gallery/9.png';
+import Lightbox from '../components/Lightbox.astro';
+import type { ImageMetadata } from 'astro';
 
-const hero = [p7, p9, p8];
-const grid = [p3, p6, p1, p5, p4, p2, p8, p7, p9];
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.{png,jpg,jpeg}', { eager: true });
+const g = (name: string) => {
+    const key = Object.keys(files).find((k) => k.endsWith('/' + name));
+    if (!key) throw new Error(`gallery photo not found: ${name}`);
+    return files[key].default;
+};
+
+// Order = lightbox order. First 3 are the hero, next 9 the grid, the rest only in the lightbox.
+const pool = [
+    { src: g('7.png'), alt: 'Guests talking by the window' },
+    { src: g('9.png'), alt: 'Listening in front of the flag' },
+    { src: g('mumbai-2024-0216.jpg'), alt: 'The room at Basedcon Mumbai, April 2024' },
+    { src: g('3.jpeg'), alt: 'Basedcon Bengaluru v2 poster' },
+    { src: g('mumbai-2024-0276.jpg'), alt: 'Group photo, Basedcon Mumbai' },
+    { src: g('mumbai-2024-0178.jpg'), alt: 'An interruptor raises a hand' },
+    { src: g('4.jpeg'), alt: 'Basedcon BLR poster' },
+    { src: g('mumbai-2024-0225.jpg'), alt: 'Speaker in front of the flag' },
+    { src: g('2.jpeg'), alt: 'Building Institutions, Bangalore, March 2025' },
+    { src: g('mumbai-2024-bom.jpg'), alt: 'Basedcon BOM poster' },
+    { src: g('mumbai-2024-0319.jpg'), alt: 'A conversation by the window' },
+    { src: g('8.png'), alt: 'Group photo' },
+    { src: g('1.png'), alt: 'Around the table' },
+    { src: g('5.png'), alt: 'Around the table' },
+    { src: g('6.png'), alt: 'The room, Bangalore' },
+    { src: g('mumbai-2024-0079.jpg'), alt: 'The flag in the window' },
+    { src: g('mumbai-2024-0123.jpg'), alt: 'The room, Mumbai' },
+    { src: g('mumbai-2024-0140.jpg'), alt: 'Speaker by the window' },
+    { src: g('mumbai-2024-0171.jpg'), alt: 'Speaker and audience' },
+    { src: g('mumbai-2024-0179.jpg'), alt: 'A guest mid-argument' },
+    { src: g('mumbai-2024-0307.jpg'), alt: 'Making a point' },
+    { src: g('mumbai-2024-0144.jpg'), alt: 'The audience' },
+    { src: g('mumbai-2024-0210.jpg'), alt: 'Speaker in front of the flag' },
+    { src: g('mumbai-2024-0234.jpg'), alt: 'Show and tell' },
+    { src: g('mumbai-2024-0091.jpg'), alt: 'A one-on-one' },
+];
+const hero = pool.slice(0, 3);
+const grid = pool.slice(3, 12);
 const { nextEvent, previousEvents, links, stats } = site;
 const [themeHead, themeTail] = nextEvent.theme.endsWith(' x') ? [nextEvent.theme.slice(0, -1), 'x'] : [nextEvent.theme, ''];
 const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
@@ -47,7 +75,7 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
 
         <div>
             <div class="photo-grid">
-                {hero.map((img, i) => <Image src={img} alt="Basedcon event" {...imgProps} loading={i === 0 ? 'eager' : 'lazy'} />)}
+                {hero.map((p, i) => <Image src={p.src} alt={p.alt} {...imgProps} loading={i === 0 ? 'eager' : 'lazy'} data-lb={i} class="clickable" />)}
             </div>
             <div class="under-gallery">
                 <span>{stats}</span>
@@ -86,12 +114,13 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
         </div>
 
         <div class="photo-grid grid-9">
-            {grid.map((img) => <Image src={img} alt="Basedcon event" {...imgProps} loading="lazy" />)}
+            {grid.map((p, i) => <Image src={p.src} alt={p.alt} {...imgProps} loading="lazy" data-lb={i + 3} class="clickable" />)}
         </div>
     </section>
 
     <Footer page="home" />
     <Modals />
+    <Lightbox photos={pool} />
 </Base>
 
 <style>
@@ -146,6 +175,8 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
     .city-link:hover { color: var(--red); }
 
     .grid-9 { margin-top: 32px; }
+    .clickable { cursor: zoom-in; transition: opacity .15s; }
+    .clickable:hover { opacity: .88; }
 
     @media (max-width: 640px) {
         .tagline { font-size: 22px; }
