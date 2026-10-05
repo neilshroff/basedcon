@@ -26,10 +26,7 @@ const conspirators = peopleFor('basedcon');
             <div>
                 {conspirators.map((p) => (
                     <div class="person">
-                        <div class="person-text">
-                            <span class="name">{p.name}</span>
-                            <span class="bio">{p.bio}</span>
-                        </div>
+                        <span class="name">{p.name}</span>
                         {p.linkList.length > 0 && (
                             <div class="person-links">
                                 {p.linkList.map((l) => <a href={l.href}>{l.label}</a>)}
@@ -63,16 +60,14 @@ const conspirators = peopleFor('basedcon');
     .who { padding-top: 48px; padding-bottom: 64px; border-top: 1px solid var(--line); }
     .who-label { padding-top: 20px; }
     .person {
-        padding: 18px 0;
+        padding: 14px 0;
         border-bottom: 1px solid var(--line);
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
         gap: 24px;
-        align-items: center;
+        align-items: baseline;
     }
-    .person-text { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
-    .name { font-size: 16px; font-weight: 600; line-height: 1.3; }
-    .bio { font-size: 14px; color: var(--ink-2); line-height: 1.4; text-wrap: pretty; }
+    .name { font-size: 16px; font-weight: 600; line-height: 1.3; min-width: 0; }
     .person-links { display: flex; gap: 14px; font-size: 13px; white-space: nowrap; }
     .person-links a { color: var(--ink-2); }
     .person-links a:hover { color: var(--red); }

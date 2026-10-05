@@ -14,6 +14,7 @@ const { wordmark = false, current } = Astro.props;
     <div class="links">
         <a href="/conspirators" class:list={{ current: current === 'conspirators' }}>conspirators</a>
         <a href={site.links.bangerlore}>bangerlore</a>
+        <button type="button" class="contact" data-open-contact>Contact us →</button>
     </div>
 </nav>
 
@@ -32,4 +33,13 @@ const { wordmark = false, current } = Astro.props;
     .links { display: flex; gap: 20px; flex-wrap: wrap; }
     .links a.current { color: var(--ink); }
     .links a.current:hover { color: var(--red); }
+    .contact {
+        border: 0;
+        background: none;
+        padding: 0;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--red);
+    }
+    .contact:hover { color: var(--ink); }
 </style>
