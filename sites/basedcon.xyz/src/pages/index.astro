@@ -23,35 +23,47 @@ const pool = [
     { src: g('basedcon5-5784.jpg'), alt: 'Between sessions, Basedcon Bangalore' },
     { src: g('9.png'), alt: 'Listening in front of the flag, Basedcon Mumbai' },
     { src: g('mumbai-2024-0276.jpg'), alt: 'Group photo, Basedcon Mumbai' },
-    { src: g('basedcon5-5823.jpg'), alt: 'Speaker at the table' },
     { src: g('3.jpeg'), alt: 'Basedcon Bengaluru v2 poster' },
-    { src: g('mumbai-2024-0178.jpg'), alt: 'An interruptor raises a hand' },
-    { src: g('2.jpeg'), alt: 'Building Institutions, Bangalore, March 2025' },
-    { src: g('basedcon5-5719.jpg'), alt: 'Laughing between sessions' },
+    { src: g('basedcon5-6395.jpg'), alt: 'Blue hour at Basedcon Bangalore' },
+    { src: g('basedcon5-pizza-room.jpg'), alt: 'The room at night, Basedcon Bangalore' },
+    { src: g('basedcon5-6599.jpg'), alt: 'Around the table, Basedcon Bangalore' },
     { src: g('4.jpeg'), alt: 'Basedcon BLR poster' },
-    { src: g('mumbai-2024-0225.jpg'), alt: 'Speaker in front of the flag' },
+    { src: g('2.jpeg'), alt: 'Building Institutions, Bangalore, March 2025' },
+    { src: g('8.png'), alt: 'Group photo, Basedcon Mumbai' },
+    { src: g('basedcon5-5784.jpg'), alt: 'Between sessions' },
+    { src: g('9.png'), alt: 'Listening in front of the flag' },
     { src: g('mumbai-2024-bom.jpg'), alt: 'Basedcon BOM poster' },
-    { src: g('basedcon5-6494.jpg'), alt: 'Arms crossed, unconvinced' },
-    { src: g('8.png'), alt: 'Group photo' },
+    { src: g('basedcon5-5719.jpg'), alt: 'Laughing between sessions' },
+    { src: g('mumbai-2024-0178.jpg'), alt: 'An interruptor raises a hand' },
+    { src: g('basedcon5-6352.jpg'), alt: 'Speaker by the window' },
+    { src: g('mumbai-2024-0225.jpg'), alt: 'Speaker in front of the flag' },
+    { src: g('basedcon5-5823.jpg'), alt: 'Speaker at the table' },
     { src: g('mumbai-2024-0171.jpg'), alt: 'Speaker and audience' },
-    { src: g('basedcon5-5917.jpg'), alt: 'Listening' },
+    { src: g('basedcon5-6185.jpg'), alt: 'Making a point by the window' },
     { src: g('mumbai-2024-0319.jpg'), alt: 'A conversation by the window' },
     { src: g('basedcon5-5946.jpg'), alt: 'A hand goes up at the back' },
     { src: g('mumbai-2024-0079.jpg'), alt: 'The flag in the window' },
-    { src: g('basedcon5-6427.jpg'), alt: 'Making the case' },
+    { src: g('basedcon5-6300.jpg'), alt: 'Speaker and two listeners' },
     { src: g('mumbai-2024-0140.jpg'), alt: 'Speaker by the window' },
+    { src: g('basedcon5-6494.jpg'), alt: 'Arms crossed, unconvinced' },
     { src: g('mumbai-2024-0179.jpg'), alt: 'A guest mid-argument' },
-    { src: g('basedcon5-6501.jpg'), alt: 'The room at night' },
+    { src: g('basedcon5-6740.jpg'), alt: 'Three at the door' },
     { src: g('mumbai-2024-0307.jpg'), alt: 'Making a point' },
     { src: g('basedcon5-6711.jpg'), alt: 'Evening conversation' },
     { src: g('mumbai-2024-0144.jpg'), alt: 'The audience' },
+    { src: g('basedcon5-6501.jpg'), alt: 'The room at night' },
     { src: g('mumbai-2024-0210.jpg'), alt: 'Speaker in front of the flag' },
+    { src: g('basedcon5-6427.jpg'), alt: 'Making the case' },
     { src: g('mumbai-2024-0234.jpg'), alt: 'Show and tell' },
+    { src: g('basedcon5-5917.jpg'), alt: 'Listening' },
     { src: g('mumbai-2024-0091.jpg'), alt: 'A one-on-one' },
     { src: g('mumbai-2024-0123.jpg'), alt: 'The room, Mumbai' },
 ];
 const hero = pool.slice(0, 3);
 const grid = pool.slice(3, 12);
+// A photo may sit in both hero and grid; the lightbox lists each once.
+const lightbox = pool.filter((p, i) => pool.findIndex((q) => q.src === p.src) === i);
+const lbIndex = (p: (typeof pool)[number]) => lightbox.findIndex((q) => q.src === p.src);
 const { nextEvent, previousEvents, links, stats } = site;
 const [themeHead, themeTail] = nextEvent.theme.endsWith(' x') ? [nextEvent.theme.slice(0, -1), 'x'] : [nextEvent.theme, ''];
 const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
@@ -79,7 +91,7 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
 
         <div>
             <div class="photo-grid">
-                {hero.map((p, i) => <Image src={p.src} alt={p.alt} {...imgProps} loading={i === 0 ? 'eager' : 'lazy'} data-lb={i} class="clickable" />)}
+                {hero.map((p, i) => <Image src={p.src} alt={p.alt} {...imgProps} loading={i === 0 ? 'eager' : 'lazy'} data-lb={lbIndex(p)} class="clickable" />)}
             </div>
             <div class="under-gallery">
                 <span>{stats}</span>
@@ -118,13 +130,13 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
         </div>
 
         <div class="photo-grid grid-9">
-            {grid.map((p, i) => <Image src={p.src} alt={p.alt} {...imgProps} loading="lazy" data-lb={i + 3} class="clickable" />)}
+            {grid.map((p) => <Image src={p.src} alt={p.alt} {...imgProps} loading="lazy" data-lb={lbIndex(p)} class="clickable" />)}
         </div>
     </section>
 
     <Footer page="home" />
     <Modals />
-    <Lightbox photos={pool} />
+    <Lightbox photos={lightbox} />
 </Base>
 
 <style>
@@ -179,16 +191,16 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
     .city-link:hover { color: var(--red); }
 
     .grid-9 { margin-top: 32px; }
-    /* Posters sit at DOM positions 2/4/6/8 (desktop checkerboard). On the
-       2-column layout that would stack them in one column, so restagger. */
+    /* Posters sit at grid positions 1/5/6. On the 2-column layout 5 and 6
+       would share a row, so swap 6 and 7. */
     @media (max-width: 760px) and (min-width: 481px) {
-        .grid-9 > :nth-child(2) { order: 1; }
-        .grid-9 > :nth-child(1) { order: 2; }
+        .grid-9 > :nth-child(6) { order: 7; }
+        .grid-9 > :nth-child(7) { order: 6; }
+        .grid-9 > :nth-child(1) { order: 1; }
+        .grid-9 > :nth-child(2) { order: 2; }
         .grid-9 > :nth-child(3) { order: 3; }
         .grid-9 > :nth-child(4) { order: 4; }
-        .grid-9 > :nth-child(6) { order: 5; }
-        .grid-9 > :nth-child(5) { order: 6; }
-        .grid-9 > :nth-child(7) { order: 7; }
+        .grid-9 > :nth-child(5) { order: 5; }
         .grid-9 > :nth-child(8) { order: 8; }
         .grid-9 > :nth-child(9) { order: 9; }
     }
