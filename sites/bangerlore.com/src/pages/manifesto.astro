@@ -10,7 +10,7 @@ import site from '../data/site.json';
 import { photos, lbIndex } from '../data/photos';
 
 const { editions, links } = site;
-const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 240px' };
+const imgProps = { widths: [400, 800], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
 const kpis = [
     'no. of angel cheques raised at the party',
     'no. of long-term collaborations or relationships forged at the party',
@@ -61,19 +61,20 @@ const kpis = [
 
         <section class="col chapter last label-grid">
             <div class="chapter-head"><div class="num">04</div><div class="title">Proof</div></div>
-            <div class="proof">
-                <div class="body">
-                    <p class="proof-text">Around 250 people attend each time and the party goes on for ~12 hours from 4PM to 4AM. Proof of previous parties: {editions.map((e, i) => <><a href={e.href}>{e.label}</a>{i < editions.length - 1 ? ', ' : '. '}</>)}To browse some of the lore that followed Bangerlore, see <a href={links.lore}>here</a>.</p>
-                </div>
-                <div class="photo-grid">
-                    {photos.map((p) => <Image src={p.src} alt={p.alt} {...imgProps} loading="lazy" data-lb={lbIndex(p)} class="clickable" />)}
-                </div>
-                <div class="ctas">
-                    <button type="button" class="btn" data-open-attend>Want to attend?</button>
-                    <a href="/hosts" class="btn btn-outline">Meet the hosts</a>
-                </div>
+            <div class="body">
+                <p class="proof-text">Around 250 people attend each time and the party goes on for ~12 hours from 4PM to 4AM. Proof of previous parties: {editions.map((e, i) => <><a href={e.href}>{e.label}</a>{i < editions.length - 1 ? ', ' : '. '}</>)}To browse some of the lore that followed Bangerlore, see <a href={links.lore}>here</a>.</p>
             </div>
         </section>
+
+        <div class="col gallery">
+            <div class="photo-grid">
+                {photos.map((p) => <Image src={p.src} alt={p.alt} {...imgProps} loading="lazy" data-lb={lbIndex(p)} class="clickable" />)}
+            </div>
+            <div class="ctas">
+                <button type="button" class="btn" data-open-attend>Want to attend?</button>
+                <a href="/hosts" class="btn btn-outline">Meet the hosts</a>
+            </div>
+        </div>
 
         <div class="spacer"></div>
         <Footer page="manifesto" />
@@ -98,13 +99,15 @@ const kpis = [
 
     .chapter { padding-top: 48px; }
     .chapter.first { border-top: 1px solid var(--line); }
-    .chapter.last { padding-bottom: 64px; }
+    .chapter.last { padding-bottom: 0; }
+    .gallery { padding-top: 36px; padding-bottom: 64px; }
+    .gallery .photo-grid { gap: 10px; }
     .chapter-head { padding-top: 6px; }
     .num { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--red); }
     .title { font-size: 28px; font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--white); margin-top: 6px; }
     .body { font-size: 20px; line-height: 1.6; max-width: 62ch; text-wrap: pretty; }
     .body > p { margin-bottom: 22px; }
-    .body > .proof-text { margin-bottom: 28px; }
+    .body > .proof-text { margin-bottom: 0; }
 
     .bar {
         display: grid;
@@ -133,7 +136,6 @@ const kpis = [
     .kpis li:last-child { border-bottom: 1px solid var(--line); }
     .kpi-num { color: var(--red); font-weight: 700; }
 
-    .proof { min-width: 0; }
     .ctas { margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap; }
     .clickable { cursor: zoom-in; transition: opacity .15s; }
     .clickable:hover { opacity: .85; }
