@@ -5,15 +5,12 @@ import AnnouncementBar from '../components/AnnouncementBar.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Modals from '../components/Modals.astro';
+import Lightbox from '../components/Lightbox.astro';
 import site from '../data/site.json';
+import { photos, lbIndex } from '../data/photos';
 
-import p3 from '../assets/gallery/3.jpeg';
-import p4 from '../assets/gallery/4.jpeg';
-import p7 from '../assets/gallery/7.jpeg';
-
-const proof = [p3, p4, p7];
 const { editions, links } = site;
-const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 230px' };
+const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 240px' };
 const kpis = [
     'no. of angel cheques raised at the party',
     'no. of long-term collaborations or relationships forged at the party',
@@ -64,10 +61,12 @@ const kpis = [
 
         <section class="col chapter last label-grid">
             <div class="chapter-head"><div class="num">04</div><div class="title">Proof</div></div>
-            <div class="body">
-                <p class="proof-text">Around 250 people attend each time and the party goes on for ~12 hours from 4PM to 4AM. Proof of previous parties: {editions.map((e, i) => <><a href={e.href}>{e.label}</a>{i < editions.length - 1 ? ', ' : '. '}</>)}To browse some of the lore that followed Bangerlore, see <a href={links.lore}>here</a>.</p>
+            <div class="proof">
+                <div class="body">
+                    <p class="proof-text">Around 250 people attend each time and the party goes on for ~12 hours from 4PM to 4AM. Proof of previous parties: {editions.map((e, i) => <><a href={e.href}>{e.label}</a>{i < editions.length - 1 ? ', ' : '. '}</>)}To browse some of the lore that followed Bangerlore, see <a href={links.lore}>here</a>.</p>
+                </div>
                 <div class="photo-grid">
-                    {proof.map((img) => <Image src={img} alt="Bangerlore party" {...imgProps} loading="lazy" />)}
+                    {photos.map((p) => <Image src={p.src} alt={p.alt} {...imgProps} loading="lazy" data-lb={lbIndex(p)} class="clickable" />)}
                 </div>
                 <div class="ctas">
                     <button type="button" class="btn" data-open-attend>Want to attend?</button>
@@ -80,6 +79,7 @@ const kpis = [
         <Footer page="manifesto" />
     </div>
     <Modals />
+    <Lightbox photos={photos} />
 </Base>
 
 <style>
@@ -133,7 +133,10 @@ const kpis = [
     .kpis li:last-child { border-bottom: 1px solid var(--line); }
     .kpi-num { color: var(--red); font-weight: 700; }
 
+    .proof { min-width: 0; }
     .ctas { margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .clickable { cursor: zoom-in; transition: opacity .15s; }
+    .clickable:hover { opacity: .85; }
     .spacer { flex: 1; }
 
     @media (max-width: 640px) {

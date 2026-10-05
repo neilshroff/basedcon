@@ -6,14 +6,11 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Modals from '../components/Modals.astro';
 import Quotes from '../components/Quotes.astro';
+import Lightbox from '../components/Lightbox.astro';
 import site from '../data/site.json';
 import { featuredFor } from '@sites/shared/tweets';
+import { photos, hero, lbIndex } from '../data/photos';
 
-import p1 from '../assets/gallery/1.jpeg';
-import p6 from '../assets/gallery/6.jpeg';
-import p9 from '../assets/gallery/9.jpeg';
-
-const hero = [p1, p6, p9];
 const { nextEdition, editions, links } = site;
 const tweets = featuredFor('bangerlore');
 const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
@@ -37,7 +34,7 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
 
         <div>
             <div class="photo-grid">
-                {hero.map((img, i) => <Image src={img} alt="Bangerlore party" {...imgProps} loading={i === 0 ? 'eager' : 'lazy'} />)}
+                {hero.map((p, i) => <Image src={p.src} alt={p.alt} {...imgProps} loading={i === 0 ? 'eager' : 'lazy'} data-lb={lbIndex(p)} class="clickable" />)}
             </div>
             <div class="under-gallery">
                 <span>previous editions</span>
@@ -66,6 +63,7 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
 
     <Footer page="home" />
     <Modals />
+    <Lightbox photos={photos} />
 </Base>
 
 <style>
@@ -105,6 +103,8 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
     }
     .under-gallery a.latest { color: var(--white); font-weight: 600; }
     .under-gallery a.latest:hover { color: var(--red); }
+    .clickable { cursor: zoom-in; transition: opacity .15s; }
+    .clickable:hover { opacity: .85; }
 
     .section { padding-top: 64px; padding-bottom: 64px; border-top: 1px solid var(--line); }
     .next-body { font-size: 17px; line-height: 1.5; }
