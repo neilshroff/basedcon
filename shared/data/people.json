@@ -82,7 +82,9 @@
     "id": "spencer-schneier",
     "name": "Spencer Schneier",
     "bio": "One-line bio to come",
-    "links": {},
+    "links": {
+      "x": "https://x.com/spenceraviav"
+    },
     "basedcon": true,
     "bangerlore": false
   },
