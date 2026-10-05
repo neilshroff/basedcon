@@ -1,6 +1,6 @@
 import tweets from './data/tweets.json';
 
-export type Tweet = (typeof tweets)[number] & { featured?: boolean; quote?: string };
+export type Tweet = (typeof tweets)[number] & { featured?: boolean; quote?: string; media?: string; mediaCount?: number };
 export type Site = 'basedcon' | 'bangerlore';
 
 export function tweetsFor(site: Site): Tweet[] {

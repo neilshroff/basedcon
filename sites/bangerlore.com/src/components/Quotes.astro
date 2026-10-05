@@ -10,6 +10,9 @@ const { tweets } = Astro.props;
 const avatarFiles = import.meta.glob<{ default: ImageMetadata }>('../../../../shared/data/avatars/*.{jpg,png}', { eager: true });
 const avatars = Object.fromEntries(Object.entries(avatarFiles).map(([p, m]) => [p.split('/').pop()!, m.default]));
 const avatarFor = (t: Tweet) => (t.avatar ? avatars[t.avatar.split('/').pop()!] : undefined);
+const mediaFiles = import.meta.glob<{ default: ImageMetadata }>('../../../../shared/data/tweet-media/*.{jpg,png}', { eager: true });
+const media = Object.fromEntries(Object.entries(mediaFiles).map(([p, m]) => [p.split('/').pop()!, m.default]));
+const mediaFor = (t: Tweet) => (t.media ? media[t.media.split('/').pop()!] : undefined);
 const initials = (name: string) => name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase();
 const size = (q: string) => (q.length <= 44 ? 'xl' : q.length <= 120 ? 'lg' : 'md');
 const tilts = [-2.4, 1.6, -1.2, 2.2, -1.8, 1.1, 2.6, -1.5, 1.9, -2.1, 1.4, -1];
@@ -19,6 +22,7 @@ const tilts = [-2.4, 1.6, -1.2, 2.2, -1.8, 1.1, 2.6, -1.5, 1.9, -2.1, 1.4, -1];
     {tweets.map((t, i) => {
         const q = quoteOf(t);
         const avatar = avatarFor(t);
+        const photo = mediaFor(t);
         return (
             <div class="slot">
             <a class:list={['card', size(q), { taped: i % 3 === 1 }]} href={t.url} target="_blank" rel="noopener" style={`--tilt:${tilts[i % tilts.length]}deg`}>
@@ -34,6 +38,7 @@ const tilts = [-2.4, 1.6, -1.2, 2.2, -1.8, 1.1, 2.6, -1.5, 1.9, -2.1, 1.4, -1];
                     <span class="x"><Icons name="x" /></span>
                 </div>
                 <p class="text">{q}</p>
+                {photo && <Image src={photo} alt="" class="photo" widths={[320, 640]} sizes="(max-width: 640px) 90vw, 300px" loading="lazy" />}
             </a>
             </div>
         );
@@ -111,6 +116,15 @@ const tilts = [-2.4, 1.6, -1.2, 2.2, -1.8, 1.1, 2.6, -1.5, 1.9, -2.1, 1.4, -1];
         text-wrap: pretty;
         overflow-wrap: anywhere;
         letter-spacing: -.01em;
+    }
+    .photo {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-top: 14px;
     }
     .xl .text { font-size: 26px; font-weight: 800; line-height: 1.1; letter-spacing: -.03em; color: var(--white); }
     .lg .text { font-size: 18px; font-weight: 600; line-height: 1.3; color: var(--white); }
