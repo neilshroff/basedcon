@@ -20,6 +20,7 @@ const tilts = [-2.4, 1.6, -1.2, 2.2, -1.8, 1.1, 2.6, -1.5, 1.9, -2.1, 1.4, -1];
         const q = quoteOf(t);
         const avatar = avatarFor(t);
         return (
+            <div class="slot">
             <a class:list={['card', size(q), { taped: i % 3 === 1 }]} href={t.url} target="_blank" rel="noopener" style={`--tilt:${tilts[i % tilts.length]}deg`}>
                 <span class="tape" aria-hidden="true"></span>
                 <div class="head">
@@ -34,6 +35,7 @@ const tilts = [-2.4, 1.6, -1.2, 2.2, -1.8, 1.1, 2.6, -1.5, 1.9, -2.1, 1.4, -1];
                 </div>
                 <p class="text">{q}</p>
             </a>
+            </div>
         );
     })}
 </div>
@@ -44,11 +46,13 @@ const tilts = [-2.4, 1.6, -1.2, 2.2, -1.8, 1.1, 2.6, -1.5, 1.9, -2.1, 1.4, -1];
         column-gap: 20px;
         padding: 8px 4px;
     }
+    /* The tape overhangs the card by 8px; the slot's padding keeps that
+       overhang inside the fragment so multicol never paints it in the
+       previous column. */
+    .slot { break-inside: avoid; padding-top: 10px; margin-bottom: 12px; }
     .card {
         position: relative;
         display: block;
-        break-inside: avoid;
-        margin-bottom: 20px;
         padding: 18px 20px 20px;
         background: var(--surface);
         border: 1px solid var(--line);
@@ -114,7 +118,8 @@ const tilts = [-2.4, 1.6, -1.2, 2.2, -1.8, 1.1, 2.6, -1.5, 1.9, -2.1, 1.4, -1];
 
     @media (max-width: 640px) {
         .wall { column-gap: 14px; padding: 6px 2px; }
-        .card { margin-bottom: 14px; padding: 16px 16px 18px; transform: rotate(calc(var(--tilt) * .5)); }
+        .slot { margin-bottom: 8px; }
+        .card { padding: 16px 16px 18px; transform: rotate(calc(var(--tilt) * .5)); }
         .xl .text { font-size: 22px; }
         .lg .text { font-size: 17px; }
     }
