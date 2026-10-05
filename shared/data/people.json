@@ -3,7 +3,10 @@
     "id": "akash-kumar",
     "name": "Akash Kumar",
     "bio": "One-line bio to come",
-    "links": { "x": "https://x.com/aye_kaash", "linkedin": "https://www.linkedin.com/in/kumarakash7/" },
+    "links": {
+      "x": "https://x.com/aye_kaash",
+      "linkedin": "https://www.linkedin.com/in/kumarakash7/"
+    },
     "basedcon": true,
     "bangerlore": true
   },
@@ -11,15 +14,21 @@
     "id": "arnav-bansal",
     "name": "Arnav Bansal",
     "bio": "One-line bio to come",
-    "links": { "x": "https://x.com/itsarnavb", "web": "https://lagrangepoint.org" },
-    "basedcon": true,
+    "links": {
+      "x": "https://x.com/itsarnavb",
+      "web": "https://lagrangepoint.org"
+    },
+    "basedcon": false,
     "bangerlore": true
   },
   {
     "id": "kunal-shroff",
     "name": "Kunal Shroff",
     "bio": "One-line bio to come",
-    "links": { "x": "https://x.com/5hroff", "linkedin": "https://www.linkedin.com/in/kunalshroff19/" },
+    "links": {
+      "x": "https://x.com/5hroff",
+      "linkedin": "https://www.linkedin.com/in/kunalshroff19/"
+    },
     "basedcon": false,
     "bangerlore": true
   },
@@ -27,7 +36,11 @@
     "id": "naman-maheshwari",
     "name": "Naman Maheshwari",
     "bio": "One-line bio to come",
-    "links": { "x": "https://x.com/namanski_", "linkedin": "https://www.linkedin.com/in/namanm17/", "web": "https://namanmaheshwari.com" },
+    "links": {
+      "x": "https://x.com/namanski_",
+      "linkedin": "https://www.linkedin.com/in/namanm17/",
+      "web": "https://namanmaheshwari.com"
+    },
     "basedcon": false,
     "bangerlore": true
   },
@@ -35,7 +48,11 @@
     "id": "neil-shroff",
     "name": "Neil Shroff",
     "bio": "One-line bio to come",
-    "links": { "x": "https://x.com/neilshroff", "linkedin": "https://www.linkedin.com/in/shroffneil/", "web": "https://neilshroff.xyz" },
+    "links": {
+      "x": "https://x.com/neilshroff",
+      "linkedin": "https://www.linkedin.com/in/shroffneil/",
+      "web": "https://neilshroff.xyz"
+    },
     "basedcon": true,
     "bangerlore": true
   },
@@ -43,7 +60,10 @@
     "id": "sarthak-agrawal",
     "name": "Sarthak Agrawal",
     "bio": "One-line bio to come",
-    "links": { "x": "https://x.com/sva_haa", "linkedin": "https://www.linkedin.com/in/sarthakvagrawal/" },
+    "links": {
+      "x": "https://x.com/sva_haa",
+      "linkedin": "https://www.linkedin.com/in/sarthakvagrawal/"
+    },
     "basedcon": false,
     "bangerlore": true
   },
@@ -51,7 +71,10 @@
     "id": "shruthi-badri",
     "name": "Shruthi Badri",
     "bio": "One-line bio to come",
-    "links": { "x": "https://x.com/shruthibadri", "linkedin": "https://www.linkedin.com/in/shruthi-badri/" },
+    "links": {
+      "x": "https://x.com/shruthibadri",
+      "linkedin": "https://www.linkedin.com/in/shruthi-badri/"
+    },
     "basedcon": true,
     "bangerlore": true
   },
@@ -67,7 +90,10 @@
     "id": "srijan-shetty",
     "name": "Srijan Shetty",
     "bio": "One-line bio to come",
-    "links": { "x": "https://x.com/srijanshetty", "linkedin": "https://www.linkedin.com/in/srijanshetty/" },
+    "links": {
+      "x": "https://x.com/srijanshetty",
+      "linkedin": "https://www.linkedin.com/in/srijanshetty/"
+    },
     "basedcon": true,
     "bangerlore": true
   }
