@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Teeth -->
-  <rect x="19" y="50" width="7" height="10" rx="3.5" fill="#C4CDD5"/>
-  <rect x="28.5" y="50" width="7" height="10" rx="3.5" fill="#C4CDD5"/>
-  <rect x="38" y="50" width="7" height="10" rx="3.5" fill="#C4CDD5"/>
-  <!-- Head -->
-  <circle cx="32" cy="30" r="26" fill="#C4CDD5"/>
-  <!-- Sunglasses lenses -->
-  <rect x="8" y="22" width="21" height="14" rx="3" fill="#3D4D5C"/>
-  <rect x="35" y="22" width="21" height="14" rx="3" fill="#3D4D5C"/>
-  <!-- Sunglasses bridge -->
-  <rect x="28" y="26" width="8" height="4" rx="2" fill="#3D4D5C"/>
-  <!-- Nose -->
-  <circle cx="30" cy="43" r="2.5" fill="#3D4D5C"/>
-  <circle cx="34" cy="43" r="2.5" fill="#3D4D5C"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"><rect width="64" height="64" fill="#0a0a0a"/><g transform="translate(13 19.5) scale(0.4222)"><polygon points="0,0 90,0 78,15 0,15" fill="#7a1420"/><polygon points="0,15 78,15 66,30 0,30" fill="#b3202e"/><polygon points="0,30 66,30 54,45 0,45" fill="#e63946"/><polygon points="0,45 54,45 42,60 0,60" fill="#f08a93"/></g></svg>

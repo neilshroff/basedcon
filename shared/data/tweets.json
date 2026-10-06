@@ -8,7 +8,12 @@
     "site": "bangerlore",
     "avatar": "avatars/adadithya.jpg",
     "featured": true,
-    "quote": "15 years in startups, and last night's Bangerlore event was the first where I barely knew two dozen people. A clear changing of guard is underway."
+    "quote": "15 years in startups, and last night's Bangerlore event was the first where I barely knew two dozen people. A clear changing of guard is underway.",
+    "media": "tweet-media/2063580752584003708.jpg",
+    "mediaCount": 1,
+    "likes": 188,
+    "reposts": 0,
+    "replies": 13
   },
   {
     "id": "2064043204497076253",
@@ -17,7 +22,11 @@
     "name": "Yash Bhardwaj",
     "text": "incase you missed it:\n\nwhy people are flying to the bangerlore house party from all over india",
     "site": "bangerlore",
-    "avatar": "avatars/ybhrdwj.jpg"
+    "avatar": "avatars/ybhrdwj.jpg",
+    "likes": 684,
+    "reposts": 0,
+    "replies": 39,
+    "mediaChecked": true
   },
   {
     "id": "2063421564868329915",
@@ -27,7 +36,12 @@
     "text": "annual pilgrimage bangerlore",
     "site": "bangerlore",
     "avatar": "avatars/sparshselim.jpg",
-    "featured": true
+    "featured": true,
+    "media": "tweet-media/2063421564868329915.jpg",
+    "mediaCount": 4,
+    "likes": 121,
+    "reposts": 0,
+    "replies": 3
   },
   {
     "id": "2063832360689471953",
@@ -37,7 +51,12 @@
     "text": "50th bangerlore shall happen on the moon due to capacity constraints in indiranagar",
     "site": "bangerlore",
     "avatar": "avatars/shraddhaha.jpg",
-    "featured": true
+    "featured": true,
+    "media": "tweet-media/2063832360689471953.jpg",
+    "mediaCount": 1,
+    "likes": 152,
+    "reposts": 0,
+    "replies": 8
   },
   {
     "id": "2064564576726007869",
@@ -46,7 +65,13 @@
     "name": "Arth Chandra",
     "text": "I don’t get the lot dunking on Bangerlore?\n\nfor a dude fairly new to the city who moved here knowing nobody, i was lucky enough to spend 5 hours chatting with the most interesting and varied set of people i’ve ever met\n\n- founder of a physical AI company building large scale…",
     "site": "bangerlore",
-    "avatar": "avatars/arth_chandra.jpg"
+    "avatar": "avatars/arth_chandra.jpg",
+    "featured": true,
+    "quote": "I don’t get the lot dunking on Bangerlore. For a dude fairly new to the city who moved here knowing nobody, it was the first room where I met 20 people I actually want to see again.",
+    "likes": 101,
+    "reposts": 0,
+    "replies": 5,
+    "mediaChecked": true
   },
   {
     "id": "2063468197848993939",
@@ -56,7 +81,12 @@
     "text": "bangerlore is 2 hours of saying hi to twitter oomfs",
     "site": "bangerlore",
     "avatar": "avatars/cyrilbhau.jpg",
-    "featured": true
+    "featured": true,
+    "media": "tweet-media/2063468197848993939.jpg",
+    "mediaCount": 1,
+    "likes": 313,
+    "reposts": 0,
+    "replies": 15
   },
   {
     "id": "2064677920887697879",
@@ -65,7 +95,14 @@
     "name": "100M Malayalis 🗽🚃🏙 |🌴🐘🥇",
     "text": "Kochi would give its left arm to host a Bangerlore. Bangalore is super lucky to have startup residency, hacker houses and founder retreats. All of this is due to Bangalore being cosmopolitan. All cities should aspire to be cosmopolitan, and not to be a regionalist ghetto.",
     "site": "bangerlore",
-    "avatar": "avatars/bitcoinmalayali.jpg"
+    "avatar": "avatars/bitcoinmalayali.jpg",
+    "media": "tweet-media/2064677920887697879.jpg",
+    "mediaCount": 1,
+    "featured": true,
+    "quote": "Kochi would give its left arm to host a Bangerlore. Bangalore is super lucky to have startup residency, hacker houses and a party like this in one city.",
+    "likes": 44,
+    "reposts": 0,
+    "replies": 9
   },
   {
     "id": "2063546733528056007",
@@ -76,7 +113,11 @@
     "site": "bangerlore",
     "avatar": "avatars/aryanmadhaverma.jpg",
     "featured": true,
-    "quote": "The energy at the bangerlore party was insane. Felt good to meet so many folks building in deep tech from India."
+    "quote": "The energy at the bangerlore party was insane. Felt good to meet so many folks building in deep tech from India.",
+    "likes": 50,
+    "reposts": 0,
+    "replies": 0,
+    "mediaChecked": true
   },
   {
     "id": "2064614406450041163",
@@ -85,7 +126,14 @@
     "name": "Priyanshu Ratnakar",
     "text": "one of the coolest thing i found at bangerlore v5 was.@usefaff running an IRL concierge.\n\nget charger, power bank, lighter, book my cab lmao",
     "site": "bangerlore",
-    "avatar": "avatars/0xratnakar.jpg"
+    "avatar": "avatars/0xratnakar.jpg",
+    "featured": true,
+    "quote": "One of the coolest things at bangerlore v5 was @usefaff running an IRL concierge. Get charger, power bank, anything, in minutes.",
+    "media": "tweet-media/2064614406450041163.jpg",
+    "mediaCount": 2,
+    "likes": 126,
+    "reposts": 0,
+    "replies": 8
   },
   {
     "id": "2003514063243084095",
@@ -94,7 +142,11 @@
     "name": "Shruthi",
     "text": "sad to see this take from another builder...\n\npeople who have been to bangerlore are:\n- building autonomous drones and planes\n- making AR glasses\n- rethinking how medical care works and creating hospital networks\n- building critical financial infrastructure\n- measuring…",
     "site": "bangerlore",
-    "avatar": "avatars/shruthibadri.jpg"
+    "avatar": "avatars/shruthibadri.jpg",
+    "likes": 126,
+    "reposts": 0,
+    "replies": 7,
+    "mediaChecked": true
   },
   {
     "id": "2063240428292628509",
@@ -103,7 +155,13 @@
     "name": "Nikhil",
     "text": "The social network hacking scene but make it Bangerlore",
     "site": "bangerlore",
-    "avatar": "avatars/curlsondaboard.jpg"
+    "avatar": "avatars/curlsondaboard.jpg",
+    "featured": true,
+    "media": "tweet-media/2063240428292628509.jpg",
+    "mediaCount": 1,
+    "likes": 85,
+    "reposts": 0,
+    "replies": 3
   },
   {
     "id": "2063999413534806126",
@@ -113,7 +171,12 @@
     "text": "loremaxxing at bangerlore",
     "site": "bangerlore",
     "avatar": "avatars/v1dcam.jpg",
-    "featured": true
+    "featured": true,
+    "media": "tweet-media/2063999413534806126.jpg",
+    "mediaCount": 4,
+    "likes": 752,
+    "reposts": 0,
+    "replies": 47
   },
   {
     "id": "2002338032113103047",
@@ -124,7 +187,12 @@
     "site": "bangerlore",
     "avatar": "avatars/ybhrdwj.jpg",
     "featured": true,
-    "quote": "I couldn’t explain to my bombay friends that I’m flying to blr for a single day to attend this party called bangerlore."
+    "quote": "I couldn’t explain to my bombay friends that I’m flying to blr for a single day to attend this party called bangerlore.",
+    "media": "tweet-media/2002338032113103047.jpg",
+    "mediaCount": 2,
+    "likes": 120,
+    "reposts": 0,
+    "replies": 6
   },
   {
     "id": "2063398103085207923",
@@ -133,7 +201,14 @@
     "name": "Aryan Pahwani",
     "text": "Bangerlore v5 was wild - crazy fun! Met some amazing people doing quite cool stuff.\n\nTons of hardware folks btw! Observation: VJTI Robotics talent seems to be hella insane lmaoo\n\nThanks y'all, was hella fun :))",
     "site": "bangerlore",
-    "avatar": "avatars/aryanpahwani.jpg"
+    "avatar": "avatars/aryanpahwani.jpg",
+    "featured": true,
+    "quote": "Bangerlore v5 was wild. Met some amazing people doing quite cool stuff. Tons of hardware folks this time.",
+    "media": "tweet-media/2063398103085207923.jpg",
+    "mediaCount": 1,
+    "likes": 50,
+    "reposts": 0,
+    "replies": 3
   },
   {
     "id": "2063358834752856409",
@@ -144,7 +219,12 @@
     "site": "bangerlore",
     "avatar": "avatars/tarini_axory.jpg",
     "featured": true,
-    "quote": "Bangerlore was genuinely more high signal than any SF party/networking event I've been to."
+    "quote": "Bangerlore was genuinely more high signal than any SF party/networking event I've been to.",
+    "media": "tweet-media/2063358834752856409.jpg",
+    "mediaCount": 1,
+    "likes": 114,
+    "reposts": 0,
+    "replies": 3
   },
   {
     "id": "2064006791734931958",
@@ -153,7 +233,12 @@
     "name": "Arun Kai",
     "text": "on bangerlore hate\n\ni saw @curlsondaboard and @usefaff folks running around the entire time to ensure everything's running smoothly@neilshroff and the hosts welcoming over 300 super passionate folks into the space\n\ntry doing it at this scale, I dare you",
     "site": "bangerlore",
-    "avatar": "avatars/arunkai_.jpg"
+    "avatar": "avatars/arunkai_.jpg",
+    "media": "tweet-media/2064006791734931958.jpg",
+    "mediaCount": 1,
+    "likes": 72,
+    "reposts": 0,
+    "replies": 7
   },
   {
     "id": "2063320349027319993",
@@ -162,7 +247,11 @@
     "name": "sarthak",
     "text": "the 5th bangerlore is happening in indiranagar.\n\nthe 50th bangerlore shall happen on the moon",
     "site": "bangerlore",
-    "avatar": "avatars/sva_haa.jpg"
+    "avatar": "avatars/sva_haa.jpg",
+    "likes": 119,
+    "reposts": 0,
+    "replies": 3,
+    "mediaChecked": true
   },
   {
     "id": "1936702187671056436",
@@ -172,7 +261,12 @@
     "text": "full house at bangerlore last night!\n\nturned my room into a shoe box. totally worth it",
     "site": "bangerlore",
     "avatar": "avatars/khushhhi_.jpg",
-    "featured": true
+    "featured": true,
+    "media": "tweet-media/1936702187671056436.jpg",
+    "mediaCount": 2,
+    "likes": 852,
+    "reposts": 0,
+    "replies": 28
   },
   {
     "id": "2063389036375650734",
@@ -182,7 +276,11 @@
     "text": "bangerlore was the longest most of the people there have spent away from their computers. mixed results.",
     "site": "bangerlore",
     "avatar": "avatars/aashnainindia.jpg",
-    "featured": true
+    "featured": true,
+    "likes": 122,
+    "reposts": 0,
+    "replies": 8,
+    "mediaChecked": true
   },
   {
     "id": "2063551244749144271",
@@ -191,7 +289,14 @@
     "name": "AML",
     "text": "Thousands of miles away, on another continent, and somehow people 𝐚𝐭 𝐭𝐡𝐞 𝐛𝐞𝐬𝐭 𝐭𝐞𝐜𝐡 𝐩𝐚𝐫𝐭𝐲 𝐢𝐧 𝐁𝐚𝐧𝐠𝐚𝐥𝐨𝐫𝐞 still found a way to make me smile.\n\n“𝑊𝑒 𝑚𝑖𝑠𝑠𝑒𝑑 𝑦𝑜𝑢. 𝐸𝑣𝑒𝑟𝑦𝑜𝑛𝑒 𝑘𝑒𝑝𝑡 𝑎𝑠𝑘𝑖𝑛𝑔 𝑎𝑏𝑜𝑢𝑡 𝑦𝑜𝑢.”\n\nHonestly, that’s a pretty…",
     "site": "bangerlore",
-    "avatar": "avatars/alysha_lobo.jpg"
+    "avatar": "avatars/alysha_lobo.jpg",
+    "media": "tweet-media/2063551244749144271.jpg",
+    "mediaCount": 3,
+    "featured": true,
+    "quote": "Thousands of miles away, on another continent, and somehow people at the best tech party in Bangalore still found a way to make me smile. “We missed you. Everyone kept asking about you.”",
+    "likes": 18,
+    "reposts": 0,
+    "replies": 1
   },
   {
     "id": "2003775892825190898",
@@ -200,7 +305,13 @@
     "name": "Srijan R Shetty",
     "text": "On Bangerlore.\n\nWas it performative? Probably.\n\nWas there gatekeeping? Maybe.\n\nIt was a lame party full of lame people having lame fun.\n\nYou should definitely host a better party with better people, and better vibes.\n\nThat being said,\n\nYou don't need to second-guess everything;…",
     "site": "bangerlore",
-    "avatar": "avatars/srijanshetty.jpg"
+    "avatar": "avatars/srijanshetty.jpg",
+    "featured": true,
+    "quote": "On Bangerlore. Was it performative? Probably. Was there gatekeeping? Maybe. It was a lame party by any conventional definition. And yet it was one of the best nights of the year.",
+    "likes": 130,
+    "reposts": 0,
+    "replies": 9,
+    "mediaChecked": true
   },
   {
     "id": "2003831059704861081",
@@ -211,7 +322,11 @@
     "site": "bangerlore",
     "avatar": "avatars/dhanuzch.jpg",
     "featured": true,
-    "quote": "The first angel check for my company came from bangerlore. In a way, bangerlore gave birth to my company."
+    "quote": "The first angel check for my company came from bangerlore. In a way, bangerlore gave birth to my company.",
+    "likes": 70,
+    "reposts": 0,
+    "replies": 0,
+    "mediaChecked": true
   },
   {
     "id": "2064014484189184502",
@@ -220,7 +335,13 @@
     "name": "Sidu Ponnappa",
     "text": "back when we used to do house parties, i had a simple rule - no photos\n\nno worth the hassle\n\nsaying this as someone who hated on the last bangerlore sm lineup 6 months ago before being corrected by people whose taste i trust that it was a legit good party",
     "site": "bangerlore",
-    "avatar": "avatars/ponnappa.jpg"
+    "avatar": "avatars/ponnappa.jpg",
+    "featured": true,
+    "quote": "Saying this as someone who hated on the last Bangerlore lineup six months ago, before being corrected by people whose taste I trust that it was a legit good party.",
+    "likes": 57,
+    "reposts": 0,
+    "replies": 3,
+    "mediaChecked": true
   },
   {
     "id": "2063508045465068020",
@@ -229,7 +350,13 @@
     "name": "gaurang.py",
     "text": "met some insane folks at bangerlore party yesterday. one common factor among them is that all of them liked fmble.",
     "site": "bangerlore",
-    "avatar": "avatars/gauranggujrati.jpg"
+    "avatar": "avatars/gauranggujrati.jpg",
+    "featured": true,
+    "quote": "Met some insane folks at the bangerlore party yesterday. One common factor among them: all of them liked FMCG.",
+    "likes": 36,
+    "reposts": 0,
+    "replies": 3,
+    "mediaChecked": true
   },
   {
     "id": "2003544887485169934",
@@ -238,7 +365,12 @@
     "name": "Sparsh Agarwal",
     "text": "for those outraging at bangerlore by @neilshroff and co— a party by definition involves invites. anyone who doesn’t like it should host an anti-bangerlore. but knowing Indian twitter, someone will be pissed about that too calling it “gatekeepy.”\n\nI wonder whether bdays will also…",
     "site": "bangerlore",
-    "avatar": "avatars/sparshselim.jpg"
+    "avatar": "avatars/sparshselim.jpg",
+    "media": "tweet-media/2003544887485169934.jpg",
+    "mediaCount": 1,
+    "likes": 27,
+    "reposts": 0,
+    "replies": 2
   },
   {
     "id": "2002720381346730000",
@@ -248,7 +380,12 @@
     "text": "Bangerlore v4: You just had to be there 🪩💫",
     "site": "bangerlore",
     "avatar": "avatars/ishanspatil.jpg",
-    "featured": true
+    "featured": true,
+    "media": "tweet-media/2002720381346730000.jpg",
+    "mediaCount": 4,
+    "likes": 191,
+    "reposts": 0,
+    "replies": 8
   },
   {
     "id": "2063921661234290883",
@@ -257,7 +394,12 @@
     "name": "vai",
     "text": "from bangerlore v5\n\nalso can someone in blr lend me a dynamic / condenser microphone for a day if you have one, would be awesome!",
     "site": "bangerlore",
-    "avatar": "avatars/whynotvai.jpg"
+    "avatar": "avatars/whynotvai.jpg",
+    "media": "tweet-media/2063921661234290883.jpg",
+    "mediaCount": 3,
+    "likes": 114,
+    "reposts": 0,
+    "replies": 3
   },
   {
     "id": "2063696762003697917",
@@ -266,6 +408,12 @@
     "name": "Akshita",
     "text": "Bangerlore was so much fun.\n\nThanks @namanski_ @neilshroff @5hroff @aye_kaash Shruthi @sva_haa @srijanshetty and Arnav for hosting this.\n\nCrazy how much work went into this behind the scenes to make it the banger that it was.",
     "site": "bangerlore",
-    "avatar": "avatars/keylimepie2000.jpg"
+    "avatar": "avatars/keylimepie2000.jpg",
+    "media": "tweet-media/2063696762003697917.jpg",
+    "mediaCount": 2,
+    "featured": true,
+    "likes": 227,
+    "reposts": 0,
+    "replies": 10
   }
 ]

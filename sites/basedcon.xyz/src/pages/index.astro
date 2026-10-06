@@ -8,7 +8,7 @@ import Modals from '../components/Modals.astro';
 import Icons from '../components/Icons.astro';
 import site from '../data/site.json';
 
-import Lightbox from '../components/Lightbox.astro';
+import Lightbox from '@sites/shared/components/Lightbox.astro';
 import type { ImageMetadata } from 'astro';
 
 const files = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.{png,jpg,jpeg}', { eager: true });
@@ -73,11 +73,7 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
             <p class="summary">Invite-only, closed-door, since 2023.<br />5 speakers, up to 25 interruptors, Chatham house rules</p>
             <div class="ctas">
                 <button type="button" class="btn" data-open-invite>Join the next event</button>
-                {links.pastGuestsDoc ? (
-                    <a href={links.pastGuestsDoc} class="btn btn-outline" target="_blank" rel="noopener" title="Opens a Google Doc">View past guests <Icons name="external" /></a>
-                ) : (
-                    <a href="#" class="btn btn-outline" title="Opens a Google Doc" aria-disabled="true">View past guests <Icons name="external" /></a>
-                )}
+                <a href={links.pastGuestsDoc} class="btn btn-outline" target="_blank" rel="noopener" title="Opens a Google Doc">View past guests <Icons name="external" /></a>
             </div>
         </div>
 

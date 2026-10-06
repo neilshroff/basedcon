@@ -2,29 +2,50 @@
   {
     "id": "akash-kumar",
     "name": "Akash Kumar",
-    "bio": "Economics author, founder of Raaz",
+    "bio": "economics author · founder, ",
     "links": {
       "x": "https://x.com/aye_kaash",
       "linkedin": "https://www.linkedin.com/in/kumarakash7/"
     },
     "basedcon": true,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "raaz",
+      "url": "https://raaz.app"
+    }
+  },
+  {
+    "id": "anirudh-mittal",
+    "name": "Anirudh Mittal",
+    "bio": "founder & ceo, ",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/anirudh-mittal-b9243a167/"
+    },
+    "basedcon": false,
+    "bangerlore": true,
+    "company": {
+      "name": "faff",
+      "url": "https://usefaff.com"
+    }
   },
   {
     "id": "arnav-bansal",
     "name": "Arnav Bansal",
-    "bio": "One-line bio to come",
+    "bio": "engineer, hacker · ",
     "links": {
-      "x": "https://x.com/itsarnavb",
-      "web": "https://lagrangepoint.org"
+      "x": "https://x.com/itsarnavb"
     },
     "basedcon": false,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "lagrangepoint",
+      "url": "https://lagrangepoint.org"
+    }
   },
   {
     "id": "kunal-shroff",
     "name": "Kunal Shroff",
-    "bio": "One-line bio to come",
+    "bio": "chartered accountant · founder, stealth consumer co",
     "links": {
       "x": "https://x.com/5hroff",
       "linkedin": "https://www.linkedin.com/in/kunalshroff19/"
@@ -35,19 +56,23 @@
   {
     "id": "naman-maheshwari",
     "name": "Naman Maheshwari",
-    "bio": "One-line bio to come",
+    "bio": "strategic initiatives, ",
     "links": {
       "x": "https://x.com/namanski_",
       "linkedin": "https://www.linkedin.com/in/namanm17/",
       "web": "https://namanmaheshwari.com"
     },
     "basedcon": false,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "lyric",
+      "url": "https://www.lyric.ai/"
+    }
   },
   {
     "id": "neil-shroff",
     "name": "Neil Shroff",
-    "bio": "One-line bio to come",
+    "bio": "lawyer, investor, organizer",
     "links": {
       "x": "https://x.com/neilshroff",
       "linkedin": "https://www.linkedin.com/in/shroffneil/",
@@ -59,29 +84,37 @@
   {
     "id": "sarthak-agrawal",
     "name": "Sarthak Agrawal",
-    "bio": "One-line bio to come",
+    "bio": "investment associate (ai & deeptech), ",
     "links": {
       "x": "https://x.com/sva_haa",
       "linkedin": "https://www.linkedin.com/in/sarthakvagrawal/"
     },
     "basedcon": false,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "peak xv",
+      "url": "https://www.peakxv.com/"
+    }
   },
   {
     "id": "shruthi-badri",
     "name": "Shruthi Badri",
-    "bio": "One-line bio to come",
+    "bio": "founder & cto, ",
     "links": {
       "x": "https://x.com/shruthibadri",
       "linkedin": "https://www.linkedin.com/in/shruthi-badri/"
     },
     "basedcon": true,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "zamana",
+      "url": "https://zamana.com"
+    }
   },
   {
     "id": "spencer-schneier",
     "name": "Spencer Schneier",
-    "bio": "One-line bio to come",
+    "bio": "",
     "links": {
       "x": "https://x.com/spenceraviav",
       "linkedin": "https://www.linkedin.com/in/spencerschneier/"
@@ -92,12 +125,16 @@
   {
     "id": "srijan-shetty",
     "name": "Srijan Shetty",
-    "bio": "One-line bio to come",
+    "bio": "founder & cto, ",
     "links": {
       "x": "https://x.com/srijanshetty",
       "linkedin": "https://www.linkedin.com/in/srijanshetty/"
     },
     "basedcon": true,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "fuze",
+      "url": "https://fuze.finance"
+    }
   }
 ]
