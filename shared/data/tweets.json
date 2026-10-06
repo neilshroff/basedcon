@@ -26,7 +26,9 @@
     "likes": 684,
     "reposts": 0,
     "replies": 39,
-    "mediaChecked": true
+    "mediaChecked": true,
+    "featured": true,
+    "quote": "Why people are flying to the bangerlore house party from all over India."
   },
   {
     "id": "2063421564868329915",
@@ -146,7 +148,9 @@
     "likes": 126,
     "reposts": 0,
     "replies": 7,
-    "mediaChecked": true
+    "mediaChecked": true,
+    "featured": true,
+    "quote": "People who have been to bangerlore are building autonomous drones and planes, making AR glasses, rethinking how medical care works, building critical financial infrastructure."
   },
   {
     "id": "2063240428292628509",
@@ -238,7 +242,9 @@
     "mediaCount": 1,
     "likes": 72,
     "reposts": 0,
-    "replies": 7
+    "replies": 7,
+    "featured": true,
+    "quote": "I saw @curlsondaboard and @usefaff folks running around the entire time to make sure everything ran smoothly, and the hosts welcoming over 300 super passionate people into the space. Try doing it at this scale, I dare you."
   },
   {
     "id": "2063320349027319993",
@@ -251,7 +257,9 @@
     "likes": 119,
     "reposts": 0,
     "replies": 3,
-    "mediaChecked": true
+    "mediaChecked": true,
+    "featured": true,
+    "quote": "The 5th bangerlore is happening in Indiranagar. The 50th bangerlore shall happen on the moon."
   },
   {
     "id": "1936702187671056436",
@@ -370,7 +378,9 @@
     "mediaCount": 1,
     "likes": 27,
     "reposts": 0,
-    "replies": 2
+    "replies": 2,
+    "featured": true,
+    "quote": "A party by definition involves invites. Anyone who doesn’t like it should host an anti-bangerlore. But knowing Indian twitter, someone will be pissed about that too, calling it “gatekeepy.”"
   },
   {
     "id": "2002720381346730000",
@@ -399,7 +409,9 @@
     "mediaCount": 3,
     "likes": 114,
     "reposts": 0,
-    "replies": 3
+    "replies": 3,
+    "featured": true,
+    "quote": "From bangerlore v5."
   },
   {
     "id": "2063696762003697917",
