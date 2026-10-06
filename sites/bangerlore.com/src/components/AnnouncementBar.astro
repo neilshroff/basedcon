@@ -3,7 +3,9 @@ import site from '../data/site.json';
 const { announcement } = site;
 ---
 
-<a href={announcement.href} class="announce">{announcement.text} &nbsp;{announcement.cta}</a>
+<a href={announcement.href} class="announce" data-open-attend={announcement.opensAttend ? '' : undefined}>
+    {announcement.text} &nbsp;{announcement.cta}
+</a>
 
 <style>
     .announce {
