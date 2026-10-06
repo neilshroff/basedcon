@@ -49,6 +49,18 @@ Same pattern: "Want to attend?" POSTs to `/api/attend`, stored under `attend/` i
 
 Site copy, editions, sponsors and tweets live in `sites/bangerlore.com/src/data/site.json`.
 
+## Tweets
+
+`shared/data/tweets.json` lists the tweets shown on the Bangerlore home. To add one, append
+`{ "id", "handle", "url", "site": "bangerlore" }` and run, locally (X blocks server fetches):
+
+```
+node scripts/fetch-tweets.mjs        # fills text, name, avatar
+node scripts/fetch-tweet-media.mjs   # saves the attached photo, if any
+```
+
+Set `"featured": true` to show it on the wall; `"quote"` overrides the displayed text.
+
 ## People (hosts / conspirators)
 
 One list for both sites: `shared/data/people.json`. Each person has `basedcon` and `bangerlore`

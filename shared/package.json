@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     "./people": "./people.ts",
-    "./tweets": "./tweets.ts"
+    "./tweets": "./tweets.ts",
+    "./components/*": "./components/*"
   }
 }
