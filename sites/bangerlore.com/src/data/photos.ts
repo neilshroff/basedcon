@@ -14,7 +14,7 @@ const g = (name: string) => {
 export const photos = [
     { src: g('1.jpeg'), alt: 'Bangerlore, early evening' },
     { src: g('v4-3460.jpg'), alt: 'Under the flag, Bangerlore v4' },
-    { src: g('v3-33.jpg'), alt: 'Disco ball' },
+    { src: g('v3-146.jpg'), alt: 'Under the gazebo' },
 
     { src: g('v4-3463.jpg'), alt: 'Faff crew' },
     { src: g('v3-12.jpg'), alt: 'Hacking under the gazebo' },
@@ -32,7 +32,6 @@ export const photos = [
     { src: g('v3-7.jpg'), alt: 'Laptops on the terrace' },
     { src: g('v4-3451.jpg'), alt: 'The terrace at night' },
 
-    { src: g('v3-146.jpg'), alt: 'Under the gazebo' },
     { src: g('3.jpeg'), alt: 'Bangerlore party' },
     { src: g('v4-3509.jpg'), alt: 'Two friends' },
     { src: g('v3-74.jpg'), alt: 'The room from above' },
