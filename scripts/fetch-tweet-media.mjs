@@ -1,7 +1,8 @@
 // Downloads the first attached photo of each tweet in shared/data/tweets.json
-// into shared/data/tweet-media/ and records it as `media` on the entry.
-// Uses X's public syndication endpoint (no API key). Needs network access
-// to x.com; run locally: `node scripts/fetch-tweet-media.mjs`
+// into shared/data/tweet-media/, and records likes / reposts / replies on
+// the entry. Uses X's public syndication endpoint (no API key). Needs
+// network access to x.com; run locally: `node scripts/fetch-tweet-media.mjs`
+// Pass --stats to refresh counts for every tweet (photos are kept).
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
@@ -13,11 +14,14 @@ await mkdir(dir, { recursive: true });
 
 // The syndication endpoint wants a short token derived from the id.
 const token = (id) => ((Number(id) / 1e15) * Math.PI).toString(36).replace(/(0+|\.)/g, '');
+const force = process.argv.includes('--force');
+const statsOnly = process.argv.includes('--stats');
 
 const tweets = JSON.parse(await readFile(file, 'utf8'));
 let found = 0;
 for (const t of tweets) {
-    if (t.media && !process.argv.includes('--force')) { found++; continue; }
+    const haveMedia = 'media' in t || t.mediaChecked;
+    if (haveMedia && t.likes !== undefined && !force && !statsOnly) { if (t.media) found++; continue; }
     const url = `https://cdn.syndication.twimg.com/tweet-result?id=${t.id}&token=${token(t.id)}`;
     let data;
     try {
@@ -28,17 +32,27 @@ for (const t of tweets) {
         console.warn(`! ${t.handle}: ${e.message}`);
         continue;
     }
-    const photos = (data.mediaDetails ?? []).filter((m) => m.type === 'photo');
-    if (!photos.length) { console.log(`- ${t.handle}: no photo`); delete t.media; continue; }
-    const src = photos[0].media_url_https.replace(/\.(jpg|png)$/, '') + '?format=jpg&name=large';
-    const img = await fetch(src);
-    if (!img.ok) { console.warn(`! ${t.handle}: media HTTP ${img.status}`); continue; }
-    const name = `${t.id}.jpg`;
-    await writeFile(path.join(dir, name), Buffer.from(await img.arrayBuffer()));
-    t.media = `tweet-media/${name}`;
-    t.mediaCount = photos.length;
-    found++;
-    console.log(`✓ ${t.handle}: ${photos.length} photo${photos.length > 1 ? 's' : ''} (saved first)`);
+
+    t.likes = data.favorite_count ?? 0;
+    t.reposts = (data.retweet_count ?? 0) + (data.quote_count ?? 0);
+    t.replies = data.conversation_count ?? 0;
+
+    if (!t.media && (!haveMedia || force)) {
+        const photos = (data.mediaDetails ?? []).filter((m) => m.type === 'photo');
+        if (photos.length) {
+            const src = photos[0].media_url_https.replace(/\.(jpg|png)$/, '') + '?format=jpg&name=large';
+            const img = await fetch(src);
+            if (img.ok) {
+                const name = `${t.id}.jpg`;
+                await writeFile(path.join(dir, name), Buffer.from(await img.arrayBuffer()));
+                t.media = `tweet-media/${name}`;
+                t.mediaCount = photos.length;
+            }
+        }
+        t.mediaChecked = true;
+    }
+    if (t.media) found++;
+    console.log(`✓ ${t.handle}: ♥ ${t.likes}  ⟳ ${t.reposts}  ↩ ${t.replies}${t.media ? '  📷' : ''}`);
 }
 
 await writeFile(file, JSON.stringify(tweets, null, 2) + '\n');

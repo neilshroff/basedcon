@@ -52,7 +52,9 @@
     "name": "Arth Chandra",
     "text": "I don’t get the lot dunking on Bangerlore?\n\nfor a dude fairly new to the city who moved here knowing nobody, i was lucky enough to spend 5 hours chatting with the most interesting and varied set of people i’ve ever met\n\n- founder of a physical AI company building large scale…",
     "site": "bangerlore",
-    "avatar": "avatars/arth_chandra.jpg"
+    "avatar": "avatars/arth_chandra.jpg",
+    "featured": true,
+    "quote": "I don’t get the lot dunking on Bangerlore. For a dude fairly new to the city who moved here knowing nobody, it was the first room where I met 20 people I actually want to see again."
   },
   {
     "id": "2063468197848993939",
@@ -75,7 +77,9 @@
     "site": "bangerlore",
     "avatar": "avatars/bitcoinmalayali.jpg",
     "media": "tweet-media/2064677920887697879.jpg",
-    "mediaCount": 1
+    "mediaCount": 1,
+    "featured": true,
+    "quote": "Kochi would give its left arm to host a Bangerlore. Bangalore is super lucky to have startup residency, hacker houses and a party like this in one city."
   },
   {
     "id": "2063546733528056007",
@@ -224,7 +228,9 @@
     "site": "bangerlore",
     "avatar": "avatars/alysha_lobo.jpg",
     "media": "tweet-media/2063551244749144271.jpg",
-    "mediaCount": 3
+    "mediaCount": 3,
+    "featured": true,
+    "quote": "Thousands of miles away, on another continent, and somehow people at the best tech party in Bangalore still found a way to make me smile. “We missed you. Everyone kept asking about you.”"
   },
   {
     "id": "2003775892825190898",
@@ -233,7 +239,9 @@
     "name": "Srijan R Shetty",
     "text": "On Bangerlore.\n\nWas it performative? Probably.\n\nWas there gatekeeping? Maybe.\n\nIt was a lame party full of lame people having lame fun.\n\nYou should definitely host a better party with better people, and better vibes.\n\nThat being said,\n\nYou don't need to second-guess everything;…",
     "site": "bangerlore",
-    "avatar": "avatars/srijanshetty.jpg"
+    "avatar": "avatars/srijanshetty.jpg",
+    "featured": true,
+    "quote": "On Bangerlore. Was it performative? Probably. Was there gatekeeping? Maybe. It was a lame party by any conventional definition. And yet it was one of the best nights of the year."
   },
   {
     "id": "2003831059704861081",
@@ -253,7 +261,9 @@
     "name": "Sidu Ponnappa",
     "text": "back when we used to do house parties, i had a simple rule - no photos\n\nno worth the hassle\n\nsaying this as someone who hated on the last bangerlore sm lineup 6 months ago before being corrected by people whose taste i trust that it was a legit good party",
     "site": "bangerlore",
-    "avatar": "avatars/ponnappa.jpg"
+    "avatar": "avatars/ponnappa.jpg",
+    "featured": true,
+    "quote": "Saying this as someone who hated on the last Bangerlore lineup six months ago, before being corrected by people whose taste I trust that it was a legit good party."
   },
   {
     "id": "2063508045465068020",
@@ -262,7 +272,9 @@
     "name": "gaurang.py",
     "text": "met some insane folks at bangerlore party yesterday. one common factor among them is that all of them liked fmble.",
     "site": "bangerlore",
-    "avatar": "avatars/gauranggujrati.jpg"
+    "avatar": "avatars/gauranggujrati.jpg",
+    "featured": true,
+    "quote": "Met some insane folks at the bangerlore party yesterday. One common factor among them: all of them liked FMCG."
   },
   {
     "id": "2003544887485169934",
@@ -307,6 +319,7 @@
     "site": "bangerlore",
     "avatar": "avatars/keylimepie2000.jpg",
     "media": "tweet-media/2063696762003697917.jpg",
-    "mediaCount": 2
+    "mediaCount": 2,
+    "featured": true
   }
 ]
