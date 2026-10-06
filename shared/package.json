@@ -6,6 +6,7 @@
   "exports": {
     "./people": "./people.ts",
     "./tweets": "./tweets.ts",
-    "./components/*": "./components/*"
+    "./components/*": "./components/*",
+    "./notify": "./notify.ts"
   }
 }

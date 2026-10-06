@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { put } from '@vercel/blob';
+import { notify } from '@sites/shared/notify';
 
 export const prerender = false;
 
@@ -77,6 +78,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         console.error('attend: blob put failed', err);
         return json({ error: 'Could not save your request. Please try again.' }, 500);
     }
+
+    await notify({ site: 'Bangerlore', kind: 'attend request', event: edition, name, email, bio, url: url || null, referrer: record.referrer, id });
 
     return json({ ok: true, id });
 };
