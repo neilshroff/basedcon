@@ -2,9 +2,10 @@
   "title": "Bangerlore — hosting tech parties we'd want to be attendees at",
   "description": "Invite-only house party, Bangalore, twice a year since 2024. ~300 vetted people, 4PM to 4AM.",
   "announcement": {
-    "text": "Thank you for coming to Bangerlore v5!",
-    "cta": "Pictures here →",
-    "href": "https://partiful.com/e/qQ5j2mNkpfIittsNo34X?c=pi741r-6"
+    "text": "Bangerlore v6: Bangalore, 28 November.",
+    "cta": "Want to attend? →",
+    "href": "#attend",
+    "opensAttend": true
   },
   "nextEdition": {
     "label": "v6",
