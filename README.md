@@ -49,6 +49,17 @@ Same pattern: "Want to attend?" POSTs to `/api/attend`, stored under `attend/` i
 
 Site copy, editions, sponsors and tweets live in `sites/bangerlore.com/src/data/site.json`.
 
+## Email notifications
+
+Both forms also email the organizers through Resend (`shared/notify.ts`); the submission is
+saved first, so a mail failure never loses a request. Each project needs three env vars:
+
+- `RESEND_API_KEY` — from resend.com
+- `NOTIFY_TO` — recipient(s), comma-separated
+- `NOTIFY_FROM` — a verified sender, e.g. `Basedcon <hello@basedcon.xyz>`
+
+Subjects are tagged `[Basedcon]` / `[Bangerlore]` and Reply-To is the requester.
+
 ## Tweets
 
 `shared/data/tweets.json` lists the tweets shown on the Bangerlore home. To add one, append
