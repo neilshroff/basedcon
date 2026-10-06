@@ -28,7 +28,7 @@ const { sponsors, links, nextEdition } = site;
                 {hosts.map((h) => (
                     <div class="host">
                         <span class="name">{h.name}</span>
-                        <span class="bio">{h.bio}</span>
+                        <span class="bio">{h.bio}{h.company && <a href={h.company.url} class="company" target="_blank" rel="noopener">{h.company.name}</a>}</span>
                         <div class="host-links">
                             {h.linkList.map((l) => <a href={l.href}>{l.label}</a>)}
                         </div>
@@ -89,6 +89,8 @@ const { sponsors, links, nextEdition } = site;
     }
     .name { font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--white); white-space: nowrap; }
     .bio { font-size: 14px; color: var(--ink-2); line-height: 1.4; text-wrap: pretty; min-width: 0; }
+    .company { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-soft); }
+    .company:hover { color: var(--red); text-decoration-color: var(--red); }
     .host-links { display: flex; gap: 14px; font-size: 13px; white-space: nowrap; }
     .host-links a { color: var(--ink-2); }
     .host-links a:hover { color: var(--red); }

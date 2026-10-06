@@ -2,36 +2,45 @@
   {
     "id": "akash-kumar",
     "name": "Akash Kumar",
-    "bio": "economics author · founder, raaz",
+    "bio": "economics author · founder, ",
     "links": {
       "x": "https://x.com/aye_kaash",
-      "linkedin": "https://www.linkedin.com/in/kumarakash7/",
-      "web": "https://raaz.app"
+      "linkedin": "https://www.linkedin.com/in/kumarakash7/"
     },
     "basedcon": true,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "raaz",
+      "url": "https://raaz.app"
+    }
   },
   {
     "id": "anirudh-mittal",
     "name": "Anirudh Mittal",
-    "bio": "founder & ceo, faff",
+    "bio": "founder & ceo, ",
     "links": {
-      "web": "https://usefaff.com",
       "linkedin": "https://www.linkedin.com/in/anirudh-mittal-b9243a167/"
     },
     "basedcon": false,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "faff",
+      "url": "https://usefaff.com"
+    }
   },
   {
     "id": "arnav-bansal",
     "name": "Arnav Bansal",
-    "bio": "engineer, hacker · lagrangepoint",
+    "bio": "engineer, hacker · ",
     "links": {
-      "x": "https://x.com/itsarnavb",
-      "web": "https://lagrangepoint.org"
+      "x": "https://x.com/itsarnavb"
     },
     "basedcon": false,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "lagrangepoint",
+      "url": "https://lagrangepoint.org"
+    }
   },
   {
     "id": "kunal-shroff",
@@ -47,14 +56,18 @@
   {
     "id": "naman-maheshwari",
     "name": "Naman Maheshwari",
-    "bio": "strategic initiatives, lyric",
+    "bio": "strategic initiatives, ",
     "links": {
       "x": "https://x.com/namanski_",
       "linkedin": "https://www.linkedin.com/in/namanm17/",
       "web": "https://namanmaheshwari.com"
     },
     "basedcon": false,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "lyric",
+      "url": "https://www.lyric.ai/"
+    }
   },
   {
     "id": "neil-shroff",
@@ -71,26 +84,32 @@
   {
     "id": "sarthak-agrawal",
     "name": "Sarthak Agrawal",
-    "bio": "investment associate (ai & deeptech), peak xv",
+    "bio": "investment associate (ai & deeptech), ",
     "links": {
       "x": "https://x.com/sva_haa",
-      "linkedin": "https://www.linkedin.com/in/sarthakvagrawal/",
-      "web": "https://www.peakxv.com/"
+      "linkedin": "https://www.linkedin.com/in/sarthakvagrawal/"
     },
     "basedcon": false,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "peak xv",
+      "url": "https://www.peakxv.com/"
+    }
   },
   {
     "id": "shruthi-badri",
     "name": "Shruthi Badri",
-    "bio": "founder & cto, zamana",
+    "bio": "founder & cto, ",
     "links": {
       "x": "https://x.com/shruthibadri",
-      "linkedin": "https://www.linkedin.com/in/shruthi-badri/",
-      "web": "https://zamana.com"
+      "linkedin": "https://www.linkedin.com/in/shruthi-badri/"
     },
     "basedcon": true,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "zamana",
+      "url": "https://zamana.com"
+    }
   },
   {
     "id": "spencer-schneier",
@@ -106,13 +125,16 @@
   {
     "id": "srijan-shetty",
     "name": "Srijan Shetty",
-    "bio": "founder & cto, fuze",
+    "bio": "founder & cto, ",
     "links": {
       "x": "https://x.com/srijanshetty",
-      "linkedin": "https://www.linkedin.com/in/srijanshetty/",
-      "web": "https://fuze.finance"
+      "linkedin": "https://www.linkedin.com/in/srijanshetty/"
     },
     "basedcon": true,
-    "bangerlore": true
+    "bangerlore": true,
+    "company": {
+      "name": "fuze",
+      "url": "https://fuze.finance"
+    }
   }
 ]
