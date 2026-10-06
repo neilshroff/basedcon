@@ -8,6 +8,7 @@ export type Tweet = (typeof tweets)[number] & {
     likes?: number;
     reposts?: number;
     replies?: number;
+    bookmarks?: number;
 };
 
 export function compact(n: number) {
