@@ -27,27 +27,26 @@ npm run build:bangerlore
 
 Gallery images live in each site's `src/assets/gallery/` and are converted to responsive WebP at build time.
 
-## Basedcon invite requests
+## Form submissions (private)
 
-"Request an invite" on basedcon.xyz POSTs to `/api/invite` (an Astro server route deployed
-as a Vercel Function). Each submission is stored as a JSON file in the project's Vercel Blob
-store under `invites/`. Required env vars on the `basedcon` Vercel project:
+"Request an invite" on basedcon.xyz POSTs to `/api/invite`; "Want to attend?" on bangerlore.com
+POSTs to `/api/attend`. Each submission is saved as one JSON file in that project's **private**
+Vercel Blob store (`basedcon-submissions` / `bangerlore-submissions`) via `shared/intake.ts`.
+Private blobs need the store token to read, so no submission is reachable by URL.
 
-- `BLOB_READ_WRITE_TOKEN` — set automatically when the Blob store is connected to the project
-- `INVITES_ADMIN_KEY` — any long random string; unlocks the export endpoint
+Env vars per project: `BLOB_READ_WRITE_TOKEN` (set when the store is connected) and an admin key,
+`INVITES_ADMIN_KEY` (basedcon) / `ATTEND_ADMIN_KEY` (bangerlore).
 
-Export all submissions: `https://basedcon.xyz/api/invites?key=<INVITES_ADMIN_KEY>`
-(add `&format=csv` for a spreadsheet-friendly download).
+Export (JSON, or add `&format=csv`):
 
-Site copy and events live in `sites/basedcon.xyz/src/data/site.json`.
+- `https://basedcon.xyz/api/invites?key=<INVITES_ADMIN_KEY>`
+- `https://bangerlore.com/api/attendees?key=<ATTEND_ADMIN_KEY>`
 
-## Bangerlore attend requests
+`LEGACY_BLOB_READ_WRITE_TOKEN` points at the old public stores. While it is set, each export first
+moves any old submissions into the private store and deletes the public copies. Once that has run,
+remove the variable and delete the old `basedcon-invites` / `bangerlore-attend` stores.
 
-Same pattern: "Want to attend?" POSTs to `/api/attend`, stored under `attend/` in the
-`bangerlore-com` project's Blob store. Env vars: `BLOB_READ_WRITE_TOKEN` (from the store) and
-`ATTEND_ADMIN_KEY`. Export: `https://bangerlore.com/api/attendees?key=<ATTEND_ADMIN_KEY>` (`&format=csv`).
-
-Site copy, editions, sponsors and tweets live in `sites/bangerlore.com/src/data/site.json`.
+Site copy lives in each site's `src/data/site.json`.
 
 ## Email notifications
 

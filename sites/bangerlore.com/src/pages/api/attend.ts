@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { put } from '@vercel/blob';
+import { save } from '@sites/shared/intake';
 import { notify } from '@sites/shared/notify';
 
 export const prerender = false;
@@ -69,11 +69,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     };
 
     try {
-        await put(`attend/${id}.json`, JSON.stringify(record, null, 2), {
-            access: 'public',
-            contentType: 'application/json',
-            addRandomSuffix: false,
-        });
+        await save('attend', id, record);
     } catch (err) {
         console.error('attend: blob put failed', err);
         return json({ error: 'Could not save your request. Please try again.' }, 500);
