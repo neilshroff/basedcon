@@ -42,10 +42,6 @@ Export (JSON, or add `&format=csv`):
 - `https://basedcon.xyz/api/invites?key=<INVITES_ADMIN_KEY>`
 - `https://bangerlore.com/api/attendees?key=<ATTEND_ADMIN_KEY>`
 
-`LEGACY_BLOB_READ_WRITE_TOKEN` points at the old public stores. While it is set, each export first
-moves any old submissions into the private store and deletes the public copies. Once that has run,
-remove the variable and delete the old `basedcon-invites` / `bangerlore-attend` stores.
-
 Site copy lives in each site's `src/data/site.json`.
 
 ## Email notifications

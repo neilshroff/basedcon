@@ -1,11 +1,7 @@
 // Form submissions live in a PRIVATE Vercel Blob store (BLOB_READ_WRITE_TOKEN):
 // every read needs the store token, so nothing is reachable by URL.
-//
-// LEGACY_BLOB_READ_WRITE_TOKEN, when set, points at the old public store.
-// readAll() moves anything still there into the private store and deletes the
-// public copy, so the first export after deploy completes the migration.
 
-import { put, list, get, del } from '@vercel/blob';
+import { put, list, get } from '@vercel/blob';
 
 type Rec = Record<string, unknown>;
 
@@ -32,30 +28,7 @@ export async function save(prefix: string, id: string, record: Rec) {
     });
 }
 
-async function migrateLegacy(prefix: string) {
-    const token = process.env.LEGACY_BLOB_READ_WRITE_TOKEN;
-    if (!token) return;
-    let cursor: string | undefined;
-    do {
-        const page = await list({ prefix: `${prefix}/`, cursor, limit: 1000, token });
-        for (const b of page.blobs) {
-            const res = await fetch(b.url, { cache: 'no-store' });
-            if (!res.ok) continue;
-            const rec = (await res.json()) as Rec;
-            const id = String(rec.id ?? b.pathname.replace(/^.*\//, '').replace(/\.json$/, ''));
-            await save(prefix, id, rec);
-            await del(b.url, { token });
-        }
-        cursor = page.hasMore ? page.cursor : undefined;
-    } while (cursor);
-}
-
 export async function readAll(prefix: string): Promise<Rec[]> {
-    try {
-        await migrateLegacy(prefix);
-    } catch (err) {
-        console.error('intake: legacy migration failed', err);
-    }
     const records: Rec[] = [];
     let cursor: string | undefined;
     do {
