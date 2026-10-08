@@ -9,7 +9,7 @@ import Quotes from '../components/Quotes.astro';
 import Lightbox from '@sites/shared/components/Lightbox.astro';
 import site from '../data/site.json';
 import { featuredFor } from '@sites/shared/tweets';
-import { photos, hero, lbIndex } from '../data/photos';
+import { photos, hero, heroThirdPool, lbIndex } from '../data/photos';
 
 const { nextEdition, editions, links } = site;
 const tweets = featuredFor('bangerlore');
@@ -34,7 +34,17 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
 
         <div>
             <div class="photo-grid">
-                {hero.map((p, i) => <Image src={p.src} alt={p.alt} {...imgProps} loading={i === 0 ? 'eager' : 'lazy'} data-lb={lbIndex(p)} class="clickable" />)}
+                {hero.slice(0, 2).map((p, i) => <Image src={p.src} alt={p.alt} {...imgProps} loading={i === 0 ? 'eager' : 'lazy'} data-lb={lbIndex(p)} class="clickable" />)}
+                <div class="rand-slot" id="hero-third">
+                    {heroThirdPool.map((p, i) => <Image src={p.src} alt={p.alt} {...imgProps} loading="lazy" data-lb={lbIndex(p)} class="clickable" hidden={i !== 0} />)}
+                </div>
+                <script is:inline>
+                    (function () {
+                        var imgs = document.getElementById('hero-third').querySelectorAll('img');
+                        var pick = Math.floor(Math.random() * imgs.length);
+                        for (var i = 0; i < imgs.length; i++) imgs[i].hidden = i !== pick;
+                    })();
+                </script>
             </div>
             <div class="under-gallery">
                 <span>previous editions</span>
@@ -105,6 +115,7 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
     .under-gallery a.latest:hover { color: var(--red); }
     .clickable { cursor: zoom-in; transition: opacity .15s; }
     .clickable:hover { opacity: .85; }
+    .rand-slot img[hidden] { display: none; }
 
     .section { padding-top: 64px; padding-bottom: 64px; border-top: 1px solid var(--line); }
     .next-body { font-size: 17px; line-height: 1.5; }

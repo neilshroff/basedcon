@@ -51,5 +51,14 @@ export const photos = [
 ];
 
 export const hero = photos.slice(0, 3);
+
+// The home hero's third slot shows one of these at random on each visit.
+// Close, smiling group shots that sit well beside the two fixed picks.
+const thirdSlotNames = ['v3-127.jpg', 'v3-146.jpg', 'v3-113.jpg', 'v3-60.jpg', 'v4-3480.jpg', 'v4-3509.jpg', 'v4-3445.jpg', 'v4-3501.jpg', 'v3-39.jpg'];
+export const heroThirdPool = thirdSlotNames.map((n) => {
+    const p = photos.find((q) => q.src === g(n));
+    if (!p) throw new Error(`hero pool photo not in gallery list: ${n}`);
+    return p;
+});
 export const grid = photos.slice(3, 18);
 export const lbIndex = (p: (typeof photos)[number]) => photos.findIndex((q) => q.src === p.src);
