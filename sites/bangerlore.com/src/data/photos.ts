@@ -12,9 +12,9 @@ const g = (name: string) => {
 // Three editions rotate (v5 warm indoor 1-9, v4 cool flash v4-*, v3 warm
 // tungsten v3-*) so no two neighbours look alike.
 export const photos = [
-    { src: g('1.jpeg'), alt: 'Bangerlore, early evening' },
+    { src: g('9.jpeg'), alt: 'Bangerlore after dark' },
     { src: g('v4-3460.jpg'), alt: 'Under the flag, Bangerlore v4' },
-    { src: g('v3-146.jpg'), alt: 'Under the gazebo' },
+    { src: g('v3-127.jpg'), alt: 'Three friends' },
 
     { src: g('v4-3463.jpg'), alt: 'Faff crew' },
     { src: g('v3-12.jpg'), alt: 'Hacking under the gazebo' },
@@ -22,7 +22,7 @@ export const photos = [
     { src: g('v3-39.jpg'), alt: 'Point-and-shoot' },
     { src: g('v4-3501.jpg'), alt: 'A hug by the bar' },
     { src: g('v3-96.jpg'), alt: 'The flag room' },
-    { src: g('9.jpeg'), alt: 'Bangerlore after dark' },
+    { src: g('1.jpeg'), alt: 'Bangerlore, early evening' },
     { src: g('v3-53.jpg'), alt: 'Pizza by the flag' },
     { src: g('v4-3444.jpg'), alt: 'Acai theory' },
     { src: g('v3-22.jpg'), alt: 'The hallway crowd' },
@@ -40,7 +40,7 @@ export const photos = [
     { src: g('v3-113.jpg'), alt: 'Making a point' },
     { src: g('7.jpeg'), alt: 'Bangerlore party' },
     { src: g('v4-3480.jpg'), alt: 'Laughing' },
-    { src: g('v3-127.jpg'), alt: 'Three friends' },
+    { src: g('v3-146.jpg'), alt: 'Under the gazebo' },
     { src: g('8.jpeg'), alt: 'Bangerlore party' },
     { src: g('v4-3445.jpg'), alt: 'A conversation' },
     { src: g('v3-138.jpg'), alt: 'Faff banner and the flag' },
