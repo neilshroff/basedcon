@@ -58,10 +58,26 @@ const lightbox = pool.filter((p, i) => pool.findIndex((q) => q.src === p.src) ==
 const lbIndex = (p: (typeof pool)[number]) => lightbox.findIndex((q) => q.src === p.src);
 const { nextEvent, previousEvents, links, stats } = site;
 const [themeHead, themeTail] = nextEvent.theme.endsWith(' x') ? [nextEvent.theme.slice(0, -1), 'x'] : [nextEvent.theme, ''];
+const isoDate = (d: string) => {
+    const t = new Date(`${d} 00:00:00 UTC`);
+    return Number.isNaN(t.getTime()) ? undefined : t.toISOString().slice(0, 10);
+};
+const eventDay = isoDate(nextEvent.date);
+const eventSchema = eventDay ? {
+    '@type': 'Event',
+    name: `Basedcon ${nextEvent.city}`,
+    description: site.description,
+    startDate: eventDay,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: { '@type': 'Place', name: nextEvent.city, address: { '@type': 'PostalAddress', addressLocality: nextEvent.city, addressCountry: 'IN' } },
+    organizer: { '@type': 'Organization', name: 'Basedcon', url: 'https://basedcon.xyz' },
+    url: 'https://basedcon.xyz',
+} : undefined;
 const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-width: 760px) 50vw, 304px' };
 ---
 
-<Base>
+<Base schema={eventSchema}>
     <AnnouncementBar />
 
     <div class="col hero-wrap">
@@ -69,7 +85,6 @@ const imgProps = { widths: [360, 720], sizes: '(max-width: 480px) 100vw, (max-wi
 
         <div class="hero">
             <h1>Basedcon 🇮🇳</h1>
-            <p class="tagline">event series for your biggest ideas</p>
             <p class="summary">Invite-only, closed-door, since 2023.<br />5 speakers, up to 25 interruptors, Chatham house rules</p>
             <div class="ctas">
                 <button type="button" class="btn" data-open-invite>Join the next event</button>

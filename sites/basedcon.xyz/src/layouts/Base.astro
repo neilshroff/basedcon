@@ -4,11 +4,17 @@ import site from '../data/site.json';
 interface Props {
     title?: string;
     description?: string;
+    schema?: Record<string, unknown>;
 }
 
-const { title = site.title, description = site.description } = Astro.props;
+const { title = site.title, description = site.description, schema } = Astro.props;
+const siteName = 'Basedcon';
 const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site);
 const ogImage = new URL('/og.jpg', Astro.site);
+const ld = [
+    { '@context': 'https://schema.org', '@type': 'WebSite', name: siteName, url: new URL('/', Astro.site).href },
+    ...(schema ? [{ '@context': 'https://schema.org', ...schema }] : []),
+];
 ---
 
 <!DOCTYPE html>
@@ -23,6 +29,7 @@ const ogImage = new URL('/og.jpg', Astro.site);
     <meta name="theme-color" content="#f7f5f0" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -34,6 +41,7 @@ const ogImage = new URL('/og.jpg', Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    {ld.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
 </head>
 <body>
     <slot />
