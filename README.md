@@ -51,7 +51,8 @@ saved first, so a mail failure never loses a request. Each project needs three e
 
 - `RESEND_API_KEY` — from resend.com
 - `NOTIFY_TO` — recipient(s), comma-separated
-- `NOTIFY_FROM` — a verified sender, e.g. `Basedcon <hello@basedcon.xyz>`
+- `NOTIFY_FROM` — a verified sender. Both sites send via the bangerlore.com Resend domain:
+  `Basedcon <hello@bangerlore.com>` and `Bangerlore <hello@bangerlore.com>`
 
 Subjects are tagged `[Basedcon]` / `[Bangerlore]` and Reply-To is the requester.
 
